@@ -19,7 +19,7 @@ _**Important Note**: To install it via npm/Yarn, you need at least Node.js 14 or
 
 #### Via Git
 ```bash
-git clone https://github.com/ColorlibHQ/AdminLTE.git
+git clone https://github.com/GradCMS/FrontEnd.git
 ```
 ## Browsers support
 
