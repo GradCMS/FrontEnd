@@ -874,31 +874,26 @@
                                         <!-- /.card-header -->
                                         <!-- form start -->
                                         <form>
-                                            <!-- start button -->
-                                            <!-- iCheck -->
-                            
-                                <div class="card-body">
-                                    <!-- Minimal style -->
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <!-- radio -->
-                                            <div class="form-group clearfix">
-                                                <div class="icheck-primary d-inline">
-                                                    <input type="radio" id="radioPrimary1" name="r1" checked>
-                                                    <label for="radioPrimary1"> Standard page </label>
-                                                </div>
-                                                <div class="icheck-primary d-inline">
-                                                    <input type="radio" id="radioPrimary2" name="r1">
-                                                    <label for="radioPrimary2"> Content page </label>
-                                                </div>
-                                        
-                                            </div>
-                                        </div>  
-                                    </div>
-                                </div>
-                                            <!-- end button -->
                                             <!-- INPUTS START -->
                                             <div class="card-body">
+                                                <div class="row">
+                                                    <label>Page Type:</label>
+                                                    <div class="col-sm-6">
+                                                    
+                                                        <!-- radio -->
+                                                        <div class="form-group clearfix">
+                                                            <div class="icheck-primary d-inline">
+                                                                <input type="radio" id="radioPrimary1" name="r1" checked>
+                                                                <label for="radioPrimary1"> Standard page </label>
+                                                            </div>
+                                                            <div class="icheck-primary d-inline">
+                                                                <input type="radio" id="radioPrimary2" name="r1">
+                                                                <label for="radioPrimary2"> Content page </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>  
+                                                </div>
+                                            
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Title</label>
                                                     <input type="Text" class="form-control" id="exampleInputEmail1" >
@@ -906,7 +901,7 @@
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1">URL </label>
                                                     <input type="Text" class="form-control" id="exampleInputPassword1" placeholder="No special characters are allowed">
-                                                </div>
+                                                </div>  
                                                 <div class="form-group">
                                                     <label>Parent Page</label>
                                                     <select class="form-control select2bs4" style="width: 100%;">
@@ -923,10 +918,21 @@
                                                     <label for="exampleInputEmail1">Tags</label>
                                                     <input type="Text" class="form-control" id="Tags" >
                                                 </div>
+                                                <!-- textarea -->
+                                                <div class="form-group">
+                                                    <label>Short Description</label>
+                                                    <textarea class="form-control" rows="3" ></textarea>
+                                                </div>
 
+                                                <div class="form-group">
+                                                    <label>Hidden</label>
+                                                    <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch>
+                                                    <input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                                                </div>
 
+                                        <!-- INPUTS END -->
                                             </div>
-                                            <!-- INPUTS END -->
+                                            
                                             <!-- /.card-body -->
         
                                             <div class="card-footer">
