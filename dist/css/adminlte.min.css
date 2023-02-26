@@ -39920,7 +39920,10 @@ select.form-control-sm~.select2-container--default .select2-selection--multiple 
 .slider-blue .slider .slider-selection {
     background: #007bff
 }
-
+.required-field::after {
+    content: "*";
+    color: red;
+}
 .slider-indigo .slider .slider-selection {
     background: #6610f2
 }
