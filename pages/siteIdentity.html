@@ -1,3 +1,4 @@
+</html>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,9 +10,9 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -110,7 +111,7 @@
 
                         <li class="nav-header">Website Management</li>
                         <li class="nav-item active">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-file"></i>
                                 <p>Page Management </p>
                                 <!-- <i class="fas fa-angle-left right "></i> -->
@@ -178,8 +179,8 @@
                                 </li>
                             </ul> -->
                         </li>
-                        <li class="nav-item">
-                            <a href="../pages/siteIdentity.html" class="nav-link">
+                        <li class="nav-item active">
+                            <a href="../pages/siteIdentity.html" class="nav-link active">
                                 <i class="nav-icon fas fa-dna"></i>
                                 <p>
                                     Site Identity
@@ -187,6 +188,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="./editModule.html" class="nav-link">
                                 <i class="nav-icon fas fa-sitemap"></i>
                                 <p>
                                     Module Management
@@ -712,14 +714,14 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Page Manager</h1>
+                            <h1><i class="nav-icon fas fa-dna"></i> Site Identity Manager </h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item">
                                     <a href="#">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active">Page Management </li>
+                                <li class="breadcrumb-item">Site Identity </li>
                             </ol>
                         </div>
                     </div>
@@ -727,395 +729,254 @@
                 <!-- /.container-fluid -->
             </section>
             <!-- Main content -->
-            <section class="content">
-                <!-- Default box -->
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Pages</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                <i class="fas fa-times"></i>
-                            </button>
+            <div class="row m-auto">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">University Identity</h3>
                         </div>
+                        <!-- ./card-header -->
+                        <div class="card-body p-0">
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr data-widget="expandable-table" aria-expanded="false">
+                                        <td>
+                                            <i class="expandable-table-caret fas fa-caret-right fa-fw"></i> University 
+                                        </td>
+                                    </tr>
+                                    <tr class="expandable-body">
+                                        <td>
+                                            <div class="p-0">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr data-widget="expandable-table" aria-expanded="false">
+                                                            <td>
+                                                                <i class="expandable-table-caret fas fa-caret-right fa-fw"></i> All Images & Icons
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="expandable-body d-none">
+                                                            <td>
+                                                                <div class="p-0" style="display: none;">
+                                                                    <table class="table table-hover">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td><div class="form-group">
+                                                                                    <label for="exampleInputFile">Default Cover Logo</label>
+                                                                                    <div class="input-group mb-3 mt-3">
+                                                                                        <div class="custom-file">
+                                                                                            <input type="file" class="custom-file-input" id="exampleInputFile" control-id="ControlID-3">
+                                                                                            <label class="custom-file-label" for="exampleInputFile"></label>
+                                                                                        </div>
+                                                                                        <div class="input-group-append">
+                                                                                            <span class="input-group-text">Upload</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><div class="form-group">
+                                                                                    <label for="exampleInputFile">Default Cover Logo Vertical</label>
+                                                                                    <div class="input-group">
+                                                                                        <div class="custom-file">
+                                                                                            <input type="file" class="custom-file-input" id="exampleInputFile" control-id="ControlID-3">
+                                                                                            <label class="custom-file-label" for="exampleInputFile"></label>
+                                                                                        </div>
+                                                                                        <div class="input-group-append">
+                                                                                            <span class="input-group-text">Upload</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><div class="form-group">
+                                                                                    <label for="exampleInputFile">Default Header Image</label>
+                                                                                    <div class="input-group mb-3 mt-3">
+                                                                                        <div class="custom-file">
+                                                                                            <input type="file" class="custom-file-input" id="exampleInputFile" control-id="ControlID-3">
+                                                                                            <label class="custom-file-label" for="exampleInputFile"></label>
+                                                                                        </div>
+                                                                                        <div class="input-group-append">
+                                                                                            <span class="input-group-text">Upload</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><div class="form-group">
+                                                                                    <label for="exampleInputFile">Default Browser icon</label>
+                                                                                    <div class="input-group mb-3 mt-3">
+                                                                                        <div class="custom-file">
+                                                                                            <input type="file" class="custom-file-input" id="exampleInputFile" control-id="ControlID-3">
+                                                                                            <label class="custom-file-label" for="exampleInputFile"></label>
+                                                                                        </div>
+                                                                                        <div class="input-group-append">
+                                                                                            <span class="input-group-text">Upload</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><div class="form-group">
+                                                                                    <label for="exampleInputFile">Secondary Logo</label>
+                                                                                    <div class="input-group">
+                                                                                        <div class="custom-file">
+                                                                                            <input type="file" class="custom-file-input" id="exampleInputFile" control-id="ControlID-3">
+                                                                                            <label class="custom-file-label" for="exampleInputFile"></label>
+                                                                                        </div>
+                                                                                        <div class="input-group-append">
+                                                                                            <span class="input-group-text">Upload</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><div class="form-group">
+                                                                                    <label for="exampleInputFile">Background image</label>
+                                                                                    <div class="input-group mb-3 mt-3">
+                                                                                        <div class="custom-file">
+                                                                                            <input type="file" class="custom-file-input" id="exampleInputFile" control-id="ControlID-3">
+                                                                                            <label class="custom-file-label" for="exampleInputFile"></label>
+                                                                                        </div>
+                                                                                        <div class="input-group-append">
+                                                                                            <span class="input-group-text">Upload</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div></td>
+                                                                            </tr>
+                                                                           
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        
+                                                    
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!-- Contact us -->
+                                    <tr data-widget="expandable-table" aria-expanded="false">
+                                        <td>
+                                            <i class="expandable-table-caret fas fa-caret-right fa-fw"></i> Contact us
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr class="expandable-body">
+                                        <td>
+                                            <div class="p-0">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr data-widget="expandable-body d-none" aria-expanded="false">
+                                                            <td>
+                                                                 University Address <input class="form-control" type="text" placeholder="Address" control-id="ControlID-74">
+                                                            </td>
+                                                        </tr>
+                                                        <tr data-widget="expandable-body d-none" aria-expanded="false">
+                                                            <td>
+                                                                 University Email <input class="form-control" type="Email" placeholder="Email">
+                                                            </td>
+                                                        </tr>
+                                                        <tr data-widget="expandable-body d-none" aria-expanded="false">
+                                                            <td>
+                                                                Main Phone Number
+                                                                <div class="input-group mb-3 mt-3">
+                                                                       <input type="text" class="form-control" placeholder="Phone Number">
+                                                                    
+                                                <button type="button" class="btn btn-primary" ">Add</button>
+                                              
+                                                                </div>
+                                                                 
+                                                            </td>
+                                                        </tr>
+                                                        <tr data-widget="expandable-body d-none" aria-expanded="false">
+                                                            <td>
+                                                                 University Landline <input class="form-control" type="Email" placeholder="Landline Number">
+                                                            </td>
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!-- University Social Accounts -->
+                                    <tr data-widget="expandable-table" aria-expanded="false">
+                                        <td>
+                                            <i class="expandable-table-caret fas fa-caret-right fa-fw"></i> University Social Accounts
+                                        </td>
+                                    </tr>
+                                    <tr class="expandable-body">
+                                        <td>
+                                            <div class="p-0">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr data-widget="expandable-body d-none" aria-expanded="false">
+                                                            <td>
+                                                                 Facebook <i class="fab fa-facebook-square"></i> <div class="input-group mb-3 mt-3">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text"><i class="fas fa-link"></i></span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Link" control-id="ControlID-57">
+                                                                <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr data-widget="expandable-body d-none" aria-expanded="false">
+                                                            <td>
+                                                                Twitter <i class="fab fa-twitter-square"></i>  <span class="fas ai-twitter"></span> <div class="input-group mb-3 mt-3">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text"><i class="fas fa-link"></i></span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Link" control-id="ControlID-57">
+                                                                <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr data-widget="expandable-body d-none" aria-expanded="false">
+                                                            <td>
+                                                                 Instagram <i class="fab fa-instagram"></i> <div class="input-group mb-3 mt-3">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text"><i class="fas fa-link"></i></span>
+                                                                    </div>
+                                                                    <input type="text" class="form-control" placeholder="Link" control-id="ControlID-57">
+                                                                <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr data-widget="expandable-body d-none" aria-expanded="false">
+                                                            <td>
+                                                                Univeristy other links
+                                                                 <div class="input-group mb-3 mt-3">
+                                                                    
+                                        <div class="input-group-prepend">
+                                            
+                                            <span class="input-group-text"><i class="fas fa-link"></i></span>
+                                        </div>
+                                        <input type="email" class="form-control" placeholder="Email" control-id="ControlID-60">
+                                    <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                                                            </td>
+
+                                                        
+                                                        
+                                                        
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
                     </div>
-                    <div class="card-body p-0">
-                        <table class="table table-striped projects">
-                            <thead>
-                                <tr>
-                                    <th style="width: 1%" class="text-center"> # </th>
-                                    <th style="width: 20%" class="text-center"> Page Name </th>
-                                    <th style="width: 30%" class="text-center"> Meta Tag </th>
-
-                                    <th style="width: 8%" class="text-center"> Status <i class="fas fa-low-vision"></i>
-                                    </th>
-                                    <th style="width: 20%" class="text-center">
-                                        <i class="fas fa-edit"></i>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td> # </td>
-                                    <td>
-                                        <a> Page1 </a>
-                                        <br />
-                                        <small> Created 01.01.2019 </small>
-                                    </td>
-                                    <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                        </ul>
-                                    </td>
-
-                                    <td class="project-state">
-                                        <span class="badge
-                                                    badge-success">Up</span>
-                                    </td>
-                                    <td class="project-actions
-                                                text-right">
-                                        <a class="btn btn-primary
-                                                    btn-sm" href="#">
-                                            <i class="fas fa-folder"></i> View </a>
-                                        <a class="btn btn-info btn-sm" href="editPage.html"> <i
-                                                class="fas fa-pencil-alt"></i> Edit </a>
-                                        <a class="btn btn-danger btn-sm" href="#"> <i class="fas fa-trash"></i> Delete
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> # </td>
-                                    <td>
-                                        <a> Page2 </a>
-                                        <br />
-                                        <small> Created 01.01.2019 </small>
-                                    </td>
-                                    <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                        </ul>
-                                    </td>
-                                    <td class="project-state">
-                                        <span class="badge
-                                                        badge-danger">Hidden</span>
-                                    </td>
-                                    <td class="project-actions
-                                                    text-right">
-                                        <a class="btn btn-primary
-                                                        btn-sm" href="#">
-                                            <i class="fas
-                                                            fa-folder"></i> View </a>
-                                        <a class="btn btn-info
-                                                        btn-sm" href="#">
-                                            <i class="fas
-                                                            fa-pencil-alt"></i> Edit </a>
-                                        <a class="btn btn-danger
-                                                        btn-sm" href="#">
-                                            <i class="fas fa-trash"></i> Delete </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> # </td>
-                                    <td>
-                                        <a> Page3 </a>
-                                        <br />
-                                        <small> Created 01.01.2019 </small>
-                                    </td>
-                                    <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                        </ul>
-                                    </td>
-
-                                    <td class="project-state">
-                                        <span class="badge
-                                                        badge-danger">Hidden</span>
-                                    </td>
-                                    <td class="project-actions
-                                                        text-right">
-                                        <a class="btn
-                                                            btn-primary btn-sm" href="#">
-                                            <i class="fas
-                                                                fa-folder"></i> View </a>
-                                        <a class="btn btn-info
-                                                            btn-sm" href="#">
-                                            <i class="fas
-                                                                fa-pencil-alt"></i> Edit </a>
-                                        <a class="btn btn-danger
-                                                            btn-sm" href="#">
-                                            <i class="fas
-                                                                fa-trash"></i> Delete </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> # </td>
-                                    <td>
-                                        <a> Page4 </a>
-                                        <br />
-                                        <small> Created 01.01.2019 </small>
-                                    </td>
-                                    <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                        </ul>
-                                    </td>
-
-                                    <td class="project-state">
-                                        <span class="badge
-                                                    badge-success">Up</span>
-                                    </td>
-                                    <td class="project-actions
-                                                            text-right">
-                                        <a class="btn
-                                                                btn-primary
-                                                                btn-sm" href="#">
-                                            <i class="fas
-                                                                    fa-folder"></i> View </a>
-                                        <a class="btn
-                                                                btn-info btn-sm" href="#">
-                                            <i class="fas
-                                                                    fa-pencil-alt"></i> Edit </a>
-                                        <a class="btn
-                                                                btn-danger
-                                                                btn-sm" href="#">
-                                            <i class="fas
-                                                                    fa-trash"></i> Delete </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> # </td>
-                                    <td>
-                                        <a> Page5 </a>
-                                        <br />
-                                        <small> Created 01.01.2019 </small>
-                                    </td>
-                                    <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">
-
-                                            </li>
-                                        </ul>
-                                    </td>
-
-                                    <td class="project-state">
-                                        <span class="badge
-                                                                    badge-danger">Hidden</span>
-                                    </td>
-                                    <td class="project-actions
-                                                                text-right">
-                                        <a class="btn
-                                                                    btn-primary
-                                                                    btn-sm" href="#">
-                                            <i class="fas
-                                                                        fa-folder"></i> View </a>
-                                        <a class="btn
-                                                                    btn-info
-                                                                    btn-sm" href="#">
-                                            <i class="fas
-                                                                        fa-pencil-alt"></i> Edit </a>
-                                        <a class="btn
-                                                                    btn-danger
-                                                                    btn-sm" href="#">
-                                            <i class="fas
-                                                                        fa-trash"></i> Delete </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> # </td>
-                                    <td>
-                                        <a> Page6 </a>
-                                        <br />
-                                        <small> Created 01.01.2019 </small>
-                                    </td>
-                                    <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                        </ul>
-                                    </td>
-
-                                    <td class="project-state">
-                                        <span class="badge
-                                                                        badge-success">Up</span>
-                                    </td>
-                                    <td class="project-actions
-                                                                    text-right">
-                                        <a class="btn
-                                                                        btn-primary
-                                                                        btn-sm" href="#">
-                                            <i class="fas
-                                                                            fa-folder"></i> View </a>
-                                        <a class="btn
-                                                                        btn-info
-                                                                        btn-sm" href="#">
-                                            <i class="fas
-                                                                            fa-pencil-alt"></i> Edit </a>
-                                        <a class="btn
-                                                                        btn-danger
-                                                                        btn-sm" href="#">
-                                            <i class="fas
-                                                                            fa-trash"></i> Delete </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> # </td>
-                                    <td>
-                                        <a> Page7 </a>
-                                        <br />
-                                        <small> Created 01.01.2019 </small>
-                                    </td>
-                                    <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">
-
-                                            </li>
-                                        </ul>
-                                    </td>
-
-                                    <td class="project-state">
-                                        <span class="badge
-                                                                            badge-success">Up</span>
-                                    </td>
-                                    <td class="project-actions
-                                                                        text-right">
-                                        <a class="btn
-                                                                            btn-primary
-                                                                            btn-sm" href="#">
-                                            <i class="fas
-                                                                                fa-folder"></i> View </a>
-                                        <a class="btn
-                                                                            btn-info
-                                                                            btn-sm" href="#">
-                                            <i class="fas
-                                                                                fa-pencil-alt"></i> Edit </a>
-                                        <a class="btn
-                                                                            btn-danger
-                                                                            btn-sm" href="#">
-                                            <i class="fas
-                                                                                fa-trash"></i> Delete </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> # </td>
-                                    <td>
-                                        <a> Page8 </a>
-                                        <br />
-                                        <small> Created 01.01.2019 </small>
-                                    </td>
-                                    <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                        </ul>
-                                    </td>
-
-                                    <td class="project-state">
-                                        <span class="badge
-                                                                                badge-success">Up</span>
-                                    </td>
-                                    <td class="project-actions
-                                                                            text-right">
-                                        <a class="btn
-                                                                                btn-primary
-                                                                                btn-sm" href="#">
-                                            <i class="fas
-                                                                                    fa-folder"></i> View </a>
-                                        <a class="btn
-                                                                                btn-info
-                                                                                btn-sm" href="#">
-                                            <i class="fas
-                                                                                    fa-pencil-alt"></i> Edit </a>
-                                        <a class="btn
-                                                                                btn-danger
-                                                                                btn-sm" href="#">
-                                            <i class="fas
-                                                                                    fa-trash"></i> Delete </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> # </td>
-                                    <td>
-                                        <a> Page9 </a>
-                                        <br />
-                                        <small> Created 01.01.2019 </small>
-                                    </td>
-                                    <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                            <li class="list-inline-item">Meta Tag</li>
-                                        </ul>
-                                    </td>
-
-                                    <td class="project-state">
-                                        <span class="badge
-                                                        badge-danger">Hidden</span>
-                                    </td>
-                                    <td class="project-actions
-                                                                                text-right">
-                                        <a class="btn
-                                                                                    btn-primary
-                                                                                    btn-sm" href="#">
-                                            <i class="fas
-                                                                                        fa-folder"></i> View </a>
-                                        <a class="btn
-                                                                                    btn-info
-                                                                                    btn-sm" href="#">
-                                            <i class="fas
-                                                                                        fa-pencil-alt"></i> Edit </a>
-                                        <a class="btn
-                                                                                    btn-danger
-                                                                                    btn-sm" href="#">
-                                            <i class="fas fa-trash"></i> Delete </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.card-body -->
+                    <!-- /.card -->
                 </div>
-                <!-- /.card -->
-            </section>
+            </div>
             <!-- /.content -->
         </div>
         <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>Page Tree</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb
-                                                                    float-sm-right">
-                            <li class="breadcrumb-item">
-                                <a href="#">Home</a>
-                            </li>
-                            <li class="breadcrumb-item active">Blank Page </li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-            <!-- /.container-fluid -->
-        </section>
+    
         <!-- Main content -->
         <!-- /.content -->
     </div>
@@ -1135,13 +996,13 @@
     </div>
     <!-- ./wrapper -->
     <!-- jQuery -->
-    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.min.js"></script>
+    <script src="../dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../../dist/js/demo.js"></script>
+    <script src="../dist/js/demo.js"></script>
 </body>
 
 </html>
