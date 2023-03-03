@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FCAI CMS | Site Identity</title>
+    <title>FCAI CMS | Page Management</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -159,6 +159,7 @@
                 </li>
             </ul>
         </nav>
+        
         <!-- /.navbar -->
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -199,9 +200,10 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+                        <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
                         <li class="nav-item ">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
@@ -232,7 +234,7 @@
 
                         <li class="nav-header">Website Management</li>
                         <li class="nav-item active">
-                            <a href="./PageManagement.html" class="nav-link ">
+                            <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-file"></i>
                                 <p>Page Management </p>
                                 <!-- <i class="fas fa-angle-left right "></i> -->
@@ -300,8 +302,8 @@
                                 </li>
                             </ul> -->
                         </li>
-                        <li class="nav-item active">
-                            <a href="#" class="nav-link active">
+                        <li class="nav-item ">
+                            <a href="../pages/siteIdentity.html" class="nav-link ">
                                 <i class="nav-icon fas fa-dna"></i>
                                 <p>
                                     Site Identity
@@ -316,8 +318,8 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="./editModule.html" class="nav-link">
+                        <li class="nav-item active">
+                            <a href="#" class="nav-link active">
                                 <i class="nav-icon fab fa-css3"></i>
                                 <p>
                                     Class Management
@@ -325,7 +327,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./displayManager.html" class="nav-link">
+                            <a href="../pages/displayManager.html" class="nav-link">
                                 <i class="nav-icon fas fa-desktop "></i>
                                 <p>
                                     Display Management
@@ -334,7 +336,7 @@
                         </li>
                         <li class="nav-header ">User Settings</li>
                         <li class="nav-item">
-                            <a href="./userManagement.html" class="nav-link ">
+                            <a href="../pages/userManagement.html" class="nav-link ">
                                 <i class="nav-icon fas fa-users "></i>
                                 <p>
                                     User Management
@@ -342,7 +344,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./userRole.html" class="nav-link ">
+                            <a href="../pages/userRole.html" class="nav-link ">
                                 <i class="nav-icon fas fa-user-tag"></i>
                                 <p>
                                     Role Management
@@ -357,6 +359,14 @@
                                 <p>
                                     Widgets
                                     <span class="right badge badge-danger">New</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../pages/widgets.html" class="nav-link">
+                                <i class="nav-icon fas fa-dna"></i>
+                                <p>
+                                    Site Identity
                                 </p>
                             </a>
                         </li>
@@ -795,7 +805,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <!-- <li class="nav-header ">LABELS</li>
+                        <li class="nav-header ">LABELS</li>
                         <li class="nav-item ">
                             <a href="# " class="nav-link ">
                                 <i class="nav-icon far fa-circle text-danger "></i>
@@ -813,7 +823,7 @@
                                 <i class="nav-icon far fa-circle text-info "></i>
                                 <p>Informational</p>
                             </a>
-                        </li> -->
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -825,16 +835,16 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
-                    <div class="row mb-2 p-3">
+                    <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1><i class="nav-icon fas fa-dna"></i> Site Identity Manager </h1>
+                            <h1><i class="nav-icon fab fa-css3"></i> Class Manager </h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item">
                                     <a href="../index.html">Home</a>
                                 </li>
-                                <li class="breadcrumb-item">Site Identity</li>
+                                <li class="breadcrumb-item">Class Management </li>
                             </ol>
                         </div>
                     </div>
@@ -842,277 +852,52 @@
                 <!-- /.container-fluid -->
             </section>
             <!-- Main content -->
-            <div class="row m-auto">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="m-3 text-center"><h3 class="card-title mt-1 ">University Identity</h3></div>
-                            <div class="text-right m-2"> <a class="btn  btn-danger">
-                                <i class="fas fa-save"></i> Save
-                            </a></div>
-                        </div>
-                        <!-- ./card-header -->
-                        <div class="card-body p-0">
-                            <table class="table table-hover">
-                                <tbody>
-                                    <tr data-widget="expandable-table" aria-expanded="false">
-                                        <td>
-                                            <i class="expandable-table-caret fas fa-caret-right fa-fw"></i> University 
-                                        </td>
-                                    </tr>
-                                    <tr class="expandable-body">
-                                        <td>
-                                            <div class="p-0">
-                                                <table class="table table-hover">
-                                                    <tbody>
-                                                        <tr data-widget="expandable-table" aria-expanded="false">
-                                                            <td>
-                                                                <i class="expandable-table-caret fas fa-caret-right fa-fw"></i> All Images & Icons
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="expandable-body d-none">
-                                                            <td>
-                                                                <div class="p-0" style="display: none;">
-                                                                    <table class="table table-hover">
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td><div class="form-group">
-                                                                                    <label for="exampleInputFile">Default Cover Logo</label>
-                                                                                    <div class="input-group mb-3 mt-3">
-                                                                                        <div class="custom-file">
-                                                                                            <input type="file" class="custom-file-input" id="exampleInputFile" control-id="ControlID-3">
-                                                                                            <label class="custom-file-label" for="exampleInputFile"></label>
-                                                                                        </div>
-                                                                                        <div class="input-group-append">
-                                                                                            <span class="input-group-text">Upload</span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><div class="form-group">
-                                                                                    <label for="exampleInputFile">Default Cover Logo Vertical</label>
-                                                                                    <div class="input-group ">
-                                                                                        <div class="custom-file">
-                                                                                            <input type="file" class="custom-file-input" id="exampleInputFile" control-id="ControlID-3">
-                                                                                            <label class="custom-file-label" for="exampleInputFile"></label>
-                                                                                        </div>
-                                                                                        <div class="input-group-append">
-                                                                                            <span class="input-group-text">Upload</span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><div class="form-group">
-                                                                                    <label for="exampleInputFile">Default Header Image</label>
-                                                                                    <div class="input-group mb-3 mt-3">
-                                                                                        <div class="custom-file">
-                                                                                            <input type="file" class="custom-file-input" id="exampleInputFile" control-id="ControlID-3">
-                                                                                            <label class="custom-file-label" for="exampleInputFile"></label>
-                                                                                        </div>
-                                                                                        <div class="input-group-append">
-                                                                                            <span class="input-group-text">Upload</span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><div class="form-group">
-                                                                                    <label for="exampleInputFile">Default Browser icon</label>
-                                                                                    <div class="input-group mb-3 mt-3">
-                                                                                        <div class="custom-file">
-                                                                                            <input type="file" class="custom-file-input" id="exampleInputFile" control-id="ControlID-3">
-                                                                                            <label class="custom-file-label" for="exampleInputFile"></label>
-                                                                                        </div>
-                                                                                        <div class="input-group-append">
-                                                                                            <span class="input-group-text">Upload</span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><div class="form-group">
-                                                                                    <label for="exampleInputFile">Secondary Logo</label>
-                                                                                    <div class="input-group">
-                                                                                        <div class="custom-file">
-                                                                                            <input type="file" class="custom-file-input" id="exampleInputFile" control-id="ControlID-3">
-                                                                                            <label class="custom-file-label" for="exampleInputFile"></label>
-                                                                                        </div>
-                                                                                        <div class="input-group-append">
-                                                                                            <span class="input-group-text">Upload</span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><div class="form-group">
-                                                                                    <label for="exampleInputFile">Background image</label>
-                                                                                    <div class="input-group mb-3 mt-3">
-                                                                                        <div class="custom-file">
-                                                                                            <input type="file" class="custom-file-input" id="exampleInputFile" control-id="ControlID-3">
-                                                                                            <label class="custom-file-label" for="exampleInputFile"></label>
-                                                                                        </div>
-                                                                                        <div class="input-group-append">
-                                                                                            <span class="input-group-text">Upload</span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div></td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr data-widget="expandable-table" aria-expanded="false">
-                                                            <td>
-                                                                <i class="expandable-table-caret fas fa-caret-right fa-fw"></i> About The University
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="expandable-body d-none">
-                                                            <td>
-                                                                <div class="p-0" style="display: none;">
-                                                                    <table class="table table-hover">
-                                                                        <tbody>
-                                                                            <tr data-widget="expandable-body d-none" aria-expanded="false">
-                                                                                <td>
-                                                                                     University Name <input class="form-control mb-3 mt-3" type="text" placeholder="Address" control-id="ControlID-4">
-                                                                                <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></td>
-                                                                            </tr>
-                                                                            <tr data-widget="expandable-body d-none" aria-expanded="false">
-                                                                                <td>
-                                                                                     Short Description <input class="form-control mb-3 mt-3" type="text" placeholder="Address" control-id="ControlID-4">
-                                                                                <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></td>
-                                                                                <tr data-widget="expandable-body d-none" aria-expanded="false">
-                                                                                    <td>
-                                                                                         Main Slogan <input class="form-control mb-3 mt-3" type="text" placeholder="Address" control-id="ControlID-4">
-                                                                                    <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></td>
-                                                                                </tr>
-                                                                                
-                                                                            </tr>
-                                                                            
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <!-- Contact us -->
-                                    <tr data-widget="expandable-table" aria-expanded="false">
-                                        <td>
-                                            <i class="expandable-table-caret fas fa-caret-right fa-fw"></i> Contact us
-                                        </td>
-                                    </tr>
-                                    
-                                    <tr class="expandable-body">
-                                        <td>
-                                            <div class="p-0">
-                                                <table class="table table-hover">
-                                                    <tbody>
-                                                        <tr data-widget="expandable-body d-none" aria-expanded="false">
-                                                            <td>
-                                                                 University Address <input class="form-control mb-3 mt-3" type="text" placeholder="Address" control-id="ControlID-74">
-                                                            </td>
-                                                        </tr>
-                                                        <tr data-widget="expandable-body d-none" aria-expanded="false">
-                                                            <td>
-                                                                 University Email <input class="form-control mb-3 mt-3" type="Email" placeholder="Email">
-                                                            </td>
-                                                        </tr>
-                                                        <tr data-widget="expandable-body d-none" aria-expanded="false">
-                                                            <td>
-                                                                Main Phone Number
-                                                                <div class="input-group mb-3 mt-3">
-                                                                       <input type="text" class="form-control " placeholder="Phone Number">
-                                                                    
-                                                <button type="button" class="btn btn-primary" ">Add</button>
-                                              
-                                                                </div>
-                                                                 
-                                                            </td>
-                                                        </tr>
-                                                        <tr data-widget="expandable-body d-none" aria-expanded="false">
-                                                            <td>
-                                                                 University Landline <input class="form-control mb-3 mt-3" type="Email" placeholder="Landline Number">
-                                                            </td>
-                                                        </tr>
-                                                        
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <!-- University Social Accounts -->
-                                    <tr data-widget="expandable-table" aria-expanded="false">
-                                        <td>
-                                            <i class="expandable-table-caret fas fa-caret-right fa-fw"></i> University Social Accounts
-                                        </td>
-                                    </tr>
-                                    <tr class="expandable-body">
-                                        <td>
-                                            <div class="p-0">
-                                                <table class="table table-hover">
-                                                    <tbody>
-                                                        <tr data-widget="expandable-body d-none" aria-expanded="false">
-                                                            <td>
-                                                                 Facebook <i class="fab fa-facebook-square"></i> <div class="input-group mb-3 mt-3">
-                                                                    <div class="input-group-prepend">
-                                                                        <span class="input-group-text"><i class="fas fa-link"></i></span>
-                                                                    </div>
-                                                                    <input type="text" class="form-control" placeholder="Link" control-id="ControlID-57">
-                                                                <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr data-widget="expandable-body d-none" aria-expanded="false">
-                                                            <td>
-                                                                Twitter <i class="fab fa-twitter-square"></i>  <span class="fas ai-twitter"></span> <div class="input-group mb-3 mt-3">
-                                                                    <div class="input-group-prepend">
-                                                                        <span class="input-group-text"><i class="fas fa-link"></i></span>
-                                                                    </div>
-                                                                    <input type="text" class="form-control" placeholder="Link" control-id="ControlID-57">
-                                                                <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr data-widget="expandable-body d-none" aria-expanded="false">
-                                                            <td>
-                                                                 Instagram <i class="fab fa-instagram"></i> <div class="input-group mb-3 mt-3">
-                                                                    <div class="input-group-prepend">
-                                                                        <span class="input-group-text"><i class="fas fa-link"></i></span>
-                                                                    </div>
-                                                                    <input type="text" class="form-control" placeholder="Link" control-id="ControlID-57">
-                                                                <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr data-widget="expandable-body d-none" aria-expanded="false">
-                                                            <td>
-                                                                Univeristy other links
-                                                                 <div class="input-group mb-3 mt-3">
-                                                                    
-                                        <div class="input-group-prepend">
-                                            
-                                            <span class="input-group-text"><i class="fas fa-link"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="Link" control-id="ControlID-60">
-                                    <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
-                                                            </td>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
+            <div class="card-body">
+                
+                
+                <div class="form-group">
+                  <label for="exampleInputPassword1" class="required-field">Class Placeholder </label>
+                  <div class="input-group mb-3">
+                    
+                    <input type="password" class="form-control" placeholder="" required="" control-id="ControlID-4">
+                  <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                  <label for="exampleInputPassword1" class="required-field">Tags </label>
+                  <div class="input-group mb-3">
+                    <!-- <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fas fa-unlock"></i></span>
+                    </div> -->
+                    <input type="password" class="form-control" placeholder="" required="" control-id="ControlID-5">
+                  <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
                 </div>
-            </div>
-            <!-- /.content -->
+                <label for="exampleInputPassword1" class="required-field">Pseudo Class </label>
+                  <div class="input-group mb-3">
+                    <!-- <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fas fa-unlock"></i></span>
+                    </div> -->
+                    <input type="password" class="form-control" placeholder="" required="" control-id="ControlID-5">
+                  <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div>
+                </div>
+                <label for="exampleInputPassword1" class="required-field">Css Properties </label>
+                  <div class="input-group mb-3">
+                    <!-- <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fas fa-unlock"></i></span>
+                    </div> -->
+                    <input type="password" class="form-control" placeholder="" required="" control-id="ControlID-5">
+                  <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div>
+                
+              </div><label for="exampleInputPassword1" class="required-field">Css Code </label>
+              <div class="input-group mb-3">
+                <!-- <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fas fa-unlock"></i></span>
+                </div> -->
+                <input type="password" class="form-control" placeholder="" required="" control-id="ControlID-5">
+              <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div>
+                
+              <!-- /.content -->
+        </div>
+        <div class="form-group">
+            <label>Color picker:</label>
+            <input type="text" class="form-control my-colorpicker1 colorpicker-element" data-colorpicker-id="1" data-original-title="" title="" control-id="ControlID-28" aria-describedby="popover106808">
         </div>
         <!-- Content Header (Page header) -->
     
@@ -1120,19 +905,21 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar
+                                                control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    
+    <!-- /.control-sidebar -->
+    </div>
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
             <b>Version</b> 1.0
         </div>
         <strong>Copyright &copy; 2022-2023 <a href="#">Faculty of Computers and Artificial intelligence Cairo University</a>. </strong> All rights reserved.
     </footer>
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar
-                                                control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-    </div>
     <!-- ./wrapper -->
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
