@@ -1,0 +1,446 @@
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+    <app-navbar></app-navbar>
+   <app-sidebar></app-sidebar>
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Page1</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                        <li class="breadcrumb-item active">Page1</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+
+
+        <div class="card-body">
+            <!-- HERE -->
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Settings</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form>
+                    <!-- INPUTS START -->
+                    <div class="card-body">
+                        <div class="row">
+                            <label>Page Type:</label>
+                            <div class="col-sm-6">
+
+                                <!-- radio -->
+                                <div class="form-group clearfix">
+                                    <div class="icheck-primary d-inline">
+                                        <input type="radio" id="radioPrimary1" name="r1" checked>
+                                        <label for="radioPrimary1"> Standard page </label>
+                                    </div>
+                                    <div class="icheck-primary d-inline">
+                                        <input type="radio" id="radioPrimary2" name="r1">
+                                        <label for="radioPrimary2"> Content page </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Title*</label>
+                            <input type="Text" class="form-control" id="exampleInputEmail1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">URL*</label>
+                            <input type="Text" class="form-control" id="exampleInputPassword1"
+                                   placeholder="No special characters are allowed" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Parent Page</label>
+                            <select class="form-control select2bs4" style="width: 100%;">
+                                <option>Page1</option>
+                                <option>Page2</option>
+                                <option>Page3</option>
+                                <option>Page4</option>
+                                <option>Page5</option>
+                                <option>Page6</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tags</label>
+                            <input type="Text" class="form-control" id="Tags">
+                        </div>
+                        <!-- textarea -->
+                        <div class="form-group">
+                            <label>Short Description</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+
+                            <!-- Rounded switch -->
+                            <div class="card-body">
+                                <label> Hidden</label>
+                            </div>
+                            <div class="card-body">
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- IMAGE UPLOAD -->
+                        <div class="form-group">
+                            <div class="column w-100">
+                                <label>Header Image</label>
+                                <div class="card-body">
+                                    <div id="actions" class="row">
+                                        <div class="col-lg-6">
+                                            <div class="btn-group w-100">
+                                                        <span class="btn btn-primary col fileinput-button">
+                                                            <i class="fas fa-plus"></i>
+                                                            <span>Add files</span>
+                                                        </span>
+                                                <!-- <button type="submit" class="btn btn-primary col start">
+                                                        <i class="fas fa-upload"></i>
+                                                        <span>Start upload</span>
+                                                    </button>
+                                                    <button type="reset" class="btn btn-warning col cancel">
+                                                        <i class="fas fa-times-circle"></i>
+                                                        <span>Cancel upload</span>
+                                                    </button> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 d-flex align-items-center">
+                                            <div class="fileupload-process w-100">
+                                                <div id="total-progress"
+                                                     class="progress progress-striped active"
+                                                     role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                                                     aria-valuenow="0">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         style="width:0%;" data-dz-uploadprogress></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table table-striped files" id="previews">
+                                        <div id="template" class="row mt-2">
+                                            <div class="col-auto">
+                                                        <span class="preview"><img src="data:," alt=""
+                                                                                   data-dz-thumbnail/></span>
+                                            </div>
+                                            <div class="col d-flex align-items-center">
+                                                <p class="mb-0">
+                                                    <span class="lead" data-dz-name></span> (
+                                                    <span data-dz-size></span>)
+                                                </p>
+                                                <strong class="error text-danger"
+                                                        data-dz-errormessage></strong>
+                                            </div>
+                                            <div class="col-4 d-flex align-items-center">
+                                                <div class="progress progress-striped active w-100"
+                                                     role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                                                     aria-valuenow="0">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         style="width:0%;" data-dz-uploadprogress></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center">
+                                                <div class="btn-group">
+                                                    <button class="btn btn-primary start">
+                                                        <i class="fas fa-upload"></i>
+                                                        <span>Start</span>
+                                                    </button>
+                                                    <button data-dz-remove class="btn btn-warning cancel">
+                                                        <i class="fas fa-times-circle"></i>
+                                                        <span>Cancel</span>
+                                                    </button>
+                                                    <button data-dz-remove class="btn btn-danger delete">
+                                                        <i class="fas fa-trash"></i>
+                                                        <span>Delete</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column w-100">
+                                <label>Cover Image</label>
+                                <div class="card-body">
+                                    <div id="actions" class="row">
+                                        <div class="col-lg-6">
+                                            <div class="btn-group w-100">
+                                                        <span class="btn btn-primary col fileinput-button">
+                                                            <i class="fas fa-plus"></i>
+                                                            <span>Add files</span>
+                                                        </span>
+                                                <!-- <button type="submit" class="btn btn-primary col start">
+                                                        <i class="fas fa-upload"></i>
+                                                        <span>Start upload</span>
+                                                    </button>
+                                                    <button type="reset" class="btn btn-warning col cancel">
+                                                        <i class="fas fa-times-circle"></i>
+                                                        <span>Cancel upload</span>
+                                                    </button> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 d-flex align-items-center">
+                                            <div class="fileupload-process w-100">
+                                                <div id="total-progress"
+                                                     class="progress progress-striped active"
+                                                     role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                                                     aria-valuenow="0">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         style="width:0%;" data-dz-uploadprogress></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table table-striped files" id="previews">
+                                        <div id="template" class="row mt-2">
+                                            <div class="col-auto">
+                                                        <span class="preview"><img src="data:," alt=""
+                                                                                   data-dz-thumbnail/></span>
+                                            </div>
+                                            <div class="col d-flex align-items-center">
+                                                <p class="mb-0">
+                                                    <span class="lead" data-dz-name></span> (
+                                                    <span data-dz-size></span>)
+                                                </p>
+                                                <strong class="error text-danger"
+                                                        data-dz-errormessage></strong>
+                                            </div>
+                                            <div class="col-4 d-flex align-items-center">
+                                                <div class="progress progress-striped active w-100"
+                                                     role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                                                     aria-valuenow="0">
+                                                    <div class="progress-bar progress-bar-success"
+                                                         style="width:0%;" data-dz-uploadprogress></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center">
+                                                <div class="btn-group">
+                                                    <button class="btn btn-primary start">
+                                                        <i class="fas fa-upload"></i>
+                                                        <span>Start</span>
+                                                    </button>
+                                                    <button data-dz-remove class="btn btn-warning cancel">
+                                                        <i class="fas fa-times-circle"></i>
+                                                        <span>Cancel</span>
+                                                    </button>
+                                                    <button data-dz-remove class="btn btn-danger delete">
+                                                        <i class="fas fa-trash"></i>
+                                                        <span>Delete</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- END IMAGE UPLOAD -->
+
+                        <!-- ADD MODULES TO PAGE -->
+
+
+                        <!-- put modules to page -->
+                        <label>Modules</label>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <div class="bootstrap-duallistbox-container row moveonselect moveondoubleclick">
+                                            <div class="box1 col-md-6"><label
+                                                    for="bootstrap-duallistbox-nonselected-list_"
+                                                    style="display: none;"></label>
+                                                <span class="info-container"> <span
+                                                        class="info">Available Modules</span> <button type="button"
+                                                                                                      class="btn btn-sm clear1"
+                                                                                                      style="float:right!important;">show all</button> </span>
+                                                <input
+                                                        class="form-control filter" type="text"
+                                                        placeholder="Filter">
+                                                <div class="btn-group buttons">
+                                                    <button type="button" class="btn moveall btn-outline-secondary"
+                                                            title="Move all">&gt;&gt;
+                                                    </button>
+                                                </div>
+                                                <select multiple="multiple"
+                                                        id="bootstrap-duallistbox-nonselected-list_" name="_helper1"
+                                                        style="height: 102px;">
+                                                    <option>Module1</option>
+                                                    <option>Module2</option>
+                                                    <option>Module3</option>
+                                                    <option>Module4</option>
+                                                    <option>Module5</option>
+                                                    <option>Module6</option>
+                                                </select>
+                                            </div>
+                                            <div class="box2 col-md-6"><label
+                                                    for="bootstrap-duallistbox-selected-list_"
+                                                    style="display: none;"></label> <span
+                                                    class="info-container"> <span class="info">Used Modules</span> <button
+                                                    type="button"
+                                                    class="btn btn-sm clear2" style="float:right!important;">show all</button> </span>
+                                                <input
+                                                        class="form-control filter" type="text"
+                                                        placeholder="Filter">
+                                                <div class="btn-group buttons">
+                                                    <button type="button"
+                                                            class="btn removeall btn-outline-secondary"
+                                                            title="Remove all">&lt;&lt;
+                                                    </button>
+                                                </div>
+                                                <select multiple="multiple"
+                                                        id="bootstrap-duallistbox-selected-list_" name="_helper2"
+                                                        style="height: 102px;">
+                                                    <option>Module3</option>
+                                                    <option>Module4</option>
+                                                    <option>Module5</option>
+                                                    <option>Module6</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- manage modules (edit and sort) {TODO LIST}-->
+
+                        <!-- TO DO List -->
+                        <div class="card ">
+                            <div class="card-header ui-sortable-handle ">
+                                <h3 class="card-title ">
+                                    Page Content
+                                </h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body ">
+                                <ul class="todo-list ui-sortable " data-widget="todo-list ">
+                                    <li>
+                                        <!-- drag handle -->
+                                        <span class="handle ui-sortable-handle ">
+                                                <i class="fas fa-ellipsis-v "></i>
+                                                <i class="fas fa-ellipsis-v "></i>
+                                            </span>
+
+                                        <!-- todo text -->
+                                        <span class="text "> Module3</span>
+                                        <!-- General tools such as edit or delete-->
+                                        <div class="tools ">
+                                            <!-- here u can add edit and delete icons to manage the modules -->
+                                            <i class="fas fa-edit "></i>
+                                            <i class="fas fa-trash"></i>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="handle ui-sortable-handle">
+                                                <i class="fas fa-ellipsis-v "></i>
+                                                <i class="fas fa-ellipsis-v "></i>
+                                            </span>
+
+                                        <span class="text ">Module4</span>
+                                        <div class="tools ">
+                                            <i class="fas fa-edit"></i>
+                                            <i class="fas fa-trash"></i>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="handle ui-sortable-handle">
+                                                <i class="fas fa-ellipsis-v "></i>
+                                                <i class="fas fa-ellipsis-v "></i>
+                                            </span>
+
+                                        <span class="text ">Module5</span>
+                                        <div class="tools ">
+                                            <i class="fas fa-edit "></i>
+                                            <i class="fas fa-trash"></i>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="handle ui-sortable-handle">
+                                                <i class="fas fa-ellipsis-v "></i>
+                                                <i class="fas fa-ellipsis-v "></i>
+                                            </span>
+
+                                        <span class="text ">Module6</span>
+                                        <div class="tools ">
+                                            <i class="fas fa-edit"></i>
+                                            <i class="fas fa-trash"></i>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <!-- END MODULES -->
+
+                        <!-- INPUTS END -->
+                    </div>
+
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-block btn-success btn-lg">Save</button>
+                    </div>
+                </form>
+                <!-- END FORM -->
+            </div>
+            <!-- /.card-body -->
+
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+ </div>
+
+ <script src="../plugins/jquery/jquery.min.js"></script>
+ <!-- jQuery UI 1.11.4 -->
+ <script src="../plugins/jquery-ui/jquery-ui.min.js "></script>
+ <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+ 
+ <!-- Bootstrap 4 -->
+ <script src="../../../../assets/js/bootstrap.bundle.min.js"></script>
+ <!-- AdminLTE App -->
+ <script src="../../../../assets/js/adminlte.js"></script>
+ <!-- AdminLTE for demo purposes -->
+ <script src="../../../../assets/js/demo.js"></script>
+ <!-- ToDoList -->
+ <script src="../../../../assets/js/dashboard.js"></script>
+ <script src="../../../../assets/js/TodoList.js"></script>
+ 
+ <!-- dropzonejs -->
+ <script src="../../../../assets/js/dropzone.min.js"></script>
+ <!-- Bootstrap4 Duallistbox -->
+ <script src="../../../../assets/js/jquery.bootstrap-duallistbox.min.js"></script>
+ <!-- Bootstrap Switch -->
+ <script src="../../../../assets/js/bootstrap-switch.min.js"></script>
+ <!-- overlayScrollbars -->
+ <script src="../../../../assets/js/jquery.overlayScrollbars.min.js "></script>
+ 
+  <!-- custom scripts -->
+<script src="../../../../assets/js/custom_scripts.js"></script>
+  </body>
+
+<app-footer></app-footer>
