@@ -18,6 +18,14 @@ import { PageEditComponent } from './pages/page-management/page-edit/page-edit.c
 import { AddNewRoleComponent } from './pages/role-management/add-new-role/add-new-role.component';
 import { RolesTableComponent } from './pages/role-management/roles-table/roles-table.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { ModuleHeaderComponent } from './pages/module-management/module-header/module-header.component';
+import { ModuleInsertComponent } from './pages/module-management/module-insert/module-insert.component';
+import { ModuleFormEditorComponent } from './pages/module-management/module-form-editor/module-form-editor.component';
+import { DisplayHeaderComponent } from './pages/display-management/display-header/display-header.component';
+import { DisplaySettingsComponent } from './pages/display-management/display-settings/display-settings.component';
+import { DisplaySliderSettingsComponent } from './pages/display-management/display-slider-settings/display-slider-settings.component';
+import { DisplayGridSettingsComponent } from './pages/display-management/display-grid-settings/display-grid-settings.component';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +45,15 @@ import { FooterComponent } from './shared/footer/footer.component';
     AddNewRoleComponent,
     RolesTableComponent,
     FooterComponent,
+    ModuleHeaderComponent,
+    ModuleInsertComponent,
+    ModuleFormEditorComponent,
+    DisplayHeaderComponent,
+    DisplaySettingsComponent,
+    DisplaySliderSettingsComponent,
+    DisplayGridSettingsComponent
+    
+
 
   ],
   imports: [
