@@ -13,6 +13,13 @@ import { PageMainComponent } from './pages/page-management/page-main/page-main.c
 import { RoleMainComponent } from './pages/role-management/role-main/role-main.component';
 import { UserMainComponent } from './pages/user-management/user-main/user-main.component';
 import { LandingContentComponent } from './pages/landing-page/landing-content/landing-content.component';
+import { ModuleHeaderComponent } from './pages/module-management/module-header/module-header.component';
+import { ModuleInsertComponent } from './pages/module-management/module-insert/module-insert.component';
+import { ModuleFormEditorComponent } from './pages/module-management/module-form-editor/module-form-editor.component';
+import { DisplayHeaderComponent } from './pages/display-management/display-header/display-header.component';
+import { DisplaySettingsComponent } from './pages/display-management/display-settings/display-settings.component';
+import { DisplaySliderSettingsComponent } from './pages/display-management/display-slider-settings/display-slider-settings.component';
+import { DisplayGridSettingsComponent } from './pages/display-management/display-grid-settings/display-grid-settings.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +34,14 @@ import { LandingContentComponent } from './pages/landing-page/landing-content/la
     RoleMainComponent,
     UserMainComponent,
     LandingContentComponent,
+    ModuleHeaderComponent,
+    ModuleInsertComponent,
+    ModuleFormEditorComponent,
+    DisplayHeaderComponent,
+    DisplaySettingsComponent,
+    DisplaySliderSettingsComponent,
+    DisplayGridSettingsComponent
+    
 
   ],
   imports: [
