@@ -26,7 +26,6 @@ import { DisplaySettingsComponent } from './pages/display-management/display-set
 import { DisplaySliderSettingsComponent } from './pages/display-management/display-slider-settings/display-slider-settings.component';
 import { DisplayGridSettingsComponent } from './pages/display-management/display-grid-settings/display-grid-settings.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,9 +51,6 @@ import { DisplayGridSettingsComponent } from './pages/display-management/display
     DisplaySettingsComponent,
     DisplaySliderSettingsComponent,
     DisplayGridSettingsComponent
-    
-
-
   ],
   imports: [
     BrowserModule,
