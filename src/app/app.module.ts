@@ -25,6 +25,7 @@ import { DisplayHeaderComponent } from './pages/display-management/display-heade
 import { DisplaySettingsComponent } from './pages/display-management/display-settings/display-settings.component';
 import { DisplaySliderSettingsComponent } from './pages/display-management/display-slider-settings/display-slider-settings.component';
 import { DisplayGridSettingsComponent } from './pages/display-management/display-grid-settings/display-grid-settings.component';
+import { ClockComponent } from './pages/landing-page/clock/clock.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { DisplayGridSettingsComponent } from './pages/display-management/display
     DisplayHeaderComponent,
     DisplaySettingsComponent,
     DisplaySliderSettingsComponent,
-    DisplayGridSettingsComponent
+    DisplayGridSettingsComponent,
+    ClockComponent
   ],
   imports: [
     BrowserModule,
