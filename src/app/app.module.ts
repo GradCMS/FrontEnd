@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -26,7 +26,7 @@ import { DisplaySettingsComponent } from './pages/display-management/display-set
 import { DisplaySliderSettingsComponent } from './pages/display-management/display-slider-settings/display-slider-settings.component';
 import { DisplayGridSettingsComponent } from './pages/display-management/display-grid-settings/display-grid-settings.component';
 import { ClockComponent } from './pages/landing-page/clock/clock.component';
-
+import { ColorPickerComponent } from './pages/class-builder/color-picker/color-picker.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,11 +52,14 @@ import { ClockComponent } from './pages/landing-page/clock/clock.component';
     DisplaySettingsComponent,
     DisplaySliderSettingsComponent,
     DisplayGridSettingsComponent,
-    ClockComponent
+    ClockComponent,
+    ColorPickerComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
