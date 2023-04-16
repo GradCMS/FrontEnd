@@ -1,3 +1,7 @@
+<!-- bootstrap color picker -->
+<!--<script [src]="'src/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js'"></script>-->
+<!--<link rel="stylesheet" href="node_modules/ng-drag-drop/style.css">-->
+<body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
   <app-navbar></app-navbar>
   <app-sidebar></app-sidebar>
@@ -26,48 +30,34 @@
         <div class="form-group">
           <label class="required-field">Class Placeholder</label>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Class Name" required name="className" [(ngModel)]="classPlaceholder">
+            <input type="text" class="form-control" placeholder="Class Name" required name="className"
+                   [(ngModel)]="classPlaceholder">
           </div>
-
-          <label class="required-field">Tags</label>
+          <label class="required-field">Secondary Name</label>
           <div class="input-group mb-3">
-            <select class="form-control" name="tags" [(ngModel)]="selectedTags" multiple>
-              <option *ngFor="let tag of tags" [value]="tag">{{tag}}</option>
-            </select>
-          </div>
-
+            <input type="text" class="form-control" placeholder="Secondary Name" required name="secondaryName"
+                   [(ngModel)]="secondaryName"></div>
           <label class="required-field">Pseudo-Class</label>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="PseudoClass" required name="pseudoClass" [(ngModel)]="pseudoClass">
-          </div>
 
-          <label class="required-field">CSS Properties</label>
-          <div class="input-group mb-3">
-            <select class="form-control" name="cssProperties" [(ngModel)]="selectedProperties" multiple>
-              <option *ngFor="let property of cssProperties" [value]="property">{{property}}</option>
-            </select>
-          </div>
-
-          <label class="required-field">CSS Code</label>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="" required name="cssCode" [(ngModel)]="cssCode">
-          </div>
-
-          <div class="input-group mb-3">
-            <label>Color picker:</label>
-            <input type="text" class="form-control my-colorpicker1 colorpicker-element" data-colorpicker-id="1" data-original-title="" title="" name="colorPicker" [(ngModel)]="colorPickerValue">
-          </div>
+          <!--angular tabs-->
+          <app-tabs></app-tabs>
+          <!--./angular tabs-->
 
           <div class="input-group mb-3">
             <label>Selected Tags:</label>
             <p>{{selectedTags}}</p>
           </div>
         </div>
-        <div class="card-footer text-center">
-          <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="control-section e-tab-section">
+          <div class="e-sample-resize-container">
+            <div class="card-footer text-center">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
         </div>
       </form>
     </div>
   </div>
 </div>
+</body>
 <app-footer></app-footer>

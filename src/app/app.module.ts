@@ -26,8 +26,11 @@ import { DisplaySettingsComponent } from './pages/display-management/display-set
 import { DisplaySliderSettingsComponent } from './pages/display-management/display-slider-settings/display-slider-settings.component';
 import { DisplayGridSettingsComponent } from './pages/display-management/display-grid-settings/display-grid-settings.component';
 import { ClockComponent } from './pages/landing-page/clock/clock.component';
+import { NgDragDropModule } from 'ng-drag-drop';
 import { ColorPickerComponent } from './pages/class-builder/color-picker/color-picker.component';
+import { TabsComponent } from './pages/class-builder/class-builder-main/tabs/tabs.component';
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -53,7 +56,10 @@ import { ColorPickerComponent } from './pages/class-builder/color-picker/color-p
     DisplaySliderSettingsComponent,
     DisplayGridSettingsComponent,
     ClockComponent,
-    ColorPickerComponent
+    ColorPickerComponent,
+    TabsComponent,
+    // NgDragDropModule.forRoot()
+
   ],
   imports: [
     BrowserModule,
@@ -61,7 +67,6 @@ import { ColorPickerComponent } from './pages/class-builder/color-picker/color-p
     FormsModule
 
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: []
 })
 export class AppModule { }

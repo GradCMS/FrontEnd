@@ -35,7 +35,8 @@
               "src/assets/css/dropzone.min.css",
               "src/assets/css/switchButton.css",
               "src/assets/css/adminlte.plugins.css",
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/angular-bootstrap-colorpicker/css/colorpicker.min.css"
             ],
             "scripts": [
               "src/assets/js/jquery.min.js",
@@ -65,7 +66,9 @@
               "src/assets/js/Dropdown.js",
               "src/assets/js/PushMenu.js",
               "src/assets/js/Toasts.js",
-              "src/assets/js/Treeview.js"
+              "src/assets/js/Treeview.js",
+              "node_modules/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.min.js"
+
             ]
           },
           "configurations": {

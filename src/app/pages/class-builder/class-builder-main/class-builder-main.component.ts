@@ -1,4 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
+import { TabComponent } from '@syncfusion/ej2-angular-navigations';
+
 
 @Component({
   selector: 'app-class-builder-main',
@@ -6,6 +9,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./class-builder-main.component.css']
 })
 export class ClassBuilderMainComponent implements OnInit {
+  active = 1;
   public classPlaceholder: string = '';
   public tags: string = '';
   public selectedTags: string[] = [];
@@ -14,6 +18,11 @@ export class ClassBuilderMainComponent implements OnInit {
   public selectedProperties: string[] = [];
   public cssCode: string = '';
   public colorPickerValue: string = '';
+
+  selectedPseudoClass: string = '';
+  pseudoClasses: string[] = [];
+  secondaryName: string = '';
+
 
   addCssProperty(property: string) {
     if (property && !this.cssProperties.includes(property)) {
@@ -28,6 +37,11 @@ export class ClassBuilderMainComponent implements OnInit {
 
     }
   }
+  @ViewChild('tabObj', { static: true }) tabObj!: TabComponent;
+
+  public isBool: boolean = false;
+  // Mapping Tab items Header property
+
 
   onSubmit() {
     // handle form submission
