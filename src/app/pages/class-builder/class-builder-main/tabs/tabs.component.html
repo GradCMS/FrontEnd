@@ -1,0 +1,333 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="card card-default shadow rounded">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md 14">
+              <div class="col-md-14">
+                <!-- <button class="btn btn-default">IH Tabs</button> -->
+                <ul class="tabs-container text-center p-2">
+                  <li (click)="onTabClick('Background')" [class.active]="activeTab == 'Background'" class="tab-link">
+                    Background
+                  </li>
+                  <li (click)="onTabClick('Text')" [class.active]="activeTab == 'Text'" class="tab-link">Text</li>
+                  <li (click)="onTabClick('Text Shadow')" [class.active]="activeTab == 'Text Shadow'" class="tab-link">
+                    Text Shadow
+                  </li>
+                  <li (click)="onTabClick('Border')" [class.active]="activeTab == 'Border'" class="tab-link">Border</li>
+                  <li (click)="onTabClick('Outline')" [class.active]="activeTab == 'Outline'" class="tab-link">Outline
+                  </li>
+                  <li (click)="onTabClick('Display')" [class.active]="activeTab == 'Display'" class="tab-link">Display
+                  </li>
+                  <li (click)="onTabClick('Custom CSS')" [class.active]="activeTab == 'Custom CSS'" class="tab-link">
+                    Custom CSS
+                  </li>
+                </ul>
+                <div *ngIf="activeTab == 'Background'" class="w-100 m-3">
+                  <!--Background-->
+                  <div class="container mt-3">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="colorPicker">Color Picker</label>
+                          <input type="color" id="bgcolorPicker" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="photoUpload">Photo Upload</label>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="photoUpload">
+                            <label class="custom-file-label" for="photoUpload">Choose file</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="activeTab == 'Text'" class="w-100 m-3">
+                  <!--Text-->
+                  <div class="container mt-3">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="fontFamily">Font Family</label>
+                          <select class="form-control" id="fontFamily" [(ngModel)]="selectedFontFamily">
+                            <option>Arial</option>
+                            <option>Verdana</option>
+                            <option>Times New Roman</option>
+                            <option>Georgia</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="colorPicker">Font Color</label>
+                          <input type="color" id="fontcolorPicker" class="form-control" [(ngModel)]="selectedColor">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="fontStyle">Font Style</label>
+                          <select class="form-control" id="fontStyle" [(ngModel)]="selectedFontStyle">
+                            <option>Normal</option>
+                            <option>Bold</option>
+                            <option>Italic</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="decorationStyle">Decoration Style</label>
+                          <select class="form-control" id="decorationStyle" [(ngModel)]="selectedDecorationStyle">
+                            <option>None</option>
+                            <option>Underline</option>
+                            <option>Line-through</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="fontSize">Font Size</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control" id="fontSizeValue" [(ngModel)]="selectedFontSize">
+                            <div class="input-group-append">
+                              <span class="input-group-text">px</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="textAlign">Text Align</label>
+                          <select class="form-control" id="textAlign" [(ngModel)]="selectedTextAlign">
+                            <option>Left</option>
+                            <option>Center</option>
+                            <option>Right</option>
+                            <option>Justify</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+                <div *ngIf="activeTab == 'Text Shadow'" class="w-100 m-3">
+                  Text Shadow
+                </div>
+                <div *ngIf="activeTab == 'Border'" class="w-100 m-3">
+                  <!--Border-->
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="borderWidth">Border Width</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control" id="borderWidthValue"
+                                   [(ngModel)]="selectedBorderWidth">
+                            <div class="input-group-append">
+                              <span class="input-group-text">px</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="borderColor">Border Color</label>
+                          <input type="color" id="borderColor" class="form-control" [(ngModel)]="selectedBorderColor">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="borderStyle">Border Style</label>
+                          <select class="form-control" id="borderStyle" [(ngModel)]="selectedBorderStyle">
+                            <option>Solid</option>
+                            <option>Dotted</option>
+                            <option>Dashed</option>
+                            <option>Double</option>
+                            <option>Groove</option>
+                            <option>Ridge</option>
+                            <option>Inset</option>
+                            <option>Outset</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="borderType">Border Type</label>
+                          <select class="form-control" id="borderType" [(ngModel)]="selectedBorderType">
+                            <option>None</option>
+                            <option>Border</option>
+                            <option>Outline</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="subtitle">
+                    <!--border-radius-->
+                    <h4><b>Border Radius</b></h4>
+                    <small>Border radius is applied to the element.</small>
+                  </div>
+                  <div class="container">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="radiusType">Border Radius Type</label>
+                            <select class="form-control" id="radiusType" [(ngModel)]="selectedRadiusType">
+                              <option>None</option>
+                              <option>Individual Corners</option>
+                              <option>Same for all corners</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row" *ngIf="selectedRadiusType == 'Individual Corners'">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="topLeftRadius">Top Left Radius</label>
+                            <div class="input-group">
+                              <input type="number" class="form-control" id="topLeftRadius"
+                                     [(ngModel)]="selectedTopLeftRadius">
+                              <div class="input-group-append">
+                                <span class="input-group-text">px</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="topRightRadius">Top Right Radius</label>
+                            <div class="input-group">
+                              <input type="number" class="form-control" id="topRightRadius"
+                                     [(ngModel)]="selectedTopRightRadius">
+                              <div class="input-group-append">
+                                <span class="input-group-text">px</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="bottomRightRadius">Bottom Right Radius</label>
+                            <div class="input-group">
+                              <input type="number" class="form-control" id="bottomRightRadius"
+                                     [(ngModel)]="selectedBottomRightRadius">
+                              <div class="input-group-append">
+                                <span class="input-group-text">px</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="bottomLeftRadius">Bottom Left Radius</label>
+                            <div class="input-group">
+                              <input type="number" class="form-control" id="bottomLeftRadius"
+                                     [(ngModel)]="selectedBottomLeftRadius">
+                              <div class="input-group-append">
+                                <span class="input-group-text">px</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row" *ngIf="selectedRadiusType == 'Same for all corners'">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="sameRadius">Radius</label>
+                            <div class="input-group">
+                              <input type="number" class="form-control" id="sameRadius"
+                                     [(ngModel)]="selectedSameRadius">
+                              <div class="input-group-append">
+                                <span class="input-group-text">px</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div *ngIf="activeTab == 'Outline'" class="w-100">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="outlineStyle">Outline Style</label>
+                          <select class="form-control" id="outlineStyle" [(ngModel)]="selectedOutlineStyle">
+                            <option>Solid</option>
+                            <option>Dashed</option>
+                            <option>Dotted</option>
+                            <option>Double</option>
+                            <option>Groove</option>
+                            <option>Ridge</option>
+                            <option>Inset</option>
+                            <option>Outset</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="outlineWidth">Outline Width</label>
+                          <div class="input-group">
+                            <input type="number" class="form-control" id="outlineWidthValue"
+                                   [(ngModel)]="selectedOutlineWidth">
+                            <div class="input-group-append">
+                              <span class="input-group-text">px</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="outlineColor">Outline Color</label>
+                          <div class="form-group colorpicker-component">
+                            <input type="color" class="form-control" id="colorPicker"
+                                   [(ngModel)]="selectedOutlineColor"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="activeTab == 'Filter'" class="w-100 m-3">
+                  Filter
+                </div>
+                <div *ngIf="activeTab == 'Display'" class="w-100 m-3">
+                  <!--Display-->
+
+                </div>
+                <div *ngIf="activeTab == 'Custom CSS'" class="w-100 m-3">
+                  <!--Custom CSS-->
+                  <div class="col-md-14">
+                    <div class="subtitle settings_subtitle">
+                      <h4 style="display: inline">Custom CSS</h4>
+                      <div class="btn-group float-right" role="group" aria-label="Basic example">
+                      </div>
+                    </div>
+                    <div class="tab-pane col-md-14 mb-3">
+                      <textarea class="" name="custum_css" wrap="off"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary mr-3" (click)="addCustomCss()">Add</button>
+                    <button type="button" class="btn btn-danger" (click)="removeCustomCss()">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
