@@ -1,0 +1,10 @@
+/*=== Footer ===*/
+#page_bottom { background-color: #0a2540; height:75px;  }
+.p_b_line { border-top:1px solid #c5c5c5; margin:20px 0 0; }
+#footer { color:#adadad; text-decoration:none; font:normal 13px "Liberation sans", Arial, Verdana, Helvetica, sans-serif; margin:0 auto; padding:0; width:970px; }
+#footer a { color:#adadad; }
+#footer img { float:left; margin:0 0 0 5px; padding:0; }
+#footer span { color:#adadad; }
+#footer .text2 { padding:20px 0 0; float:right; line-height:1.8em; }
+#footer .text1 { padding:20px 0 0; float:left; line-height:1.8em; }
+p.clr, .clr { clear:both; padding:0; margin:0; background:none; }

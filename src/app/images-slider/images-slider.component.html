@@ -1,0 +1,18 @@
+<div class="slider">
+    <div class="coin-slider" id="coin-slider-coin-slider"><div id="coin-slider">
+<div *ngIf="images">
+    <div class="mySlides slideshow-container">
+        <img *ngFor="let image of images; let i=index" 
+            [src]="image" 
+            [ngClass]="{'image-active': selectedindex == i}">  
+  
+        <div style="text-align:center; display:inline-block;"  *ngFor="let dot of images; let i=index">
+            <span class="dot" 
+                (click)="selectImage(i)"
+                [ngClass]="{'active': selectedindex == i}">
+            </span>
+        </div>
+    </div>
+  </div>
+  </div>
+  </div>
