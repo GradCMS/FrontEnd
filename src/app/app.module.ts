@@ -33,7 +33,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SiteIdentityComponent } from './pages/site-identity/site-identity.component';
 import { ModuleDisplayComponent } from './pages/module-management/module-display/module-display.component';
 import{HttpClientModule} from '@angular/common/http'
-import { FormsModule } from '@angular/forms';
 import { InsertModuleFormComponent } from './pages/module-management/module-insert/insert-module-form/insert-module-form.component';
 import { InsertModuleMainComponent } from './pages/module-management/module-insert/insert-module-main/insert-module-main.component';
 
@@ -71,7 +70,7 @@ import { InsertModuleMainComponent } from './pages/module-management/module-inse
     ModuleDisplayComponent,
     InsertModuleFormComponent,
     InsertModuleMainComponent,
-  
+
 
   ],
   imports: [
@@ -83,7 +82,7 @@ import { InsertModuleMainComponent } from './pages/module-management/module-inse
     HttpClientModule,
     FormsModule,
 
- 
+
 
   ],
   providers: []
