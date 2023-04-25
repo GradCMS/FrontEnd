@@ -1,0 +1,39 @@
+<div class="card ">
+    <div class="card-header ">
+        <h3 class="card-title mt-3">
+            Modules
+        </h3>
+       
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body ">
+        <ul class="todo-list " data-widget="todo-list" >
+            <li *ngFor="let module of modules">
+                 <!-- edits tools -->
+                <span class="tools">
+                    <a routerLink="/PageManagement"class="fas fa-edit " style="color: #dc3545;"></a>
+                    <a routerLink="/PageManagement" class="fas fa-trash "style="color: #dc3545;"></a>
+                </span>
+                <div class="card-body ">
+                    <div class="text-center" >{{module.placeholder}}</div>
+                </div>
+            </li>
+
+
+        </ul>
+            
+    </div>
+
+
+    
+    <div class="container">
+        <div class="row">
+    <div class="card-footer col-sm-6" style="background-color:white;">
+</div>
+            <div class="card-footer col-sm-6" style="background-color:white; ">
+                <a routerLink="/ModuleInsert" class="btn btn-success" data-toggle="modal" style="float: right;" ><i class="fa fa-plus">&#xE147;</i> <span>Add New Module</span></a>
+            </div>
+    </div>
+</div>
+</div>
+    

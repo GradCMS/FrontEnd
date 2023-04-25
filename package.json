@@ -24,6 +24,7 @@
     "angular-bootstrap-colorpicker": "^3.0.32",
     "ng-drag-drop": "^5.0.0",
     "ngx-color-picker": "^14.0.0",
+    "ckeditor4-angular": "^3.3.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

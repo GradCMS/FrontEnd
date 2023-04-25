@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CKEditorModule } from 'ckeditor4-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -19,7 +20,6 @@ import { AddNewRoleComponent } from './pages/role-management/add-new-role/add-ne
 import { RolesTableComponent } from './pages/role-management/roles-table/roles-table.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ModuleHeaderComponent } from './pages/module-management/module-header/module-header.component';
-import { ModuleInsertComponent } from './pages/module-management/module-insert/module-insert.component';
 import { ModuleFormEditorComponent } from './pages/module-management/module-form-editor/module-form-editor.component';
 import { DisplayHeaderComponent } from './pages/display-management/display-header/display-header.component';
 import { DisplaySettingsComponent } from './pages/display-management/display-settings/display-settings.component';
@@ -27,11 +27,18 @@ import { DisplaySliderSettingsComponent } from './pages/display-management/displ
 import { DisplayGridSettingsComponent } from './pages/display-management/display-grid-settings/display-grid-settings.component';
 import { ClockComponent } from './pages/landing-page/clock/clock.component';
 import { NgDragDropModule } from 'ng-drag-drop';
-import { HttpClient } from "@angular/common/http";
 import { ColorPickerComponent } from './pages/class-builder/color-picker/color-picker.component';
 import { TabsComponent } from './pages/class-builder/class-builder-main/tabs/tabs.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SiteIdentityComponent } from './pages/site-identity/site-identity.component';
+import { ModuleDisplayComponent } from './pages/module-management/module-display/module-display.component';
+import{HttpClientModule} from '@angular/common/http'
+import { FormsModule } from '@angular/forms';
+import { InsertModuleFormComponent } from './pages/module-management/module-insert/insert-module-form/insert-module-form.component';
+import { InsertModuleMainComponent } from './pages/module-management/module-insert/insert-module-main/insert-module-main.component';
+
+
+
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -52,7 +59,6 @@ import { SiteIdentityComponent } from './pages/site-identity/site-identity.compo
     RolesTableComponent,
     FooterComponent,
     ModuleHeaderComponent,
-    ModuleInsertComponent,
     ModuleFormEditorComponent,
     DisplayHeaderComponent,
     DisplaySettingsComponent,
@@ -62,15 +68,22 @@ import { SiteIdentityComponent } from './pages/site-identity/site-identity.compo
     ColorPickerComponent,
     TabsComponent,
     SiteIdentityComponent,
-    // NgDragDropModule.forRoot()
+    ModuleDisplayComponent,
+    InsertModuleFormComponent,
+    InsertModuleMainComponent,
+  
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CKEditorModule,
+    HttpClientModule,
+    FormsModule,
+
+ 
 
   ],
   providers: []

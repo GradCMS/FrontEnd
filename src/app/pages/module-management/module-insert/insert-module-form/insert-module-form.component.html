@@ -7,7 +7,7 @@
                             <td colspan="1" class="text-center">Placeholder</td>
                             <td colspan="4" class="text-center">
                                 <input type="Text" class="form-control" placeholder="Module content"
-                                       style="width:100%">
+                                       style="width:100%"[(ngModel)]="newModule.placeholder">
                             </td>
                         </tr>
 
@@ -17,7 +17,7 @@
                                 <div class="input-group">
                                     <input type="number" id="web" name="quantity" class="form-control" min="0"
                                            max="100" step="5"
-                                           placeholder="Percentage">
+                                           placeholder="Percentage" [(ngModel)]="newModule.width">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="button"
                                                 onclick="document.getElementById('web').stepUp()">+
@@ -33,7 +33,7 @@
                         <tr>
                             <td colspan="1" class="text-center">Animation Style</td>
                             <td>
-                                <select class="form-control select2bs4" style="width: 100%;">
+                                <select class="form-control select2bs4" style="width: 100%;"[(ngModel)]="newModule.animation_style">
                                     <option>style1</option>
                                     <option>style2</option>
                                     <option>style3</option>
@@ -44,13 +44,8 @@
                             </td>
                             <td colspan="1">Class</td>
                             <td>
-                                <select class="form-control select2bs4" style="width: 100%;">
-                                    <option>Class1</option>
-                                    <option>Class2</option>
-                                    <option>Class3</option>
-                                    <option>Class4</option>
-                                    <option>Class5</option>
-                                    <option>Class6</option>
+                                <select class="form-control select2bs4" style="width: 100%;" [(ngModel)]="newModule.class_id" >
+                                    <option *ngFor="let css of cssclasses"[value]="css.id">{{css.placeholder}}</option>
                                 </select>
                             </td>
 
@@ -58,13 +53,13 @@
                         <tr>
                             <td colspan="1" class="text-center">Content</td>
                             <td class="card-body" colspan="3">
-                                <ckeditor data="<p>Hello, world!</p>"></ckeditor>
+                                <ckeditor [(ngModel)]="newModule.content"></ckeditor>
 
                             </td>
                         </tr>
                         <td colspan="4">
                             <div class="card-footer">
-                                <button type="button" class="btn btn-block btn-success btn-lg">Save</button>
+                                <button type="button" class="btn btn-block btn-success btn-lg" (click)="insertModule()">Save</button>
                             </div>
                         </td>
                     
