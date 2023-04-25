@@ -1,0 +1,11 @@
+.subtitle{
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 1em;
+}
+.custom-textarea {
+  height: 200px; /* adjust this value as needed */
+  width: 100%; /* adjust this value as needed */
+  resize: vertical; /* allows the user to resize the height of the textarea vertically */
+}
