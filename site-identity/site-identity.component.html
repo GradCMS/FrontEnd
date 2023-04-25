@@ -1,0 +1,305 @@
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+  <app-navbar></app-navbar>
+  <app-sidebar></app-sidebar>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6 p-3">
+            <h1><i class="nav-icon fas fa-dna"></i> Site Identity Manager </h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a routerLink=''>Home</a></li>
+              <li class="breadcrumb-item active">Site Identity</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <form #Form="ngForm" (ngSubmit)="onSubmit(Form.value)">
+    <div class="row m-auto">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="m-3 text-center"><h3 class="card-title mt-1 ">University Identity</h3></div>
+            <div class="text-right m-2">
+              <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Update</button>
+            </div>
+          </div>
+          <!-- ./card-header -->
+          <div class="card-body p-0">
+            <table class="table table-hover">
+              <tbody>
+              <tr data-widget="expandable-table" aria-expanded="false" (click)="row1Expanded =!row1Expanded">
+                <td>
+                  <i *ngIf="!row1Expanded" class="fas fa-caret-right"></i>
+                  <i *ngIf="row1Expanded" class="fas fa-caret-down"></i> University
+                </td>
+              </tr>
+              <tr class="expandable-body" *ngIf="row1Expanded">
+                <td>
+                  <div class="p-0">
+                    <table class="table table-hover">
+                      <tbody>
+                      <tr data-widget="expandable-table" aria-expanded="false" (click)="rowImages =!rowImages">
+                        <td>
+                          <i *ngIf="!rowImages" class="expandable-table-caret fas fa-caret-right fa-fw" ></i>
+                          <i *ngIf="rowImages" class="expandable-table-caret fas fa-caret-down fa-fw"></i>All Images & Icons
+                        </td>
+                      </tr>
+                      <tr class="expandable-body" *ngIf="rowImages">
+                        <td>
+                          <div class="p-0" >
+                            <table class="table table-hover">
+                              <tbody>
+                              <tr>
+                                <td><div class="form-group">
+                                  <label >Default Cover Logo</label>
+                                  <div class="input-group mb-3 mt-3">
+                                    <div class="custom-file">
+                                      <input type="file" class="custom-file-input" name="defaultCoverLogo"  ngModel (change)="onChange($event)">
+                                      <label class="custom-file-label">{{lable1}}</label>
+<!--                                      <label class="custom-file-label">{{ this.universityIdentityForm.get('universityImages').get('defaultCoverLogo').value || 'Choose file' }}</label>-->
+                                    </div>
+                                  </div>
+<!--                                  <div *ngIf="lable2Url">-->
+<!--                                    <img [src]="lable2Url" style="height:200px;width:300px;" alt="Selected image">-->
+<!--                                  </div>-->
+                                </div></td>
+                              </tr>
+                              <tr>
+                                <td><div class="form-group">
+                                  <label >Default Cover Logo Vertical</label>
+                                  <div class="input-group ">
+                                    <div class="custom-file">
+                                      <input type="file" class="custom-file-input" name = "defaultCoverImageVertical" ngModel (change)="onChange($event)">
+                                      <label class="custom-file-label">{{lable2}}</label>
+                                    </div>
+                                  </div>
+<!--                                  <div *ngIf="fileUrl">-->
+<!--                                    <img [src]="fileUrl" style="height:200px;width:300px;" alt="Selected image">-->
+<!--                                  </div>-->
+                                </div></td>
+                              </tr>
+                              <tr>
+                                <td><div class="form-group">
+                                  <label >Default Header Image</label>
+                                  <div class="input-group mb-3 mt-3">
+                                    <div class="custom-file">
+                                      <input type="file" class="custom-file-input" name = "defaultHeaderImage"  ngModel (change)="onChange($event)">
+                                      <label class="custom-file-label">{{lable3}}</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                      <span class="input-group-text">Upload</span>
+                                    </div>
+                                  </div>
+                                </div></td>
+                              </tr>
+                              <tr>
+                                <td><div class="form-group">
+                                  <label >Default Browser icon</label>
+                                  <div class="input-group mb-3 mt-3">
+                                    <div class="custom-file">
+                                      <input type="file" class="custom-file-input" name="defaultBrowserIcon"  ngModel (change)="onChange($event)">
+                                      <label class="custom-file-label">{{ lable4 }} </label>
+                                    </div>
+                                    <div class="input-group-append">
+                                      <span class="input-group-text">Upload</span>
+                                    </div>
+                                  </div>
+                                </div></td>
+                              </tr>
+                              <tr>
+                                <td><div class="form-group">
+                                  <label >Secondary Logo</label>
+                                  <div class="input-group">
+                                    <div class="custom-file">
+                                      <input type="file" class="custom-file-input" ngModel name="secondaryLogo" (change)="onChange($event)">
+                                      <label class="custom-file-label">{{ lable5 }}</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                      <span class="input-group-text">Upload</span>
+                                    </div>
+                                  </div>
+                                </div></td>
+                              </tr>
+                              <tr>
+                                <td><div class="form-group">
+                                  <label>Background image</label>
+                                  <div class="input-group mb-3 mt-3">
+                                    <div class="custom-file">
+                                      <input type="file" class="custom-file-input" name = "backgroundImage"
+                                              ngModel (change)="onChange($event)">
+                                      <label class="custom-file-label">{{ lable6 }}</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                      <span class="input-group-text">Upload</span>
+                                    </div>
+                                  </div>
+                                </div></td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr data-widget="expandable-table" aria-expanded="false" (click)="rowAbout = !rowAbout">
+                        <td>
+                          <i *ngIf="!rowAbout" class="expandable-table-caret fas fa-caret-right fa-fw" ></i>
+                          <i *ngIf="rowAbout" class="expandable-table-caret fas fa-caret-down fa-fw"></i>About The University
+                        </td>
+                      </tr>
+                      <tr class="expandable-body" *ngIf="rowAbout">
+                        <td>
+                          <div class="p-0" >
+                            <table class="table table-hover">
+                              <tbody>
+                              <tr data-widget="expandable-body d-none" aria-expanded="false">
+                                <td>
+                                  University Name <input class="form-control mb-3 mt-3" type="text" placeholder="Address" name="universityName" ngModel>
+                                  <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></td>
+                              </tr>
+                              <tr data-widget="expandable-body d-none" aria-expanded="false">
+                                <td>
+                                  Short Description <input class="form-control mb-3 mt-3" type="text" placeholder="Short Description" name="shortDescription" ngModel>
+                                  <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></td>
+                              <tr data-widget="expandable-body d-none" aria-expanded="false">
+                                <td>
+                                  Main Slogan <input class="form-control mb-3 mt-3" type="text" placeholder="Slogan" name="mainSlogan" ngModel>
+                                  <div data-lastpass-icon-root="true" style="position: relative !important; height: 0 !important; width: 0px !important; float: left !important;"></div></td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+              <!-- Contact us -->
+              <tr data-widget="expandable-table" aria-expanded="false" (click)="rowContact = !rowContact">
+                <td>
+                  <i *ngIf="!rowContact" class="fas fa-caret-right"></i>
+                  <i *ngIf="rowContact" class="fas fa-caret-down"></i> Contact us</td>
+              </tr>
+              <tr class="expandable-body" *ngIf="rowContact">
+                <td>
+                  <div class="p-0" >
+                    <table class="table table-hover">
+                      <tbody>
+                      <tr data-widget="expandable-body d-none" aria-expanded="false">
+                        <td>
+                          University Address <input class="form-control mb-3 mt-3" type="text" placeholder="Address" name = "universityAddress" ngModel>
+                        </td>
+                      </tr>
+                      <tr data-widget="expandable-body d-none" aria-expanded="false">
+                        <td>
+                          University Email <input class="form-control mb-3 mt-3" type="Email" placeholder="Email" name ="universityEmail" ngModel>
+                        </td>
+                      </tr>
+                      <tr data-widget="expandable-body d-none" aria-expanded="false">
+                        <td>
+                          Main Phone Number
+                          <div class="input-group mb-3 mt-3">
+                            <input type="text" class="form-control " placeholder="Phone Number" name="mainPhoneNumber" ngModel>
+
+                            <button type="button" class="btn btn-primary">Add</button>
+
+                          </div>
+
+                        </td>
+                      </tr>
+                      <tr data-widget="expandable-body d-none" aria-expanded="false">
+                        <td>
+                          University Landline <input class="form-control mb-3 mt-3" type="text" placeholder="Landline Number" name="universityLandline" ngModel>
+                        </td>
+                      </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+              <!-- University Social Accounts -->
+              <tr data-widget="expandable-table"  (click)="rowAccounts=!rowAccounts">
+                <td>
+                  <i *ngIf="!rowAccounts" class="fas fa-caret-right"></i>
+                  <i *ngIf="rowAccounts" class="fas fa-caret-down"></i> University Social Accounts
+                </td>
+              </tr>
+              <tr class="expandable-body" >
+                <td *ngIf="rowAccounts">
+                  <div class="p-0">
+                    <table class="table table-hover">
+                      <tbody>
+                      <tr data-widget="expandable-body d-none" aria-expanded="false">
+                        <td>
+                          Facebook <i class="fab fa-facebook-square"></i> <div class="input-group mb-3 mt-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-link"></i></span>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Link" name="facebookLink" ngModel>
+                          <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                        </td>
+                      </tr>
+                      <tr data-widget="expandable-body d-none" aria-expanded="false">
+                        <td>
+                          Twitter <i class="fab fa-twitter-square"></i>  <span class="fas ai-twitter"></span> <div class="input-group mb-3 mt-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-link"></i></span>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Link" name="twitterLink" ngModel>
+                          <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                        </td>
+                      </tr>
+                      <tr data-widget="expandable-body d-none" aria-expanded="false">
+                        <td>
+                          Instagram <i class="fab fa-instagram"></i> <div class="input-group mb-3 mt-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-link"></i></span>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Link" name="instagramLink" ngModel>
+                          <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                        </td>
+                      </tr>
+                      <tr data-widget="expandable-body d-none" aria-expanded="false">
+                        <td>
+                          University other links
+                          <div class="input-group mb-3 mt-3">
+
+                            <div class="input-group-prepend">
+
+                              <span class="input-group-text"><i class="fas fa-link"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Link" name="otherLink" ngModel>
+                            <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                        </td>
+                      </tbody>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+    </div>
+    </form>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+</div>
+</body>
+<app-footer></app-footer>
+<!--<p>site-identity works!</p>-->

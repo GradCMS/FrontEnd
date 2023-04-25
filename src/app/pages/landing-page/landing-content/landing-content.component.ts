@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing-content.component.css']
 })
 export class LandingContentComponent implements OnInit {
-
+  username: string = 'John Doe';
+  userCount: number = 1000;
   constructor() { }
 
   ngOnInit(): void {
