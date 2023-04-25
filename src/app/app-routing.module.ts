@@ -8,6 +8,7 @@ import {PageEditComponent} from './pages/page-management/page-edit/page-edit.com
 import {UserMainComponent} from './pages/user-management/user-main/user-main.component';
 import {RoleMainComponent} from './pages/role-management/role-main/role-main.component';
 import {ClassBuilderMainComponent} from "./pages/class-builder/class-builder-main/class-builder-main.component";
+import {SiteIdentityComponent} from "./pages/site-identity/site-identity.component";
 
 const routes: Routes = [
   {path: '', component: LandingMainComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'EditPage', component: PageEditComponent},
   {path: 'UserManagement', component: UserMainComponent},
   {path: 'ClassBuilder', component: ClassBuilderMainComponent},
-  {path: 'RoleManagement', component: RoleMainComponent}
+  {path: 'RoleManagement', component: RoleMainComponent},
+  {path: 'SiteIdentity', component:SiteIdentityComponent },
 ];
 
 @NgModule({

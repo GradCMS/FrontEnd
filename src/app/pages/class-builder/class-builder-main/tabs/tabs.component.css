@@ -6,6 +6,7 @@
   height: 55px;
   border-bottom: 1px solid #ccc;
   width: 100%;
+  border-radius: 10px;
 }
 
 .tabs-container .tab-link{
@@ -13,7 +14,7 @@
   display: inline-block;
   /*make them equal width*/
   width: auto;
-
+  user-select: none;
   position: relative;
   height: 100%;
   padding: 10px;

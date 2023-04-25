@@ -67,6 +67,7 @@
               "src/assets/js/PushMenu.js",
               "src/assets/js/Toasts.js",
               "src/assets/js/Treeview.js",
+              "src/assets/js/jquery-3.6.0.min.js",
               "node_modules/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.min.js"
 
             ]

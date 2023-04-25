@@ -1,7 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild , Renderer2 } from '@angular/core';
 import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
 import { TabComponent } from '@syncfusion/ej2-angular-navigations';
-
+import {NgForm} from "@angular/forms";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-class-builder-main',
@@ -11,18 +12,16 @@ import { TabComponent } from '@syncfusion/ej2-angular-navigations';
 export class ClassBuilderMainComponent implements OnInit {
   active = 1;
   public classPlaceholder: string = '';
+  public secondaryName: string = '';
   public tags: string = '';
   public selectedTags: string[] = [];
-  public pseudoClass: string = '';
   public cssProperties: string[] = [];
-  public selectedProperties: string[] = [];
-  public cssCode: string = '';
-  public colorPickerValue: string = '';
+  public styles: string = '';
 
-  selectedPseudoClass: string = '';
-  pseudoClasses: string[] = [];
-  secondaryName: string = '';
+  // Define the classes array
+  classes: { className: string, secondaryName: string }[] = [ { className: 'Class 1', secondaryName: 'Secondary Name 1' }, { className: 'Class 2', secondaryName: 'Secondary Name 2' }, { className: 'Class 3', secondaryName: 'Secondary Name 3' }];
 
+  @ViewChild('tabs') tabs: any;
 
   addCssProperty(property: string) {
     if (property && !this.cssProperties.includes(property)) {
@@ -41,15 +40,36 @@ export class ClassBuilderMainComponent implements OnInit {
 
   public isBool: boolean = false;
   // Mapping Tab items Header property
-
-
+  SampleText: string = '';
+  myData = [];
   onSubmit() {
     // handle form submission
+    const newClass = {
+      className: this.classPlaceholder,
+      secondaryName: this.secondaryName
+    };
+    this.tabs.printForm()
+    const cssString = this.tabs.generateCssString(this.tabs.tabsForm, 'my-class-name');
+    // this.tabs.giveMeCss(this.styles)
+
+    this.classes.push(newClass);
+    // console.log(form.value);
+    // console.log(this.myData)
+    // Reset the form
+    // form.reset();
   }
 
-  constructor() {
+  deleteItem(index: number) {
+    this.classes.splice(index, 1); // Remove the item at the given index from the array
   }
 
+  constructor(private router: Router , private renderer: Renderer2) {}
+
+
+  editItem(index: number) {
+    const selectedClass = this.classes[index];
+    this.router.navigate(['/edit-class', { id: index, className: selectedClass.className, secondaryName: selectedClass.secondaryName }]);
+  }
   ngOnInit(): void {
   }
 

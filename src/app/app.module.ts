@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -27,8 +27,11 @@ import { DisplaySliderSettingsComponent } from './pages/display-management/displ
 import { DisplayGridSettingsComponent } from './pages/display-management/display-grid-settings/display-grid-settings.component';
 import { ClockComponent } from './pages/landing-page/clock/clock.component';
 import { NgDragDropModule } from 'ng-drag-drop';
+import { HttpClient } from "@angular/common/http";
 import { ColorPickerComponent } from './pages/class-builder/color-picker/color-picker.component';
 import { TabsComponent } from './pages/class-builder/class-builder-main/tabs/tabs.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { SiteIdentityComponent } from './pages/site-identity/site-identity.component';
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -58,13 +61,16 @@ import { TabsComponent } from './pages/class-builder/class-builder-main/tabs/tab
     ClockComponent,
     ColorPickerComponent,
     TabsComponent,
+    SiteIdentityComponent,
     // NgDragDropModule.forRoot()
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
 
   ],
   providers: []
