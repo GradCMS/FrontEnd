@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { LandingMainComponent } from './pages/landing-page/landing-main/landing-main.component';
@@ -18,6 +18,7 @@ import { PageEditComponent } from './pages/page-management/page-edit/page-edit.c
 import { AddNewRoleComponent } from './pages/role-management/add-new-role/add-new-role.component';
 import { RolesTableComponent } from './pages/role-management/roles-table/roles-table.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { AngularDualListBoxModule } from 'angular-dual-listbox';
 import { ModuleHeaderComponent } from './pages/module-management/module-header/module-header.component';
 import { ModuleInsertComponent } from './pages/module-management/module-insert/module-insert.component';
 import { ModuleFormEditorComponent } from './pages/module-management/module-form-editor/module-form-editor.component';
@@ -25,6 +26,12 @@ import { DisplayHeaderComponent } from './pages/display-management/display-heade
 import { DisplaySettingsComponent } from './pages/display-management/display-settings/display-settings.component';
 import { DisplaySliderSettingsComponent } from './pages/display-management/display-slider-settings/display-slider-settings.component';
 import { DisplayGridSettingsComponent } from './pages/display-management/display-grid-settings/display-grid-settings.component';
+import { FormsModule } from '@angular/forms';
+import { UiSwitchModule } from 'ngx-ui-switch';
+import { NgSwitch } from '@angular/common';
+import { PageCreateComponent } from './pages/page-management/page-create/page-create.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 
 
 @NgModule({
@@ -51,14 +58,20 @@ import { DisplayGridSettingsComponent } from './pages/display-management/display
     DisplayHeaderComponent,
     DisplaySettingsComponent,
     DisplaySliderSettingsComponent,
-    DisplayGridSettingsComponent
-    
-
-
+    DisplayGridSettingsComponent,
+    PageCreateComponent,
+        
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
+  imports:[
+    BrowserModule, 
+    AngularDualListBoxModule, 
+    ImageCropperModule,
+    AppRoutingModule,
+    FormsModule,
+    UiSwitchModule,
+    NgSwitch,
+    DragDropModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

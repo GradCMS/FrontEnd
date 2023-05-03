@@ -1,0 +1,257 @@
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+    <app-navbar></app-navbar>
+   <app-sidebar></app-sidebar>
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+
+
+        <div class="card-body">
+            <!-- HERE -->
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Create Page</h3>
+                </div>
+                <!-- /.card-header -->
+  <!-- form start -->
+  <form #f="ngForm" (ngSubmit)="onSubmit()">
+    <!-- INPUTS START -->
+    <div class="card-body" formGroupName="pageData" >
+        <div class="row"
+         ngModelGroup="type"
+         #pageType="ngModelGroup">
+            <label>Page Type:</label>
+            <div class="col-sm-6">
+
+                <!-- radio -->
+                <div class="form-group clearfix" >
+                    <div class="icheck-primary d-inline">
+                        <input type="radio" 
+                        id="radioPrimary1"
+                         name="type" 
+                         ngModel
+                         [value]="type[0]"
+                         >
+                        <label for="radioPrimary1"> Standard page </label>
+                    </div>
+                    <div class="icheck-primary d-inline">
+                        <input type="radio"
+                         id="radioPrimary2"
+                          name="type"
+                          [value]="type[1]"
+                          ngModel>
+                        <label for="radioPrimary2"> Content page </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Title*</label>
+            <input type="Text"
+             class="form-control"
+             id="pageTitle"
+             ngModel
+             name="title"
+             required
+             >
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">URL*</label>
+            <input type="Text"
+             class="form-control" 
+             id="exampleInputPassword1"
+                   placeholder="No special characters are allowed" 
+                   ngModel
+                   name="url"
+                   required
+                   >
+        </div>
+        <div class="form-group">
+            <label>Parent Page</label>
+            <select class="form-control select2bs4"
+             style="width: 100%;"
+             ngModel
+             name="parent_id"
+             
+             >
+                <option *ngFor="let parent of parents">
+                    {{parent.pageName}}</option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Tags</label>
+            <input type="Text"
+             class="form-control" 
+             id="Tags"
+             ngModel
+             name="tags"
+             >
+        </div>
+        <!-- textarea -->
+        <div class="form-group">
+            <label>Short Description</label>
+            <textarea class="form-control"
+             rows="3"
+             ngModel
+             name="short_description"></textarea>
+        </div>
+
+        <div class="form-group">
+
+            <!-- Rounded switch -->
+            <div class="card-body">
+                <label> Hidden</label>
+            </div>
+            <div class="card-body">
+                <label class="switch"  [ngClass]="{'checked': manualUpdate}">
+                    <input type="checkbox"
+                     [(ngModel)]="manualUpdate" 
+                     
+                     name="hidden">
+                    <span class="slider round"></span>
+                </label>
+                
+            </div>
+        </div>
+
+       <!-- IMAGE UPLOAD -->
+<div class="form-group">
+<div class="column w-100">
+<label>Header Image</label>
+<div class="card-body">
+<div id="actions" class="row">
+<div *ngIf="showImageCropper1">
+    <div class="image-upload-container">
+        <label class="image-upload-label" for="header-image-upload-input">Select an image to upload</label>
+        <input id="header-image-upload-input" type="file" (change)="onFileSelected($event)" accept="image/*">
+        <div class="image-preview-container">
+            <image-cropper
+                *ngIf="imageChangedEvent1"
+                [imageChangedEvent]="imageChangedEvent1"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="4 / 3"
+                [resizeToWidth]="300"
+                format="png"
+                (imageCropped)="onImageCropped($event,'header')"
+                (imageLoaded)="onImageLoaded()"
+                (loadImageFailed)="onLoadImageFailed()">
+            </image-cropper>
+            <img class="image-preview" 
+                [src]="croppedImage1" *ngIf="croppedImage1">
+            <button class="save-button"
+                *ngIf="croppedImage1"
+                (click)="saveCroppedImage('header')"
+                ngModel
+                name="header_image_url"
+                [value]="croppedImage1"
+                >Save</button>
+        </div>
+    </div>
+</div>
+<div *ngIf="!showImageCropper1">
+    <p>Image saved</p>
+    <img [src]="croppedImage1">
+    <button (click)="showImageCropper1 = true">Edit</button>
+</div>
+</div>
+</div>
+</div>
+<div class="column w-100">
+<label>Cover Image</label>
+<div class="card-body">
+<div id="actions" class="row">
+<div *ngIf="showImageCropper2">
+    <div class="image-upload-container">
+        <label class="image-upload-label" for="cover-image-upload-input">Select an image to upload</label>
+        <input id="cover-image-upload-input" type="file" (change)="onFileSelected($event)" accept="image/*">
+        <div class="image-preview-container">
+            <image-cropper
+                *ngIf="imageChangedEvent2"
+                [imageChangedEvent]="imageChangedEvent2"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="4 / 3"
+                [resizeToWidth]="300"
+                format="png"
+                (imageCropped)="onImageCropped($event,'cover')"
+                (imageLoaded)="onImageLoaded()"
+                (loadImageFailed)="onLoadImageFailed()">
+            </image-cropper>
+            <img class="image-preview" 
+                [src]="croppedImage2"
+                *ngIf="croppedImage2">
+            <button class="save-button"
+                *ngIf="croppedImage2"
+                (click)="saveCroppedImage('cover')">Save</button>
+        </div>
+    </div>
+</div>
+<div *ngIf="!showImageCropper2">
+    <p>Image saved</p>
+    <img [src]="croppedImage2">
+    <button (click)="showImageCropper2 = true">Edit</button>
+</div>
+</div>
+</div>
+</div>  
+</div>
+
+        <!-- END IMAGE UPLOAD -->
+
+                        <!-- INPUTS END -->
+                    </div>
+
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-block btn-success btn-lg">Save</button>
+                    </div>
+                </form>
+                <!-- END FORM -->
+            </div>
+            <!-- /.card-body -->
+
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+ </div>
+
+ <script src="../plugins/jquery/jquery.min.js"></script>
+ <!-- jQuery UI 1.11.4 -->
+ <script src="../plugins/jquery-ui/jquery-ui.min.js "></script>
+ <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+ 
+ <!-- Bootstrap 4 -->
+ <script src="../../../../assets/js/bootstrap.bundle.min.js"></script>
+ <!-- AdminLTE App -->
+ <script src="../../../../assets/js/adminlte.js"></script>
+ <!-- AdminLTE for demo purposes -->
+ <script src="../../../../assets/js/demo.js"></script>
+ <!-- ToDoList -->
+ <script src="../../../../assets/js/dashboard.js"></script>
+ <script src="../../../../assets/js/TodoList.js"></script>
+ 
+ <!-- dropzonejs -->
+ <script src="../../../../assets/js/dropzone.min.js"></script>
+ <!-- Bootstrap4 Duallistbox -->
+ <script src="../../../../assets/js/jquery.bootstrap-duallistbox.min.js"></script>
+ <!-- Bootstrap Switch -->
+ <script src="../../../../assets/js/bootstrap-switch.min.js"></script>
+ <!-- overlayScrollbars -->
+ <script src="../../../../assets/js/jquery.overlayScrollbars.min.js "></script>
+ 
+  <!-- custom scripts -->
+<script src="../../../../assets/js/custom_scripts.js"></script>
+  </body>
+
+<app-footer></app-footer>
