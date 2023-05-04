@@ -25,6 +25,7 @@ import { DisplayHeaderComponent } from './pages/display-management/display-heade
 import { DisplaySettingsComponent } from './pages/display-management/display-settings/display-settings.component';
 import { DisplaySliderSettingsComponent } from './pages/display-management/display-slider-settings/display-slider-settings.component';
 import { DisplayGridSettingsComponent } from './pages/display-management/display-grid-settings/display-grid-settings.component';
+<<<<<<< Updated upstream
 import { ClockComponent } from './pages/landing-page/clock/clock.component';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { ColorPickerComponent } from './pages/class-builder/color-picker/color-picker.component';
@@ -35,6 +36,16 @@ import { ModuleDisplayComponent } from './pages/module-management/module-display
 import{HttpClientModule} from '@angular/common/http'
 import { InsertModuleFormComponent } from './pages/module-management/module-insert/insert-module-form/insert-module-form.component';
 import { InsertModuleMainComponent } from './pages/module-management/module-insert/insert-module-main/insert-module-main.component';
+=======
+import { FormsModule } from '@angular/forms';
+import { UiSwitchModule } from 'ngx-ui-switch';
+import { NgSwitch } from '@angular/common';
+import { PageCreateComponent } from './pages/page-management/page-create/page-create.component';
+import { DragDropModule} from '@angular/cdk/drag-drop';
+import { UserCreateComponent } from './pages/user-management/user-create/user-create.component';
+import { UserEditComponent } from './pages/user-management/user-edit/user-edit.component';
+import { HttpClientModule } from '@angular/common/http';
+>>>>>>> Stashed changes
 
 
 
@@ -63,6 +74,7 @@ import { InsertModuleMainComponent } from './pages/module-management/module-inse
     DisplaySettingsComponent,
     DisplaySliderSettingsComponent,
     DisplayGridSettingsComponent,
+<<<<<<< Updated upstream
     ClockComponent,
     ColorPickerComponent,
     TabsComponent,
@@ -71,6 +83,23 @@ import { InsertModuleMainComponent } from './pages/module-management/module-inse
     InsertModuleFormComponent,
     InsertModuleMainComponent,
 
+=======
+    PageCreateComponent,
+    UserCreateComponent,
+    UserEditComponent,
+        
+  ],
+  imports:[
+    BrowserModule, 
+    AngularDualListBoxModule, 
+    ImageCropperModule,
+    AppRoutingModule,
+    FormsModule,
+    UiSwitchModule,
+    NgSwitch,
+    DragDropModule,
+    HttpClientModule
+>>>>>>> Stashed changes
 
   ],
   imports: [

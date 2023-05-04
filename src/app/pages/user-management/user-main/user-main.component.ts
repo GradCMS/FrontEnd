@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';      
 @Component({
   selector: 'app-user-main',
   templateUrl: './user-main.component.html',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserMainComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private http: HttpClient) { 
+  this.http.get('LocalHost:8000/api/users').subscribe((data) => {
+      console.log(data);
+    });
   }
+
+  ngOnInit(): void {}
 
 }
