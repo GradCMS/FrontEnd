@@ -33,29 +33,29 @@
                     </div>
                     <div class="container mt-3">
                       <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                           <div class="form-group">
                             <label for="colorPicker">Color Picker</label>
                             <input type="color" formControlName="bgcolorPicker" id="bgcolorPicker" class="form-control">
                           </div>
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="photoUpload">Photo Upload</label>
-                            <div class="custom-file">
-                              <input type="file" class="custom-file-input" formControlName= "photoUpload" id="photoUpload"
-                                     (change)="onFileSelected($event)">
-                              <label class="custom-file-label"
-                                     for="photoUpload">{{ selectedFileName || 'Choose file' }}</label>
-                              <div *ngIf="imageUrl">
-                                <img [src]="imageUrl" style="height:200px;width:300px;" alt="Selected image">
-                              </div>
-                              <button class="btn btn-primary mt-2" (click)="onUpload()">Upload</button>
-                            </div>
-                            <div class="text-danger mt-2" style="display: none;" #errorDiv>Please select an image file.
-                            </div>
-                          </div>
-                        </div>
+<!--                        <div class="col-md-6">-->
+<!--                          <div class="form-group">-->
+<!--                            <label for="photoUpload">Photo Upload</label>-->
+<!--                            <div class="custom-file">-->
+<!--                              <input type="file" class="custom-file-input" formControlName= "photoUpload" id="photoUpload"-->
+<!--                                     (change)="onFileSelected($event)">-->
+<!--                              <label class="custom-file-label"-->
+<!--                                     for="photoUpload">{{ selectedFileName || 'Choose file' }}</label>-->
+<!--                              <div *ngIf="imageUrl">-->
+<!--                                <img [src]="imageUrl" style="height:200px;width:300px;" alt="Selected image">-->
+<!--                              </div>-->
+<!--                              <button class="btn btn-primary mt-2" (click)="onUpload()">Upload</button>-->
+<!--                            </div>-->
+<!--                            <div class="text-danger mt-2" style="display: none;" #errorDiv>Please select an image file.-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
                       </div>
                     </div>
                   </div>

@@ -162,16 +162,16 @@
                               <tbody>
                               <tr data-widget="expandable-body d-none" aria-expanded="false">
                                 <td>
-                                  University Name <input class="form-control mb-3 mt-3" type="text" placeholder="Address" formControlName="universityName">
+                                  University Name <input class="form-control mb-3 mt-3" type="text" [ngModel]="field_university_name"placeholder="Address" formControlName="universityName">
                                   <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></td>
                               </tr>
                               <tr data-widget="expandable-body d-none" aria-expanded="false">
                                 <td>
-                                  Short Description <input class="form-control mb-3 mt-3" type="text" placeholder="Short Description" formControlName="shortDescription">
+                                  Short Description <input class="form-control mb-3 mt-3" [ngModel]= "field_short_description"type="text" placeholder="Short Description" formControlName="shortDescription">
                                   <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></td>
                               <tr data-widget="expandable-body d-none" aria-expanded="false">
                                 <td>
-                                  Main Slogan <input class="form-control mb-3 mt-3" type="text" placeholder="Slogan" formControlName="mainSlogan">
+                                  Main Slogan <input class="form-control mb-3 mt-3" type="text" [ngModel]="field_main_slogan" placeholder="Slogan" formControlName="mainSlogan">
                                   <div data-lastpass-icon-root="true" style="position: relative !important; height: 0 !important; width: 0px !important; float: left !important;"></div></td>
                               </tr>
                               </tbody>
@@ -197,26 +197,27 @@
                       <tbody>
                       <tr data-widget="expandable-body d-none" aria-expanded="false">
                         <td>
-                          University Address <input class="form-control mb-3 mt-3" type="text" placeholder="Address" formControlName = "universityAddress" name="universityAddress" id="universityAddress">
+                          University Address <input class="form-control mb-3 mt-3" type="text" [ngModel]="field_address" placeholder="Address" formControlName = "universityAddress" name="universityAddress" id="universityAddress">
                         </td>
                       </tr>
                       <tr data-widget="expandable-body d-none" aria-expanded="false">
                         <td>
-                          University Email <input class="form-control mb-3 mt-3" type="Email" placeholder="Email" formControlName ="universityEmail" name="universityEmail" id="universityEmail" >
+                          University Email <input class="form-control mb-3 mt-3" [ngModel]="field_email" type="Email" placeholder="Email" formControlName ="universityEmail" name="universityEmail" id="universityEmail" >
                         </td>
                       </tr>
                       <tr data-widget="expandable-body d-none" aria-expanded="false">
                         <td>
                           Main Phone Number
                           <div class="input-group mb-3 mt-3">
-                            <input type="text" class="form-control " placeholder="Phone Number" formControlName="mainPhoneNumber" name="mainPhoneNumber" id="mainPhoneNumber">
-                            <button type="button" class="btn btn-primary">Add</button>
+                            <input type="text" class="form-control " [ngModel]="field_phone" placeholder="Phone Number" formControlName="mainPhoneNumber" name="mainPhoneNumber" id="mainPhoneNumber">
+
                           </div>
                         </td>
                       </tr>
                       <tr data-widget="expandable-body d-none" aria-expanded="false">
                         <td>
-                          University Landline <input class="form-control mb-3 mt-3" type="text" placeholder="Landline Number" formControlName="universityLandline" name="universityLandline" id="universityLandline">
+                          University Landline
+                          <input class="form-control mb-3 mt-3" type="text" [ngModel]="field_landline" placeholder="Landline Number" formControlName="universityLandline" name="universityLandline" id="universityLandline">
                         </td>
                       </tr>
 
@@ -243,8 +244,8 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-link"></i></span>
                           </div>
-                          <input type="text" class="form-control" placeholder="Link" formControlName="facebookLink">
-                          <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                          <input type="text" class="form-control" [ngModel]="field_facebook" placeholder="Link" formControlName="facebookLink">
+                          <div data-lastpass-icon-root="true"  style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
                         </td>
                       </tr>
                       <tr data-widget="expandable-body d-none" aria-expanded="false">
@@ -253,7 +254,7 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-link"></i></span>
                           </div>
-                          <input type="text" class="form-control" placeholder="Link" formControlName="twitterLink">
+                          <input type="text" [ngModel]="field_twitter" class="form-control" placeholder="Link" formControlName="twitterLink">
                           <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
                         </td>
                       </tr>
@@ -263,7 +264,7 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-link"></i></span>
                           </div>
-                          <input type="text" class="form-control" placeholder="Link" formControlName="instagramLink">
+                          <input type="text" class="form-control" [ngModel]="field_instagram" placeholder="Link" formControlName="instagramLink">
                           <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
                         </td>
                       </tr>
@@ -274,7 +275,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fas fa-link"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Link" formControlName="otherLink">
+                            <input type="text" class="form-control" placeholder="Link" [ngModel]="field_other" formControlName="otherLink">
                             <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
                         </td>
                       </tbody>

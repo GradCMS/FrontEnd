@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,16 +26,17 @@ import { DisplaySettingsComponent } from './pages/display-management/display-set
 import { DisplaySliderSettingsComponent } from './pages/display-management/display-slider-settings/display-slider-settings.component';
 import { DisplayGridSettingsComponent } from './pages/display-management/display-grid-settings/display-grid-settings.component';
 import { ClockComponent } from './pages/landing-page/clock/clock.component';
-import { NgDragDropModule } from 'ng-drag-drop';
 import { ColorPickerComponent } from './pages/class-builder/color-picker/color-picker.component';
 import { TabsComponent } from './pages/class-builder/class-builder-main/tabs/tabs.component';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SiteIdentityComponent } from './pages/site-identity/site-identity.component';
 import { ModuleDisplayComponent } from './pages/module-management/module-display/module-display.component';
-import{HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
 import { InsertModuleFormComponent } from './pages/module-management/module-insert/insert-module-form/insert-module-form.component';
 import { InsertModuleMainComponent } from './pages/module-management/module-insert/insert-module-main/insert-module-main.component';
-
+import { ToastrModule } from 'ngx-toastr';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 
 @NgModule({
@@ -70,8 +71,8 @@ import { InsertModuleMainComponent } from './pages/module-management/module-inse
     ModuleDisplayComponent,
     InsertModuleFormComponent,
     InsertModuleMainComponent,
-
-
+    PageNotFoundComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,9 +82,11 @@ import { InsertModuleMainComponent } from './pages/module-management/module-inse
     CKEditorModule,
     HttpClientModule,
     FormsModule,
-
-
-
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-center-right', // Set the position to top-right
+      preventDuplicates: true,
+    }),
   ],
   providers: []
 })

@@ -52,8 +52,10 @@ export class TabsComponent implements OnInit {
   onTabClick(tab: string) {
     this.activeTab = tab;
   }
+
   constructor(private fb: FormBuilder) {
   }
+
   ngOnInit(): void {
     this.tabsForm = this.fb.group({
       tabBackground: this.fb.group({
@@ -98,17 +100,16 @@ export class TabsComponent implements OnInit {
     console.log(this.generateCssStringWithClassName(this.tabsForm, this.classPlaceHolderChild));
     console.log("ngStyle:")
     console.log(this.parseCssStringToNgStyle(this.generateCssStringWithoutNewLine(this.tabsForm)));
-    // console.log(this.generateCssStringWithClassName(this.tabsForm, this.classPlaceHolderChild));
+    console.log(this.generateCssStringWithClassName(this.tabsForm, this.classPlaceHolderChild));
   }
 
   generateCssStringWithClassName(form: FormGroup, className: string): string {
-    let cssString = '';
+    let cssString = `.${className}`;
     cssString += `{\n`;
     cssString += this.generateCssString(form);
     cssString += `}\n`;
     return cssString;
   }
-
 
 
   generateCssString(form: FormGroup): string {
@@ -166,6 +167,7 @@ export class TabsComponent implements OnInit {
     this.cssStyles = cssString;
     return cssString;
   }
+
   parseCssStringToNgStyle(cssString: string): string {
     const styles: { [key: string]: string } = {};
     cssString.split(';').forEach(style => {
@@ -175,11 +177,12 @@ export class TabsComponent implements OnInit {
         styles[formattedProperty] = value.trim();
       }
     });
-    this.cssStyles= JSON.stringify(styles).replace(/["{}]/g, '').replace(/,/g, ';' );
+    this.cssStyles = JSON.stringify(styles).replace(/["{}]/g, '').replace(/,/g, ';');
     return JSON.stringify(styles)
       .replace(/["{}]/g, '')
       .replace(/,/g, ';');
   }
+
   generateCssStringWithoutNewLine(form: FormGroup): string {
     let cssString = '';
 

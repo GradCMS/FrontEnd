@@ -4,6 +4,7 @@ import { TabComponent } from '@syncfusion/ej2-angular-navigations';
 import {NgForm} from "@angular/forms";
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-class-builder-main',
   templateUrl: './class-builder-main.component.html',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class ClassBuilderMainComponent implements OnInit {
   active = 1;
+  title = 'Class Builder';
   public classPlaceholder: string = '';
   public secondaryName: string = '';
   public tags: string = '';
