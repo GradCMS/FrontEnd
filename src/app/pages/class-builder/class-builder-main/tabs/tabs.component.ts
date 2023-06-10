@@ -100,7 +100,8 @@ export class TabsComponent implements OnInit {
     console.log(this.generateCssStringWithClassName(this.tabsForm, this.classPlaceHolderChild));
     console.log("ngStyle:")
     console.log(this.parseCssStringToNgStyle(this.generateCssStringWithoutNewLine(this.tabsForm)));
-    console.log(this.generateCssStringWithClassName(this.tabsForm, this.classPlaceHolderChild));
+    return this.parseCssStringToNgStyle(this.generateCssStringWithoutNewLine(this.tabsForm));
+    // console.log(this.generateCssStringWithClassName(this.tabsForm, this.classPlaceHolderChild));
   }
 
   generateCssStringWithClassName(form: FormGroup, className: string): string {

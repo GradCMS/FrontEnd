@@ -23,7 +23,7 @@ export class AuthServiceService {
   }
   logout() {
     console.log('Logout button clicked');
-    sessionStorage.removeItem('token');
+    sessionStorage.clear();
     this.toastr.success('You are logged out', 'Goodbye');
     this.router.navigate(['/login']);
   }

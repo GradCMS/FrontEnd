@@ -124,31 +124,40 @@ export class SiteIdentityComponent implements OnInit {
   onFileSelected(event: any, formControlName: string, index: number) {
     const file = event.target.files[0];
     const reader = new FileReader();
+    const formData = new FormData();
     reader.readAsDataURL(file);
     reader.onload = () => {
       switch (formControlName) {
         case 'defaultCoverLogo':
           this.fileUrls[0] = reader.result as string;
+          formData.append('defaultCoverLogo', file, file.name);
           break;
         case 'defaultCoverLogoVertical':
           this.fileUrls[1] = reader.result as string;
+          formData.append('defaultCoverLogoVertical', file, file.name);
           break;
         case 'defaultHeaderImage':
           this.fileUrls[2] = reader.result as string;
+          formData.append('defaultHeaderImage', file, file.name);
           break;
         case 'defaultBrowserIcon':
           this.fileUrls[3] = reader.result as string;
+          formData.append('defaultBrowserIcon', file, file.name);
           break;
         case 'secondaryLogo':
           this.fileUrls[4] = reader.result as string;
+          formData.append('secondaryLogo', file, file.name);
+
           break;
         case 'backgroundImage':
           this.fileUrls[5] = reader.result as string;
+          formData.append('backgroundImage', file, file.name);
           break;
         default:
           break;
       }
     };
+    console.log(this.fileUrls);
   }
 
 

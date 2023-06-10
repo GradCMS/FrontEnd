@@ -16,22 +16,10 @@
       </div>
 
       <div class="info">
-        <a routerLink="/" class="d-block">Alexander Pierce</a>
+        <a routerLink="/" class="d-block"> {{this.userName}} </a>
       </div>
     </div>
 
-    <!-- SidebarSearch Form -->
-    <div class="form-inline">
-      <div class="input-group" data-widget="sidebar-search">
-        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-               aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-sidebar">
-            <i class="fas fa-search fa-fw"></i>
-          </button>
-        </div>
-      </div>
-    </div>
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
@@ -70,12 +58,12 @@
 
 
         <li class="nav-header">Website Management</li>
-        <li class="nav-item">
+        <li class="nav-item" (click)="addClass($event)">
           <a routerLink="/PageManagement" class="nav-link" (click)="addClass($event)">
             <i class="nav-icon fas fa-file"></i>
             <p>Page Management </p>
           </a>
-        <li class="nav-item">
+        <li class="nav-item" (click)="addClass($event)">
           <a routerLink="/SiteIdentity" class="nav-link" (click)="addClass($event)">
             <i class="nav-icon fas fa-dna"></i>
             <p>
@@ -83,7 +71,7 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" (click)="addClass($event)">
           <a routerLink="/ModuleManagement" class="nav-link" (click)="addClass($event)">
             <i class="nav-icon fas fa-sitemap"></i>
             <p>
@@ -91,8 +79,8 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
-          <a routerLink="/ClassBuilder" class="nav-link"(click)="addClass($event)">
+        <li class="nav-item" (click)="addClass($event)">
+          <a routerLink="/ClassBuilder" class="nav-link" (click)="addClass($event)">
             <i class="nav-icon fab fa-css3"></i>
             <p>
               Class Management

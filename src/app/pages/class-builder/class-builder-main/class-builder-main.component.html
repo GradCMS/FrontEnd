@@ -24,17 +24,17 @@
     </section>
 
     <div class="card-body">
-      <form #f = "ngForm">
+      <form [formGroup]="form">
         <div class="form-group">
           <label class="required-field">Class Placeholder</label>
           <div class="input-group mb-3">
-            <input  type="text" class="form-control" placeholder="Class Name" required name="className"
-                   [(ngModel)]="classPlaceholder">
+            <input  type="text" class="form-control" placeholder="Class Name" required
+                   formControlName="placeholder" name = "placeholder">
           </div>
-          <label class="required-field">Secondary Name</label>
+          <label class="required-field">Reference name</label>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Secondary Name" required name="secondaryName"
-                   [(ngModel)]="secondaryName"></div>
+            <input type="text" class="form-control" placeholder="reference_name" required
+                   formControlName = "reference_name" name="reference_name"></div>
           <label class="required-field">Pseudo-Class</label>
 
           <div class="container">

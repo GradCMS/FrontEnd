@@ -7,9 +7,15 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
   styleUrls: ['./landing-content.component.css']
 })
 export class LandingContentComponent implements OnInit {
-  username: string = 'John Doe';
+  username: string = '';
   userCount: any;
+  response: any;
 
+  //make getter for the username
+
+  public getUsername(): string {
+    return this.username;
+  }
   constructor(private http : HttpClient) { }
 
   ngOnInit(): void {
@@ -20,13 +26,16 @@ export class LandingContentComponent implements OnInit {
         this.userCount = this.userCount.count;
       }
     )
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    this.http.post('http://LocalHost:8000/api/auth/me', {headers} ).subscribe(
+    this.http.get('http://LocalHost:8000/api/auth/me', {headers} ).subscribe(
       (response) => {
         console.log(response);
+        this.response = response.valueOf();
+        this.username = this.response.user_name;
+        sessionStorage.setItem('username', this.username);
       },error =>
       {
         console.log(error);

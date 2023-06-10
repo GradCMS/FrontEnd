@@ -6,6 +6,7 @@ import {Observable} from "rxjs";
 import {ToastrService} from "ngx-toastr";
 import {AuthServiceService} from "../sharedServices/Auth/auth-service.service";
 
+
 interface modifiedFormValues {
   user_name: string;
   password: string;
@@ -82,6 +83,7 @@ export class LoginPageComponent implements OnInit {
         }
       }
     );
+
 
 
 
