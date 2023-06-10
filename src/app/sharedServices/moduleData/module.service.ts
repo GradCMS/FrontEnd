@@ -11,15 +11,30 @@ export class ModuleService {
 
 
   }
-
+   //Create
+   addModule(object:any){
+    return this.http.post(this.configUrl,object)
+   
+   }
+  //Read
   getModules(){
     return this.http.get(this.configUrl);  
 
   }
-  addModule(module:any){
-   return this.http.post(this.configUrl,module)
+ 
+  //Update
+  updateModule(object:any ,ID:number){
+  return this.http.put(this.configUrl+`/${ID}`,object) 
   
+
   }
+  //Delete
+  deleteModule(ID:number){
+  return this.http.delete(this.configUrl+`/${ID}`)
+
+  }
+  
+  
 
 
 

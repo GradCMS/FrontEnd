@@ -8,6 +8,8 @@ import { ModuleService } from 'src/app/sharedServices/moduleData/module.service'
 })
 export class ModuleDisplayComponent implements OnInit {
   modules: any;
+  appendDeleteForm = false;
+  moduleIDToDelete!:number
   constructor(private moduleServ: ModuleService) { 
 
   }
@@ -18,5 +20,19 @@ export class ModuleDisplayComponent implements OnInit {
      })
 
   }
+
+  showDeleteForm(ID:number){
+     this.moduleIDToDelete=ID
+     this.appendDeleteForm=true
+
+  }
+  deleteModule(){
+    this.moduleServ.deleteModule(this.moduleIDToDelete).subscribe(data=>{
+      window.location.reload()
+    })
+  
+  }
+  
+
 
 }
