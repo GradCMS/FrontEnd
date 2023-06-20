@@ -1,5 +1,4 @@
-import { Component, Renderer2, ElementRef, OnInit } from '@angular/core';
-
+import {Component, Renderer2, ElementRef, OnInit} from '@angular/core';
 
 
 @Component({
@@ -10,10 +9,17 @@ import { Component, Renderer2, ElementRef, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   logoUrl = '../../../assets/img/AdminLTELogo.png';
   userImageUrl = '../../../assets/img/user2-160x160.jpg';
-  userName!: string;
-  constructor(private renderer: Renderer2, private el: ElementRef) {}
+  userName!: string | null;
+
+  constructor(private renderer: Renderer2, private el: ElementRef) {
+  }
+
   ngOnInit(): void {
-    this.userName = sessionStorage.getItem('username') || '';
+    if (sessionStorage.getItem('username') !== null) {
+      this.userName = sessionStorage.getItem('username');
+    } else {
+      this.userName = 'Guest'
+    }
   }
 
   //fix the next  function to work on all the sidebar links

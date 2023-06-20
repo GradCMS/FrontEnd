@@ -11,6 +11,7 @@
   <!-- Font Awesome -->
 </head>
 <body class="hold-transition login-page">
+<app-snackbar #snackbar message={{message}} type = {{type}}></app-snackbar>
 
 <div class="login-box">
   <!-- /.login-logo -->
@@ -41,7 +42,7 @@
         <div class="row" *ngIf="this.error_">
           <!-- /.col -->
           <div class="col-12">
-            <p class="danger"> Please Check the username or password</p>
+            <p class=text-red> Please Check the username or password</p>
           </div>
           <!-- /.col -->
         </div>

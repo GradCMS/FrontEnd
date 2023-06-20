@@ -37,6 +37,9 @@ import { InsertModuleMainComponent } from './pages/module-management/module-inse
 import { ToastrModule } from 'ngx-toastr';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { SnackbarComponent } from './snackbar/snackbar.component';
+import { TestPageComponent } from './test-page/test-page.component';
+import { ClassBuilderEditComponent } from './pages/class-builder/class-builder-edit/class-builder-edit.component';
 
 
 @NgModule({
@@ -73,6 +76,9 @@ import { LoginPageComponent } from './login-page/login-page.component';
     InsertModuleMainComponent,
     PageNotFoundComponent,
     LoginPageComponent,
+    SnackbarComponent,
+    TestPageComponent,
+    ClassBuilderEditComponent,
   ],
   imports: [
     BrowserModule,

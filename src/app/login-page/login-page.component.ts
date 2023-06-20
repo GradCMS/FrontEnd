@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {ToastrService} from "ngx-toastr";
 import {AuthServiceService} from "../sharedServices/Auth/auth-service.service";
+import {SnackbarComponent} from "../snackbar/snackbar.component";
 
 
 interface modifiedFormValues {
@@ -21,6 +22,9 @@ interface modifiedFormValues {
 
 export class LoginPageComponent implements OnInit {
 
+  @ViewChild('snackbar') private snackbar!: SnackbarComponent;
+  message!: string;
+  type!: string;
 
   user_name!: string;
   password!: string;
@@ -43,7 +47,7 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
     if (this.authService.isAuth()) {
       this.toastr.success('You are already logged in', 'Welcome Back');
-      this.router.navigate([''] , );
+      this.router.navigate(['']);
     }
     this.rememberMe = false;
     this.form = this.formBuilder.group({
@@ -76,17 +80,19 @@ export class LoginPageComponent implements OnInit {
         console.log('Token:', sessionStorage.getItem('token'));
         if (token) {
           this.router.navigate(['']);
-        }else {
-          // console.log('Token is undefined');
-          this.error_ = true;
-          console.log(this.error_);
+        }else{
+          this.message = 'please enter valid credentials';
+          this.type = 'error';
+          this.snackbar.show();
         }
+      },(error) => {
+        this.error_ = true;
+        console.log(error);
+        this.message = 'please enter valid credentials';
+        this.type = 'error';
+        this.snackbar.show();
       }
     );
-
-
-
-
   }
 
   // the real login function injects the http client
