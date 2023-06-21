@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,10 +21,9 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ModuleHeaderComponent } from './pages/module-management/module-display/module-header/module-header.component';
 import { DisplayHeaderComponent } from './pages/display-management/display-header/display-header.component';
 import { ClockComponent } from './pages/landing-page/clock/clock.component';
-import { NgDragDropModule } from 'ng-drag-drop';
 import { ColorPickerComponent } from './pages/class-builder/color-picker/color-picker.component';
 import { TabsComponent } from './pages/class-builder/class-builder-main/tabs/tabs.component';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SiteIdentityComponent } from './pages/site-identity/site-identity.component';
 import { ModuleDisplayComponent } from './pages/module-management/module-display/module-display-form/module-display.component';
 import{HttpClientModule} from '@angular/common/http'
@@ -47,6 +46,12 @@ import { EditNavbarFormComponent } from './pages/navbar-management/navbar-edit/e
 import { InsertNavbarFormComponent } from './pages/navbar-management/navbar-insert/insert-navbar-form/insert-navbar-form.component';
 import { InsertNavbarMainComponent } from './pages/navbar-management/navbar-insert/insert-navbar-main/insert-navbar-main.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { SnackbarComponent } from './snackbar/snackbar.component';
+import { TestPageComponent } from './test-page/test-page.component';
+import { ClassBuilderEditComponent } from './pages/class-builder/class-builder-edit/class-builder-edit.component';
+
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -90,8 +95,11 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     EditNavbarFormComponent,
     InsertNavbarFormComponent,
     InsertNavbarMainComponent,
-
-
+    PageNotFoundComponent,
+    // LoginPageComponent,
+    SnackbarComponent,
+    TestPageComponent,
+    ClassBuilderEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,8 +111,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     FormsModule,
     NgxPaginationModule,
     DragDropModule
-
-
 
   ],
   providers: []

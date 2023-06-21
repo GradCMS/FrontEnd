@@ -48,6 +48,7 @@ export class TabsComponent implements OnInit {
   selectedOutlineWidth: number = 0;
   selectedOutlineColor: string = '#000000';
 
+
   // end of outliers
   onTabClick(tab: string) {
     this.activeTab = tab;
@@ -92,11 +93,6 @@ export class TabsComponent implements OnInit {
       })
     });
   }
-  // make a setter to the form group
-  @Input() set cssStylesInput(cssStyles: any) {
-    this.cssStyles = cssStyles;
-    this.tabsForm.patchValue(cssStyles);
-  }
 
   printForm() {
     // console.log(this.tabsForm.value);
@@ -107,6 +103,9 @@ export class TabsComponent implements OnInit {
     // console.log(this.parseCssStringToNgStyle(this.generateCssStringWithoutNewLine(this.tabsForm)));
     return this.parseCssStringToNgStyle(this.generateCssStringWithoutNewLine(this.tabsForm));
     // console.log(this.generateCssStringWithClassName(this.tabsForm, this.classPlaceHolderChild));
+  }
+  getForm() {
+    return this.tabsForm;
   }
 
   generateCssStringWithClassName(form: FormGroup, className: string): string {
@@ -158,7 +157,9 @@ export class TabsComponent implements OnInit {
     if (boarderType) cssString += `border-${boarderType}-radius: ${sameRadius ? sameRadius + 'px' : ''};\n`;
     if (radiusType === 'same') cssString += `border-${boarderType}-radius: ${sameRadius + 'px'};\n`;
     if (radiusType === 'separate') cssString += `border-${boarderType}-radius: ${topLeftRadius + 'px ' + topRightRadius + 'px ' + bottomRightRadius + 'px ' + bottomLeftRadius + 'px'};\n`;
+
     // cssString += `border-width: ${boarderWidth}px;\nborder-color: ${boarderColor};\nborder-style: ${boarderStyle};\nborder-${boarderType}-radius: ${sameRadius ? sameRadius + 'px' : ''};\nborder-${boarderType}-radius: ${radiusType === 'same' ? sameRadius + 'px' : ''};\nborder-${boarderType}-radius: ${radiusType === 'separate' ? topLeftRadius + 'px ' + topRightRadius + 'px ' + bottomRightRadius + 'px ' + bottomLeftRadius + 'px' : ''};\n`;
+
     // Tab Outline CSS
     const outlineStyle = form.get('tabOutline.outlineStyle')?.value;
     const outlineWidth = form.get('tabOutline.outlineWidth')?.value;

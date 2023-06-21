@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CssClassService } from 'src/app/sharedServices/classData/css-class.service';
@@ -11,9 +12,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./insert-module-form.component.css']
 })
 export class InsertModuleFormComponent implements OnInit {
-  newModule=new Module 
-  cssID!:number 
+  newModule = new Module
+  cssID!: number
   cssclasses: any;
+
    placeholderControl = new FormControl('', Validators.required);
    widthControl = new FormControl('', Validators.required);
    animationControl = new FormControl('', Validators.required);
@@ -56,6 +58,7 @@ export class InsertModuleFormComponent implements OnInit {
        this.moduleForm.valid
       );
     }
+
 
 
 
