@@ -1,5 +1,4 @@
-export class Module{
-    
+export class Module{ 
   placeholder!: string
   animation_style!:string
   class_id!:number

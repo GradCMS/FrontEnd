@@ -8,11 +8,11 @@
     <!-- /.card-header -->
     <div class="card-body ">
         <ul class="todo-list " data-widget="todo-list">
-            <li *ngFor="let module of modules">
+            <li *ngFor="let module of modules | paginate: { itemsPerPage: 5, currentPage: p }">
                 <!-- edits tools -->
                 <span class="tools">
-                    <a routerLink="/PageManagement" class="fas fa-edit " style="color: #dc3545;"></a>
-                    <a routerLink="/ModuleManagement" (click)="showDeleteForm(module.id)" class="fas fa-trash "
+                    <a routerLink="/ModuleIEdit/{{module.id}}" class="fas fa-edit " style="color: #dc3545;"></a>
+                    <a routerLink="/ModuleManagement" (click)="deleteModule(module.id)" class="fas fa-trash "
                         style="color: #dc3545;"></a>
                 </span>
                 <div class="card-body ">
@@ -20,17 +20,11 @@
                 </div>
 
 
-                <form *ngIf="appendDeleteForm==true && module.id==moduleIDToDelete">
-                    <p>Are you sure you want to delete this Module?</p>
-                    <button type="button" (click)="deleteModule()">Yes</button>
-                    <button type="button" (click)="appendDeleteForm = false">No</button>
-                </form>
             </li>
 
 
         </ul>
-
-    </div>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
 
 

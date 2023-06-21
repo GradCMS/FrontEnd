@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ModuleService } from 'src/app/sharedServices/moduleData/module.service';
-
 @Component({
   selector: 'app-module-display',
   templateUrl: './module-display.component.html',
@@ -8,8 +7,8 @@ import { ModuleService } from 'src/app/sharedServices/moduleData/module.service'
 })
 export class ModuleDisplayComponent implements OnInit {
   modules: any;
-  appendDeleteForm = false;
-  moduleIDToDelete!:number
+  p: number = 1;
+
   constructor(private moduleServ: ModuleService) { 
 
   }
@@ -21,15 +20,15 @@ export class ModuleDisplayComponent implements OnInit {
 
   }
 
-  showDeleteForm(ID:number){
-     this.moduleIDToDelete=ID
-     this.appendDeleteForm=true
-
-  }
-  deleteModule(){
-    this.moduleServ.deleteModule(this.moduleIDToDelete).subscribe(data=>{
+  
+  deleteModule(ID:number){
+    if(confirm('Are you sure to delete this module ?'))
+     this.moduleServ.deleteModule(ID).subscribe(data=>{
       window.location.reload()
-    })
+      alert("Module deleted successfully")
+     })
+     
+
   
   }
   

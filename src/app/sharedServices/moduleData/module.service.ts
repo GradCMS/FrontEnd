@@ -1,36 +1,42 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Module } from 'src/app/models/Module';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModuleService {
   
-  private configUrl="http://localhost:3000/modules"
+  private configUrl="http://LocalHost:8000/api/module"
   constructor(private http: HttpClient) { 
 
 
   }
    //Create
-   addModule(object:any){
-    return this.http.post(this.configUrl,object)
+   addModule(object:any): Observable<Module>{
+    return this.http.post<Module>(this.configUrl,object)
    
    }
   //Read
-  getModules(){
-    return this.http.get(this.configUrl);  
+  getModules(): Observable<Module>{
+    return this.http.get<Module>(this.configUrl);  
+
+  }
+  getModuleByID(id:number):Observable<Module>{
+    return this.http.get<Module>(this.configUrl+`/${id}`);  
 
   }
  
   //Update
-  updateModule(object:any ,ID:number){
-  return this.http.put(this.configUrl+`/${ID}`,object) 
+  updateModule(object:any ,ID:number): Observable<Module>{
+  return this.http.patch<Module>(this.configUrl+`/${ID}`,object) 
   
 
   }
   //Delete
-  deleteModule(ID:number){
-  return this.http.delete(this.configUrl+`/${ID}`)
+  deleteModule(ID:number): Observable<Module>{
+   return this.http.delete<Module>(this.configUrl+`/${ID}`)
 
   }
   

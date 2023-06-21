@@ -1,0 +1,321 @@
+<!-- DISPLAY MANAGER -->
+<div class="card">
+    <table class="table table-bordered ">
+
+        <tbody>
+            <tr>
+                <td colspan="1" class="text-center">Placeholder:</td>
+                <td colspan="4" class="text-center">
+                    <input [(ngModel)]="newDisplay.placeholder" type="Text" class="form-control">
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td colspan="1" class="text-center">Display Type:</td>
+                <td>
+                    <div class="form-group clearfix">
+
+                        <div class="icheck-primary d-inline">
+                            <label>
+                                <input type="radio" name="choice" value="slider" [(ngModel)]="newDisplay.type"
+                                    (change)="checkStatus($event)"> Slider
+                            </label>
+                        </div>
+                        <div class="icheck-primary d-inline px-3">
+                            <label>
+                                <input type="radio" name="choice" value="grid" [(ngModel)]="newDisplay.type"
+                                    (change)="checkStatus($event);"> Grid
+                            </label>
+                        </div>
+                    </div>
+                </td>
+
+                <td colspan="1" class="text-center">Displaysource:</td>
+                <td colspan="4" class="text-center">
+                    <select class="form-control select2bs4" style="width: 100%;"
+                        [(ngModel)]="newDisplay.source_page_id">
+                        <option value="1">Parent page 1</option>
+                        <option value="1">Parent page 2</option>
+                        <option value="1">Parent page 3</option>
+                        <option value="1">Parent page 4</option>
+                    </select>
+                </td>
+
+            </tr>
+
+            <tr>
+
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+
+
+<!-- SLIDER SETTINGS -->
+<section class="content-header" *ngIf="isSliderChecked">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h3>Slider Settings</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content" *ngIf="isSliderChecked">
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-body">
+            <!-- HERE | Modules inserted -->
+            <!-- Module Form & Editor -->
+            <div class="card">
+                <table class="table table-bordered ">
+                    <tbody>
+                        <tr>
+                            <td colspan="1" class="text-center">Sliders per row:</td>
+                            <td colspan="1" class="text-center">
+                                <input type="Text" class="form-control" [(ngModel)]="slider.slides_per_row">
+                            </td>
+
+                            <td colspan="1">Sliders per column:</td>
+                            <td colspan="1" class="text-center">
+                                <input type="Text" class="form-control" [(ngModel)]="slider.slides_per_column">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="1" class="text-center">Total slides:</td>
+                            <td colspan="1" class="text-center">
+                                <input type="Text" class="form-control" [(ngModel)]="slider.total_slides">
+                            </td>
+
+                            <td colspan="1">Slides spacing:</td>
+                            <td colspan="1" class="text-center">
+                                <input type="Text" class="form-control" [(ngModel)]="slider.slides_spacing">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="1" class="text-center">Center slides:</td>
+                            <td colspan="1" class="text-center">
+                                <div class="card-body">
+                                    <label class="switch">
+                                        <input type="checkbox" [(ngModel)]="slider.center_slides">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </td>
+
+                            <td colspan="1">Loop spacing:</td>
+                            <td colspan="1" class="text-center">
+                                <div class="card-body">
+                                    <label class="switch">
+                                        <input type="checkbox" [(ngModel)]="slider.loop_slides">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="1" class="text-center">Auto Height:</td>
+                            <td colspan="1" class="text-center">
+                                <div class="card-body">
+                                    <label class="switch">
+                                        <input type="checkbox" [(ngModel)]="slider.auto_height">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </td>
+
+                            <td colspan="1">Stretch Height:</td>
+                            <td colspan="1" class="text-center">
+                                <div class="card-body">
+                                    <label class="switch">
+                                        <input type="checkbox" [(ngModel)]="slider.stretch_height">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="1" class="text-center">Slides class:</td>
+                            <td colspan="1" class="text-center">
+                                <select class="form-control select2bs4" style="width: 100%;"  [(ngModel)]="slider.class_id" >
+                                    <option *ngFor="let css of cssclasses"[value]="css.id">{{css.placeholder}}</option>
+                                </select>
+                
+                            </td>
+
+                            <td colspan="1">Animation:</td>
+                            <td colspan="1" class="text-center">
+                                <select class="form-control select2bs4" style="width: 100%;" [(ngModel)]="slider.animation">
+                                    <option>animation 1</option>
+                                    <option>adnimation 2</option>
+                                </select>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan="1" class="text-center">Auto Play:</td>
+                            <td colspan="1" class="text-center">
+                                <div class="card-body">
+                                    <label class="switch">
+                                        <input type="checkbox" [(ngModel)]="slider.auto_play">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </td>
+
+                            <td colspan="1">Slide Effect:</td>
+                            <td colspan="1" class="text-center" >
+                               <button class="btn btn-secondary " type="button" (click)="decrement()">-</button>
+                               <input id="range" type="range" [(ngModel)]="slider.effect_speed_ms" min="0" max="100">
+                              <button class="btn btn-primary" type="button" (click)="increment()">+</button>
+                                  <p> {{ slider.effect_speed_ms }} ms</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="1" class="text-center">Chosse:</td>
+                            <td>
+                                <div class="form-group clearfix">
+            
+                                    <div class="icheck-primary d-inline">
+                                        <label>
+                                            <input type="radio" name="choice" value="Arrow" 
+                                            [(ngModel)]="arrowAndBullet"> Arrows
+                                        </label>
+                                    </div>
+                                    <div class="icheck-primary d-inline px-3">
+                                        <label>
+                                            <input type="radio" name="choice" value="Bullet" [(ngModel)]="arrowAndBullet"> Bullets
+                                        </label>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- END HERE -->
+        </div>
+    </div>
+    <!-- /.card -->
+
+</section>
+<!-- END OF SLIDER SETTINGS -->
+
+<!-- GRID SETTINGS -->
+<section class="content-header" *ngIf="isGridChecked">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h3>Grid Settings</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content" *ngIf="isGridChecked">
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-body">
+            <!-- HERE | Modules inserted -->
+            <!-- Module Form & Editor -->
+            <div class="card">
+                <table class="table table-bordered ">
+
+
+                    <tbody>
+                        <tr>
+                            <td colspan="1" class="text-center">Blocks count:</td>
+                            <td colspan="3" class="text-center">
+                                <input type="Text" class="form-control" [(ngModel)]="grid.blocks_count">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="1" class="text-center">Blocks Per Row:</td>
+                            <td colspan="1" class="text-center">
+                                <input type="Text" class="form-control" [(ngModel)]="grid.blocks_per_row">
+                            </td>
+
+                            <td colspan="1">Blocks spacing:</td>
+                            <td colspan="1" class="text-center">
+                                <input type="Text" class="form-control" [(ngModel)]="grid.blocks_spacing">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="1" class="text-center">Blocks class:</td>
+                            <td colspan="1" class="text-center">
+                                <select class="form-control select2bs4" style="width: 100%;"  [(ngModel)]="grid.class_id" >
+                                    <option *ngFor="let css of cssclasses"[value]="css.id">{{css.placeholder}}</option>
+                                </select>
+                            </td>
+
+                            <td colspan="1">Animation:</td>
+                            <td colspan="1" class="text-center">
+                                <select class="form-control select2bs4" style="width: 100%;" [(ngModel)]="grid.blocks_animation">
+                                    <option>animation 1</option>
+                                    <option>adnimation 2</option>
+                                </select>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td colspan="1" class="text-center">Horizontal Alignment:</td>
+                            <td colspan="1" class="text-center">
+                                <select class="form-control select2bs4" style="width: 100%;" [(ngModel)]="grid.horizontal_alignment">
+                                    <option>Effect 1</option>
+                                    <option>Effect 2</option>
+                                </select>
+                            </td>
+
+                            <td colspan="1">Vertical Alignment:</td>
+                            <td colspan="1" class="text-center">
+                                <select class="form-control select2bs4" style="width: 100%;" [(ngModel)]="grid.vertical_alignment">
+                                    <option>Effect 1</option>
+                                    <option>Effect 2</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- END HERE -->
+        </div>
+    </div>
+    <!-- /.card -->
+
+</section>
+<!-- END OF GRID SETTINGS -->
+
+
+
+
+
+
+<!-- save form -->
+<section class="content">
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-body">
+            <!-- HERE | Modules inserted -->
+            <!-- Module Form & Editor -->
+            <div class="card">
+                <div class="card-footer">
+                    <button type="button" class="btn btn-block btn-success btn-lg" (click)="insertNewDisplay()">Insert
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.card -->
+
+</section>

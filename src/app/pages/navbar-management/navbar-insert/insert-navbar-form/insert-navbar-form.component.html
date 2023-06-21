@@ -1,0 +1,60 @@
+<div class="card">
+    <table class="table table-bordered ">
+
+        <tbody>
+            <tr>
+                <td colspan="1" class="text-center">Name:</td>
+                <td colspan="4" class="text-center">
+                    <input  type="Text" class="form-control">
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td colspan="1" class="text-center">DropDown Elements:</td>
+                <td>
+                    <div class="form-group clearfix">
+
+                        <div class="icheck-primary d-inline">
+                            <label>
+                                <input type="checkbox" name="choice" 
+                                    (change)="checkStatus($event)"> 
+                            </label>
+                        </div>
+                    </div>
+                </td>
+
+                <td colspan="1" class="text-center">Referenced Page:</td>
+                <td colspan="4" class="text-center">
+                    <select class="form-control select2bs4" style="width: 100%;">
+                        <option value="1">Parent page 1</option>
+                        <option value="1">Parent page 2</option>
+                        <option value="1">Parent page 3</option>
+                        <option value="1">Parent page 4</option>
+                    </select>
+                </td>
+
+            </tr>
+
+            <tr>
+
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="card-footer col-sm-6" style="background-color:white;">
+        </div>
+        <div class="card-footer col-sm-6" style="background-color:white; ">
+            <a routerLink="/NavElementInsert" class="btn btn-success" data-toggle="modal" style="float: right;"><i
+                    class="fa fa-plus">&#xE147;</i> <span>Insert New Element</span></a>
+        </div>
+    </div>
+</div>
+

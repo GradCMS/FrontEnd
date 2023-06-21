@@ -1,0 +1,41 @@
+<div class="card ">
+    <div class="card-header ">
+        <h3 class="card-title mt-3">
+            Displays
+        </h3>
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body ">
+        <ul class="todo-list " data-widget="todo-list">
+            <li *ngFor="let display of displays | paginate: { itemsPerPage: 5, currentPage: p }">
+                <!-- edits tools -->
+                <span class="tools">
+                    <a routerLink="/DisplayEdit/{{display.id}}" class="fas fa-edit " style="color: #dc3545;"></a>
+                    <a routerLink="/DisplayManagement" (click)="deleteDisplay(display.id)" class="fas fa-trash "
+                        style="color: #dc3545;"></a>
+                </span>
+                <div class="card-body ">
+                    <div class="text-center">{{display.placeholder}}</div>
+                </div>
+
+
+            </li>
+
+
+        </ul>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="card-footer col-sm-6" style="background-color:white;">
+            </div>
+            <div class="card-footer col-sm-6" style="background-color:white; ">
+                <a routerLink="/DisplayInsert" class="btn btn-success" data-toggle="modal" style="float: right;"><i
+                        class="fa fa-plus">&#xE147;</i> <span>Add New Display</span></a>
+            </div>
+        </div>
+    </div>
+</div>
