@@ -12,7 +12,12 @@ export class AuthServiceService {
 
   url = 'http://localHost:8000/api/auth/login';
 
-  constructor( private router : Router ,private toastr : ToastrService) { }
+  constructor( private router : Router ,private http : HttpClient) { }
+
+  login(user_name: string, password: string) {
+    const body = { user_name, password };
+    return this.http.post(this.url, body);
+  }
 
   isAuth() {
     if (sessionStorage.getItem('token')) {
@@ -24,7 +29,6 @@ export class AuthServiceService {
   logout() {
     console.log('Logout button clicked');
     sessionStorage.clear();
-    this.toastr.success('You are logged out', 'Goodbye');
     this.router.navigate(['/login']);
   }
 }

@@ -30,7 +30,9 @@
           <div class="card-header">
             <div class="m-3 text-center"><h3 class="card-title mt-1 ">University Identity</h3></div>
             <div class="text-right m-2">
-              <a class="btn btn-success" (click)="onSubmit($event)"><i class="fas fa-save"></i> Update</a>
+              <button class="btn btn-success" (click)="onSubmit($event)" [disabled]="this.university.invalid || this.socialMediaForm.invalid || this.contactusForm.invalid">
+                <i class="fas fa-save"></i> Update
+              </button>
             </div>
           </div>
           <!-- ./card-header -->
@@ -65,14 +67,19 @@
                                   <label >Default Cover Logo</label>
                                   <div class="input-group mb-3 mt-3">
                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" formControlName="defaultCoverLogo" name="defaultCoverLogo" id="defaultCoverLogo" (change)="onFileSelected($event,'defaultCoverLogo',0)">>
-                                      <label class="custom-file-label">{{ university.get('universityImages')?.get('defaultCoverLogo')?.value || 'Choose file' }}</label>
-<!--                                      <label class="custom-file-label">{{ this.university.get('universityImages').get('defaultCoverLogo').value || 'Choose file' }}</label>-->
+                                      <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png" formControlName="defaultCoverLogo" value="Click to Show" name="defaultCoverLogo" id="defaultCoverLogo" (change)="onFileSelected($event,'defaultCoverLogo',0)" >
+                                      <label class="custom-file-label">{{ university.get('universityImages')?.get('defaultCoverLogo')?.value || 'No file selected' }}</label>
                                     </div>
+
                                   </div>
-                                  <div *ngIf="this.fileUrls[0]">
+                                    <div *ngIf="university.get('universityImages')?.get('defaultCoverLogo')?.invalid && university.get('universityImages')?.get('defaultCoverLogo')?.touched" style="color: red">
+                                      <span *ngIf="university.get('universityImages')?.get('defaultCoverLogo')?.errors?.['required']" >This image is required.</span>
+                                    </div>
+                                  <div *ngIf="this.fileUrls[0] ">
                                     <img [src]="this.fileUrls[0]" style="height:200px;width:300px;" alt="Selected image">
                                   </div>
+                                    <div>
+                                    </div>
                                 </div></td>
                               </tr>
                               <tr>
@@ -80,7 +87,7 @@
                                   <label >Default Cover Logo Vertical</label>
                                   <div class="input-group ">
                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" formControlName="defaultCoverLogoVertical" name="defaultCoverLogoVertical" id="defaultCoverLogoVertical" (change)="onFileSelected($event,'defaultCoverLogoVertical',1)">>
+                                      <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png" formControlName="defaultCoverLogoVertical" name="defaultCoverLogoVertical" id="defaultCoverLogoVertical" (change)="onFileSelected($event,'defaultCoverLogoVertical',1)">
                                       <label class="custom-file-label">{{ university.get('universityImages')?.get('defaultCoverLogoVertical')?.value || 'Choose file' }}</label>
                                     </div>
                                   </div>
@@ -94,7 +101,7 @@
                                   <label >Default Header Image</label>
                                   <div class="input-group mb-3 mt-3">
                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" formControlName="defaultHeaderImage" name="defaultHeaderImage" id="defaultHeaderImage" (change)="onFileSelected($event,'defaultHeaderImage',2)">>
+                                      <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png" formControlName="defaultHeaderImage" name="defaultHeaderImage" id="defaultHeaderImage" (change)="onFileSelected($event,'defaultHeaderImage',2)">
                                       <label class="custom-file-label">{{ university.get('universityImages')?.get('defaultHeaderImage')?.value || 'Choose file' }}</label>
                                     </div>
                                   </div>
@@ -108,7 +115,7 @@
                                   <label >Default Browser icon</label>
                                   <div class="input-group mb-3 mt-3">
                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" formControlName="defaultBrowserIcon" name="defaultBrowserIcon" id="defaultBrowserIcon" (change)="onFileSelected($event , 'defaultBrowserIcon',3)">>
+                                      <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png" formControlName="defaultBrowserIcon" name="defaultBrowserIcon" id="defaultBrowserIcon" (change)="onFileSelected($event , 'defaultBrowserIcon',3)">
                                       <label class="custom-file-label">{{ university.get('universityImages')?.get('defaultBrowserIcon')?.value || 'Choose file' }}</label>
                                     </div>
                                   </div>
@@ -122,7 +129,7 @@
                                   <label >Secondary Logo</label>
                                   <div class="input-group">
                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" formControlName="secondaryLogo" name="secondaryLogo" id="secondaryLogo" (change)="onFileSelected($event,'secondaryLogo',4)">>
+                                      <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png"  formControlName="secondaryLogo" name="secondaryLogo" id="secondaryLogo" (change)="onFileSelected($event,'secondaryLogo',4)">
                                       <label class="custom-file-label">{{ university.get('universityImages')?.get('secondaryLogo')?.value || 'Choose file' }}</label>
                                     </div>
                                   </div>
@@ -136,7 +143,7 @@
                                   <label>Background image</label>
                                   <div class="input-group mb-3 mt-3">
                                     <div class="custom-file">
-                                      <input type="file" class="custom-file-input" formControlName="backgroundImage" name="backgroundImage" id="backgroundImage" (change)="onFileSelected($event,'backgroundImage',5)">>
+                                      <input type="file" class="custom-file-input" accept=".jpg,.jpeg,.png" formControlName="backgroundImage" name="backgroundImage" id="backgroundImage" (change)="onFileSelected($event,'backgroundImage',5)">
                                       <label class="custom-file-label">{{ university.get('universityImages')?.get('backgroundImage')?.value || 'Choose file' }}</label>
                                     </div>
                                   </div>
@@ -163,7 +170,7 @@
                               <tbody>
                               <tr data-widget="expandable-body d-none" aria-expanded="false">
                                 <td>
-                                  University Name <input class="form-control mb-3 mt-3" type="text" placeholder="Address" formControlName="universityName">
+                                  University Name <input class="form-control mb-3 mt-3" type="text" placeholder="University Name" formControlName="universityName">
                                   <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></td>
                               </tr>
                               <tr data-widget="expandable-body d-none" aria-expanded="false">
@@ -204,6 +211,10 @@
                       <tr data-widget="expandable-body d-none" aria-expanded="false">
                         <td>
                           University Email <input class="form-control mb-3 mt-3"  type="Email" placeholder="Email" formControlName ="universityEmail" name="universityEmail" id="universityEmail" >
+                          <div *ngIf="contactusForm.get('universityEmail')?.invalid && contactusForm.get('universityEmail')?.touched" style="color: red">
+                            <span *ngIf="contactusForm.get('universityEmail')?.errors?.['required']" >Email is required.</span>
+                            <span *ngIf="contactusForm.get('universityEmail')?.errors?.['email']">Invalid email address.</span>
+                          </div>
                         </td>
                       </tr>
                       <tr data-widget="expandable-body d-none" aria-expanded="false">
@@ -211,7 +222,10 @@
                           Main Phone Number
                           <div class="input-group mb-3 mt-3">
                             <input type="text" class="form-control " placeholder="Phone Number" formControlName="mainPhoneNumber" name="mainPhoneNumber" id="mainPhoneNumber">
-
+                          </div>
+                          <div *ngIf="contactusForm.get('mainPhoneNumber')?.invalid && contactusForm.get('mainPhoneNumber')?.touched" style="color: red">
+                            <span *ngIf="contactusForm.get('mainPhoneNumber')?.errors?.['required']" >Phone number is required.</span>
+                            <span *ngIf="contactusForm.get('mainPhoneNumber')?.errors?.['invalidPhoneNumber']">Invalid phone number format. ex:+20xxxxxxxxxx</span>
                           </div>
                         </td>
                       </tr>
@@ -219,9 +233,12 @@
                         <td>
                           University Landline
                           <input class="form-control mb-3 mt-3" type="text" placeholder="Landline Number" formControlName="universityLandline" name="universityLandline" id="universityLandline">
+                          <div *ngIf="contactusForm.get('universityLandline')?.invalid && contactusForm.get('universityLandline')?.touched" style="color: red">
+                            <span *ngIf="contactusForm.get('universityLandline')?.errors?.['required']" >Landline is required.</span>
+                            <span *ngIf="contactusForm.get('universityLandline')?.errors?.['invalidNumber']">Invalid landline format. Ex:02xxxxxxxx</span>
+                          </div>
                         </td>
                       </tr>
-
                       </tbody>
                     </table>
                   </div>
@@ -247,6 +264,9 @@
                           </div>
                           <input type="text" class="form-control"  placeholder="Link" formControlName="facebookLink">
                           <div data-lastpass-icon-root="true"  style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                          <div *ngIf="socialMediaForm.get('facebookLink')?.invalid && socialMediaForm.get('facebookLink')?.touched" style="color: red">
+                            <span *ngIf="socialMediaForm.get('facebookLink')?.errors?.['invalidUrl']">Please enter a valid Facebook link starting with 'https://www.facebook.com/xxxxxxx'</span>
+                          </div>
                         </td>
                       </tr>
                       <tr data-widget="expandable-body d-none" aria-expanded="false">
@@ -257,6 +277,9 @@
                           </div>
                           <input type="text"  class="form-control" placeholder="Link" formControlName="twitterLink">
                           <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                          <div *ngIf="socialMediaForm.get('twitterLink')?.invalid && socialMediaForm.get('twitterLink')?.touched" style="color: red">
+                            <span *ngIf="socialMediaForm.get('twitterLink')?.errors?.['invalidUrl']">Please enter a valid twitter link starting with 'https://www.twitter.com/xxxxxxx'</span>
+                          </div>
                         </td>
                       </tr>
                       <tr data-widget="expandable-body d-none" aria-expanded="false">
@@ -267,6 +290,9 @@
                           </div>
                           <input type="text" class="form-control"  placeholder="Link" formControlName="instagramLink">
                           <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                          <div *ngIf="socialMediaForm.get('instagramLink')?.invalid && socialMediaForm.get('instagramLink')?.touched" style="color: red">
+                            <span *ngIf="socialMediaForm.get('instagramLink')?.errors?.['invalidUrl']">Please enter a valid instagram link starting with 'https://www.instagram.com/xxxxxxx'</span>
+                          </div>
                         </td>
                       </tr>
                       <tr data-widget="expandable-body d-none" aria-expanded="false">
@@ -278,6 +304,9 @@
                             </div>
                             <input type="text" class="form-control" placeholder="Link"  formControlName="otherLink">
                             <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
+                          <div *ngIf="socialMediaForm.get('otherLink')?.invalid && socialMediaForm.get('twitterLink')?.touched" style="color: red">
+                            <span *ngIf="socialMediaForm.get('twitterLink')?.errors?.['invalidUrl']">Please enter a valid link starting with 'https://www.*****.com/xxxxxxx'</span>
+                          </div>
                         </td>
                       </tbody>
                     </table>
