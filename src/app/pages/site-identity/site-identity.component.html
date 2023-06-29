@@ -206,6 +206,9 @@
                       <tr data-widget="expandable-body d-none" aria-expanded="false">
                         <td>
                           University Address <input class="form-control mb-3 mt-3" type="text"  placeholder="Address" formControlName = "universityAddress" name="universityAddress" id="universityAddress">
+                          <div *ngIf="contactusForm.get('universityAddress')?.invalid && contactusForm.get('universityAddress')?.touched" style="color: red">
+                            <span *ngIf="contactusForm.get('universityAddress')?.errors?.['required']" >Address is required.</span>
+                          </div>
                         </td>
                       </tr>
                       <tr data-widget="expandable-body d-none" aria-expanded="false">
