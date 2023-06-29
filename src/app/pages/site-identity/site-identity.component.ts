@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {SnackbarComponent} from "../../snackbar/snackbar.component";
@@ -35,17 +35,7 @@ export class SiteIdentityComponent implements OnInit {
   type: string = '';
 
   about: any;
-  field_address: any;
-  field_email: any;
-  field_phone: any;
-  field_landline: any;
-  field_twitter: any;
-  field_instagram: any;
-  field_linkedin: any;
-  field_facebook: any;
-  field_university_name: any;
-  field_short_description: any;
-  field_main_slogan: any;
+
   getrequest: any;
 
   row1Expanded: boolean = false;
@@ -54,7 +44,32 @@ export class SiteIdentityComponent implements OnInit {
   rowAbout: boolean = false;
   rowImages: boolean = false;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router,private siteIdentityService:SiteIdentityService) {
+  // phone number validator
+  phoneNumberValidator(control: FormControl): { [key: string]: any } | null {
+    const phoneNumberPattern = /^\+\d{12}$/;
+    if (!phoneNumberPattern.test(control.value)) {
+      return {invalidPhoneNumber: true};
+    }
+    return null;
+  }
+
+  landLineValidator(control: FormControl): { [key: string]: any } | null {
+    const numberPattern = /^\d{10}$/;
+    if (!numberPattern.test(control.value)) {
+      return {invalidNumber: true};
+    }
+    return null;
+  }
+
+  urlValidator(control: FormControl): { [key: string]: any } | null {
+    const urlPattern = /^(http|https):\/\/[^ "]+$/;
+    if (!urlPattern.test(control.value)) {
+      return {invalidUrl: true};
+    }
+    return null;
+  }
+
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private siteIdentityService: SiteIdentityService) {
 
   }
 
@@ -66,10 +81,10 @@ export class SiteIdentityComponent implements OnInit {
     }
     this.university = this.fb.group({
       universityImages: this.fb.group({
-        defaultCoverLogo: [''],
-        defaultCoverLogoVertical: [''],
-        defaultHeaderImage: [''],
-        defaultBrowserIcon: [''],
+        defaultCoverLogo: ['', Validators.required],
+        defaultCoverLogoVertical: ['', Validators.required],
+        defaultHeaderImage: ['', Validators.required],
+        defaultBrowserIcon: ['', Validators.required],
         secondaryLogo: [''],
         backgroundImage: [''],
       }),
@@ -82,17 +97,16 @@ export class SiteIdentityComponent implements OnInit {
     this.contactusForm = this.fb.group(
       {
         universityAddress: ['', Validators.required],
-        universityEmail: ['', Validators.required],
-        mainPhoneNumber: ['', Validators.required],
-        universityLandline: ['', Validators.required],
+        universityEmail: ['', [Validators.required, Validators.email]],
+        mainPhoneNumber: ['', [Validators.required, this.phoneNumberValidator]],
+        universityLandline: ['', [Validators.required, this.landLineValidator]],
       })
     this.socialMediaForm = this.fb.group(
       {
-        facebookLink: ['', Validators.required],
-        twitterLink: ['', Validators.required],
-        instagramLink: ['', Validators.required],
-        otherLink: ['', Validators.required],
-
+        facebookLink: ['', [this.urlValidator]],
+        twitterLink: ['', [this.urlValidator]],
+        instagramLink: ['', [this.urlValidator]],
+        otherLink: ['', [this.urlValidator]],
       })
     this.getDataIntoForm();
   }
@@ -172,30 +186,12 @@ export class SiteIdentityComponent implements OnInit {
             secondaryLogo: siteIdentity.images.secondaryLogo,
             backgroundImage: siteIdentity.images.backgroundImage,
           });
-      },error => {
+      }, error => {
         console.log(error);
       })
 
-    this.contactusForm.patchValue({
-      universityAddress: this.field_address,
-      universityEmail: this.field_email,
-      mainPhoneNumber: this.field_phone,
-      universityLandline: this.field_landline,
-    })
-    this.socialMediaForm.patchValue({
-      facebookLink: this.field_facebook,
-      twitterLink: this.field_twitter,
-      instagramLink: this.field_instagram,
-      otherLink: this.field_linkedin,
-    })
-    this.university.patchValue({
-      aboutUniversity: {
-        universityName: this.field_university_name,
-        shortDescription: this.field_short_description,
-        mainSlogan: this.field_main_slogan,
-      }
-    })
   }
+
   images: File[] = [];
 
   fileUrls: string[] = ['', '', '', '', '', ''];
@@ -216,19 +212,19 @@ export class SiteIdentityComponent implements OnInit {
           break;
         case 'defaultHeaderImage':
           this.fileUrls[2] = reader.result as string;
-            this.images[2] = file;
+          this.images[2] = file;
           break;
         case 'defaultBrowserIcon':
           this.fileUrls[3] = reader.result as string;
-            this.images[3] = file;
+          this.images[3] = file;
           break;
         case 'secondaryLogo':
           this.fileUrls[4] = reader.result as string;
-            this.images[4] = file;
+          this.images[4] = file;
           break;
         case 'backgroundImage':
           this.fileUrls[5] = reader.result as string;
-            this.images[5] = file;
+          this.images[5] = file;
           break;
         default:
           break;
@@ -240,10 +236,10 @@ export class SiteIdentityComponent implements OnInit {
   onSubmit(event: any) {
     // send the formData to the server using an HTTP request
     this.images.forEach((image) => {
-        if (image) {
-            // this.formData.append('image' + index, image, image.name);
+      if (image) {
+        // this.formData.append('image' + index, image, image.name);
         console.log(image);
-        }
+      }
     });
     console.log(this.university.value);
     const formValues = {
@@ -270,70 +266,68 @@ export class SiteIdentityComponent implements OnInit {
     const formData = new FormData();
     formData.append('contact_us', JSON.stringify(modifiedFormValues.contact_us));
     if (this.contactusForm.value.mainPhoneNumber) {
-        formData.append('contact_us[mainPhoneNumber]', this.contactusForm.value.mainPhoneNumber);
+      formData.append('contact_us[mainPhoneNumber]', this.contactusForm.value.mainPhoneNumber);
     }
     if (this.contactusForm.value.universityAddress) {
-        formData.append('contact_us[universityAddress]', this.contactusForm.value.universityAddress);
+      formData.append('contact_us[universityAddress]', this.contactusForm.value.universityAddress);
     }
     if (this.contactusForm.value.universityEmail) {
-        formData.append('contact_us[universityEmail]', this.contactusForm.value.universityEmail);
+      formData.append('contact_us[universityEmail]', this.contactusForm.value.universityEmail);
     }
     if (this.contactusForm.value.universityLandline) {
-        formData.append('contact_us[universityLandline]', this.contactusForm.value.universityLandline);
+      formData.append('contact_us[universityLandline]', this.contactusForm.value.universityLandline);
     }
     if (this.socialMediaForm.value.facebookLink) {
-        formData.append('social_media[facebookLink]', this.socialMediaForm.value.facebookLink);
+      formData.append('social_media[facebookLink]', this.socialMediaForm.value.facebookLink);
     }
     if (this.socialMediaForm.value.instagramLink) {
-        formData.append('social_media[instagramLink]', this.socialMediaForm.value.instagramLink);
+      formData.append('social_media[instagramLink]', this.socialMediaForm.value.instagramLink);
     }
     if (this.socialMediaForm.value.twitterLink) {
-        formData.append('social_media[twitterLink]', this.socialMediaForm.value.twitterLink);
+      formData.append('social_media[twitterLink]', this.socialMediaForm.value.twitterLink);
     }
     if (this.university.value.aboutUniversity.mainSlogan) {
-        formData.append('about[mainSlogan]', this.university.value.aboutUniversity.mainSlogan);
+      formData.append('about[mainSlogan]', this.university.value.aboutUniversity.mainSlogan);
     }
     if (this.university.value.aboutUniversity.shortDescription) {
-        formData.append('about[shortDescription]', this.university.value.aboutUniversity.shortDescription);
+      formData.append('about[shortDescription]', this.university.value.aboutUniversity.shortDescription);
     }
     if (this.university.value.aboutUniversity.universityName) {
-        formData.append('about[universityName]', this.university.value.aboutUniversity.universityName);
+      formData.append('about[universityName]', this.university.value.aboutUniversity.universityName);
     }
     if (this.socialMediaForm.value.facebookLink) {
-        formData.append('social_media[facebookLink]', this.socialMediaForm.value.facebookLink);
+      formData.append('social_media[facebookLink]', this.socialMediaForm.value.facebookLink);
     }
     if (this.socialMediaForm.value.instagramLink) {
-        formData.append('social_media[instagramLink]', this.socialMediaForm.value.instagramLink);
+      formData.append('social_media[instagramLink]', this.socialMediaForm.value.instagramLink);
     }
     if (this.images[0]) {
-        formData.append('images[defaultCoverLogo]', this.images[0]);
+      formData.append('images[defaultCoverLogo]', this.images[0]);
     }
     if (this.images[1]) {
-        formData.append('images[defaultCoverLogoVertical]', this.images[1]);
+      formData.append('images[defaultCoverLogoVertical]', this.images[1]);
     }
     if (this.images[2]) {
-        formData.append('images[defaultHeaderImage]', this.images[2]);
+      formData.append('images[defaultHeaderImage]', this.images[2]);
     }
     if (this.images[3]) {
-        formData.append('images[defaultBrowserIcon]', this.images[3]);
+      formData.append('images[defaultBrowserIcon]', this.images[3]);
     }
     if (this.images[4]) {
-        formData.append('images[secondaryLogo]', this.images[4]);
+      formData.append('images[secondaryLogo]', this.images[4]);
     }
     if (this.images[5]) {
-        formData.append('images[backgroundImage]', this.images[5]);
+      formData.append('images[backgroundImage]', this.images[5]);
     }
     console.log('The sent is:', formData);
     this.siteIdentityService.createSiteIdentity(formData).subscribe(
+      response => {
+        console.log('Success:', response);
 
-        response => {
-            console.log('Success:', response);
+      }, error => {
+        console.log(error);
 
-        },error =>
-        {
-            console.log(error);
-
-        });
+      });
 
     console.log(modifiedFormValues);
   }
