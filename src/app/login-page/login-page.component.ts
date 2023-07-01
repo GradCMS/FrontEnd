@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
+
 import {AuthServiceService} from "../sharedServices/Auth/auth-service.service";
 import {SnackbarComponent} from "../shared/snackbar/snackbar.component";
 
@@ -38,7 +39,7 @@ export class LoginPageComponent implements OnInit {
 
   form!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient , private router: Router  , private authService:AuthServiceService ) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router, private toastr: ToastrService, private authService: AuthServiceService) {
   }
 
 
