@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule } from 'ckeditor4-angular';
+import { ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -18,17 +18,6 @@ import { PageEditComponent } from './pages/page-management/page-edit/page-edit.c
 import { AddNewRoleComponent } from './pages/role-management/add-new-role/add-new-role.component';
 import { RolesTableComponent } from './pages/role-management/roles-table/roles-table.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { ModuleHeaderComponent } from './pages/module-management/module-display/module-header/module-header.component';
-import { DisplayHeaderComponent } from './pages/display-management/display-header/display-header.component';
-import { ClockComponent } from './pages/landing-page/clock/clock.component';
-import { ColorPickerComponent } from './pages/class-builder/color-picker/color-picker.component';
-import { TabsComponent } from './pages/class-builder/class-builder-main/tabs/tabs.component';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { SiteIdentityComponent } from './pages/site-identity/site-identity.component';
-import { ModuleDisplayComponent } from './pages/module-management/module-display/module-display-form/module-display.component';
-import{HttpClientModule} from '@angular/common/http'
-import { InsertModuleFormComponent } from './pages/module-management/module-insert/insert-module-form/insert-module-form.component';
-import { InsertModuleMainComponent } from './pages/module-management/module-insert/insert-module-main/insert-module-main.component';
 import { EditModuleMainComponent } from './pages/module-management/module-editor/edit-module-main/edit-module-main.component';
 import { EditModuleFormComponent } from './pages/module-management/module-editor/edit-module-form/edit-module-form.component';
 import { DisplayShowMainComponent } from './pages/display-management/display-show/display-show-main/display-show-main.component';
@@ -45,11 +34,31 @@ import { EditNavbarMainComponent } from './pages/navbar-management/navbar-edit/e
 import { EditNavbarFormComponent } from './pages/navbar-management/navbar-edit/edit-navbar-form/edit-navbar-form.component';
 import { InsertNavbarFormComponent } from './pages/navbar-management/navbar-insert/insert-navbar-form/insert-navbar-form.component';
 import { InsertNavbarMainComponent } from './pages/navbar-management/navbar-insert/insert-navbar-main/insert-navbar-main.component';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 import { ClassBuilderEditComponent } from './pages/class-builder/class-builder-edit/class-builder-edit.component';
+import { ClockComponent } from './pages/landing-page/clock/clock.component';
+import { NgDragDropModule } from 'ng-drag-drop';
+import { ColorPickerComponent } from './pages/class-builder/color-picker/color-picker.component';
+import { TabsComponent } from './pages/class-builder/class-builder-main/tabs/tabs.component';
+import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { SiteIdentityComponent } from './pages/site-identity/site-identity.component';
+import { InsertModuleFormComponent } from './pages/module-management/module-insert/insert-module-form/insert-module-form.component';
+import { InsertModuleMainComponent } from './pages/module-management/module-insert/insert-module-main/insert-module-main.component';
+import { FormsModule } from '@angular/forms';
+import { PageCreateComponent } from './pages/page-management/page-create/page-create.component';
+import { DragDropModule} from '@angular/cdk/drag-drop';
+import { UserCreateComponent } from './pages/user-management/user-create/user-create.component';
+import { UserEditComponent } from './pages/user-management/user-edit/user-edit.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularDualListBoxModule } from 'angular-dual-listbox';
+import { MatTreeModule, MatTreeNodeToggle } from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
+import { RoleServiceComponent } from './sharedServices/roleData/role.service/role.service.component';
+import { PermissionServiceComponent } from './sharedServices/roleData/permission.service/permission.service.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+
 
 
 @NgModule({
@@ -70,13 +79,10 @@ import { ClassBuilderEditComponent } from './pages/class-builder/class-builder-e
     AddNewRoleComponent,
     RolesTableComponent,
     FooterComponent,
-    ModuleHeaderComponent,
-    DisplayHeaderComponent,
     ClockComponent,
     ColorPickerComponent,
     TabsComponent,
     SiteIdentityComponent,
-    ModuleDisplayComponent,
     InsertModuleFormComponent,
     InsertModuleMainComponent,
     EditModuleMainComponent,
@@ -98,6 +104,11 @@ import { ClassBuilderEditComponent } from './pages/class-builder/class-builder-e
     LoginPageComponent,
     SnackbarComponent,
     ClassBuilderEditComponent,
+    PageCreateComponent,
+    UserCreateComponent,
+    UserEditComponent,
+    // RoleServiceComponent,
+    //PermissionServiceComponent
   ],
   imports: [
     BrowserModule,
@@ -108,9 +119,28 @@ import { ClassBuilderEditComponent } from './pages/class-builder/class-builder-e
     HttpClientModule,
     FormsModule,
     NgxPaginationModule,
+    DragDropModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    CKEditorModule,
+    HttpClientModule,
+    FormsModule,
+    //MatTreeModule,
+    //MatIconModule,
+    BrowserModule, 
+   // AngularDualListBoxModule, 
+   // ImageCropperModule,
+    AppRoutingModule,
+    FormsModule,
     DragDropModule
 
   ],
+  
+  
   providers: []
+
+  
+
 })
 export class AppModule { }

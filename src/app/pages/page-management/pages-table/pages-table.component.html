@@ -1,21 +1,13 @@
+<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6 p-3">
-                    <h1> <i class="nav-icon fas fa-file"></i> Page Manager</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item">
-                            <a href="../index.html">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active">Page Management </li>
-                    </ol>
-                </div>
-            </div>
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6 p-3">
+          <h1><i class="nav-icon fas fa-file"></i> Page Management</h1>
         </div>
+<<<<<<< Updated upstream
         <!-- /.container-fluid -->
     </section>
     <!-- Main content -->
@@ -25,63 +17,103 @@
             <div class="card-header">
                 <h3 class="card-title">Pages</h3>
                 <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                        <i class="fas fa-times"></i>
-                    </button>
+                    <button class="btn btn-primary" style="margin-right: 25px;" routerLink="/CreatePage">Create Page</button>
                 </div>
             </div>
+            
             <div class="card-body p-0">
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
-                            <th style="width: 1%" class="text-center"> # </th>
-                            <th style="width: 20%" class="text-center"> Page Name </th>
-                            <th style="width: 30%" class="text-center"> Meta Tag </th>
-
-                            <th style="width: 8%" class="text-center"> Status <i class="fas fa-low-vision"></i>
-                            </th>
-                            <th style="width: 20%" class="text-center">
-                                <i class="fas fa-edit"></i>
-                            </th>
+                          <th style="width: 5%; text-align: center">#</th>
+                          <th style="width: 80%; text-align: center">Page Name</th>
+                          <th style="width: 35%; text-align: center"><i class="fas fa-edit"></i></th>
                         </tr>
-                    </thead>
+                      </thead>  
                     <tbody>
                         <tr>
-                            <td> # </td>
-                            <td>
-                                <a> Page1 </a>
-                                <br />
-                                <small> Created 01.01.2019 </small>
-                            </td>
-                            <td>
-                                <ul class="list-inline">
-                                    <li class="list-inline-item">Meta Tag</li>
-                                    <li class="list-inline-item">Meta Tag</li>
-                                    <li class="list-inline-item">Meta Tag</li>
-                                    <li class="list-inline-item">Meta Tag</li>
-                                </ul>
-                            </td>
-
-                            <td class="project-state">
-                                <span class="badge
-                                            badge-success">Up</span>
-                            </td>
-                            <td class="project-actions
-                                        text-right">
-                                <a class="btn btn-primary
-                                            btn-sm" href="#">
-                                    <i class="fas fa-folder"></i> View </a>
-                                <a class="btn btn-info btn-sm" routerLink="/EditPage"> <i
-                                        class="fas fa-pencil-alt"></i> Edit </a>
+                            <td style="text-align: center"> # </td>
+                            <td style="text-align: center"><a> Page1 </a> </td>
+                            <td class="project-actions text-right" style="text-align: center">
+                                <a class="btn btn-info btn-sm" routerLink="/EditPage"> <i class="fas fa-pencil-alt"></i> Edit </a>
                                 <a class="btn btn-danger btn-sm" href="#"> <i class="fas fa-trash"></i> Delete
                                 </a>
                             </td>
                         </tr>
-
-                 
-
                 </tbody>
             </table>
+=======
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+            <li class="breadcrumb-item active">Page Management</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- content -->
+  <section class="content">
+    <!-- Default box -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title" style="padding-left: 20px;">Pages</h3>
+        <div class="card-tools">
+          <button class="btn btn-primary" style="margin-right: 25px;" routerLink="/CreatePage">Create Page</button>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-striped projects">
+          <thead>
+            <tr>
+              <th style="width: 10%; text-align: center">Page ID</th>
+              <th style="width: 70%; text-align: center">Page Name
+              </th>
+              <th style="width: 20%; text-align: center; padding-left: 70px;"><i class="fas fa-edit"></i></th>
+            </tr>
+          </thead>
+        <tbody>
+          <tr>
+          <mat-tree [dataSource]="dataSource.data" [treeControl]="treeControl" class="example-tree">
+            <!-- This is the tree node template for leaf nodes -->
+            <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+
+             <td style="text-align: center"> {{ node.id }}</td>
+             <td style="text-align: center"> {{ node.title }}</td>
+             <td class="project-actions text-right" style="text-align: center">
+              <a class="btn btn-info btn-sm" [routerLink]="['/EditPage',node.id]"> <i class="fas fa-pencil-alt"></i> Edit </a>
+              <a class="btn btn-danger btn-sm" href="#"> <i class="fas fa-trash"></i> Delete
+              </a>
+          </td>
+            </mat-tree-node>
+          
+            <!-- This is the tree node template for expandable nodes -->
+            <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+              <div style="text-align: center" class="mat-tree-node">
+                <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.title">
+                  <mat-icon  class="mat-icon-rtl-mirror">
+                    {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+                  </mat-icon>
+                </button>
+                <td style="text-align: center"> {{ node.id }}</td>
+                <td style="text-align: center"> {{ node.title }}</td>
+                <td class="project-actions text-right" style="text-align: center">
+                  <a class="btn btn-info btn-sm" [routerLink]="['/EditPage',node.id]"> <i class="fas fa-pencil-alt"></i> Edit </a>
+                  <a class="btn btn-danger btn-sm" href="#"> <i class="fas fa-trash"></i> Delete
+                  </a>
+              </td>
+              </div>
+              
+              <div [class.example-tree-invisible]="!treeControl.isExpanded(node)" role="group">
+                <ng-container matTreeNodeOutlet></ng-container>
+              </div>
+            </mat-nested-tree-node>
+          </mat-tree>
+          </tr>
+        </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+>>>>>>> Stashed changes

@@ -1,5 +1,4 @@
 
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageMainComponent } from './pages/page-management/page-main/page-main.component';
@@ -23,6 +22,9 @@ import {SiteIdentityComponent} from "./pages/site-identity/site-identity.compone
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {LoginPageComponent} from "./login-page/login-page.component";
 import {ClassBuilderEditComponent} from "./pages/class-builder/class-builder-edit/class-builder-edit.component";
+import { PageCreateComponent } from './pages/page-management/page-create/page-create.component';
+import { UserCreateComponent } from './pages/user-management/user-create/user-create.component';
+import { UserEditComponent } from './pages/user-management/user-edit/user-edit.component';
 const routes: Routes = [
   {path: '', component: LandingMainComponent , title: 'Landing Page'},
   {path: 'PageManagement', component: PageMainComponent , title: 'Page Management'},
@@ -44,6 +46,10 @@ const routes: Routes = [
   {path: 'ClassBuilder', component: ClassBuilderMainComponent , title: 'Class Builder'},
   {path: 'login', component: LoginPageComponent , title: 'Login'},
   {path: 'ClassBuilder-Edit/:id', component: ClassBuilderEditComponent , title: 'Edit Class'},
+  {path:'CreatePage',component:PageCreateComponent},
+  {path: 'CreateUser', component:UserCreateComponent},
+  {path: 'EditUser/:id', component:UserEditComponent},
+  {path: 'EditPage/:id', component:PageEditComponent}
 
   // make sure this is the last route for the not found pages
 
@@ -52,7 +58,11 @@ const routes: Routes = [
    
 
 
-];
+
+
+
+
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

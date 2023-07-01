@@ -1,0 +1,60 @@
+{
+    "Permissions": [
+        {
+            "id": 1,
+            "name": "create user",
+            "guard_name": "api",
+            "created_at": "2023-03-23T11:20:14.000000Z",
+            "updated_at": "2023-03-23T11:20:14.000000Z"
+        },
+        {
+            "id": 2,
+            "name": "update user",
+            "guard_name": "api",
+            "created_at": "2023-03-23T11:20:14.000000Z",
+            "updated_at": "2023-03-23T11:20:14.000000Z"
+        },
+        {
+            "id": 3,
+            "name": "delete user",
+            "guard_name": "api",
+            "created_at": "2023-03-23T11:20:14.000000Z",
+            "updated_at": "2023-03-23T11:20:14.000000Z"
+        },
+        {
+            "id": 4,
+            "name": "suspend user",
+            "guard_name": "api",
+            "created_at": "2023-03-23T11:20:14.000000Z",
+            "updated_at": "2023-03-23T11:20:14.000000Z"
+        },
+        {
+            "id": 5,
+            "name": "unsuspend user",
+            "guard_name": "api",
+            "created_at": "2023-03-23T11:20:14.000000Z",
+            "updated_at": "2023-03-23T11:20:14.000000Z"
+        },
+        {
+            "id": 6,
+            "name": "create role",
+            "guard_name": "api",
+            "created_at": "2023-03-23T11:20:14.000000Z",
+            "updated_at": "2023-03-23T11:20:14.000000Z"
+        },
+        {
+            "id": 7,
+            "name": "update role",
+            "guard_name": "api",
+            "created_at": "2023-03-23T11:20:14.000000Z",
+            "updated_at": "2023-03-23T11:20:14.000000Z"
+        },
+        {
+            "id": 8,
+            "name": "delete role",
+            "guard_name": "api",
+            "created_at": "2023-03-23T11:20:14.000000Z",
+            "updated_at": "2023-03-23T11:20:14.000000Z"
+        }
+    ]
+}

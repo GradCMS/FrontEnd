@@ -16,8 +16,6 @@
                 <tr>
                     <th class="text-center">#</th>
                     <th class="text-center">Role Name </th>
-                    <th class="text-center">Creation Date</th>
-                    <th class="text-center">Status</th>
                     <th style="width: 20%" class="text-center">
                     <i class="fas fa-edit"></i>
                     </th>
@@ -25,65 +23,36 @@
                 </thead>
                 <tbody>
                 <tr data-widget="expandable-table" aria-expanded="false">
-                    <td class="text-center">183</td>
+                    <td class="text-center">1</td>
                     <td class="text-center">Admin</td>
-                    <td class="text-center">11-7-2014</td>
-                    <td class="text-center">
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn bg-olive active ">
-                        <input type="radio" name="options" id="option_b1" autocomplete="off" checked="">
-                        Active
-                        </label>
-                        <label class="btn bg-olive ali">
-                        <input type="radio" name="options" id="option_b3" autocomplete="off"> Disable
-                        </label>
-                    </div>
-                    </td>
                     <td class="project-actions text-center">
-                    <a class="btn btn-primary btn-sm" href="#">
-                        <i class="fas fa-folder"></i> View/Edit </a>
-
-                    <a class="btn btn-danger btn-sm" href="#"> <i class="fas fa-trash"></i> Delete
-                    </a>
+                        <a  class="btn btn-primary btn-sm" (click)="showPermissions = !showPermissions">
+                            <i class="fas fa-folder" ></i> Edit 
+                        </a>
+                        <a class="btn btn-danger btn-sm" > <i class="fas fa-trash"></i> Delete </a>
                     </td>
-                </tr>
-                <tr class="expandable-body">
-                    <td colspan="5">
-                    <div class="ml-2">
-                        <div class="form-check text-left"><label><input type="checkbox"
-                            class="form-check-input position-static"><span> Permission 1</span></label></div>
-                        <div class="form-check text-left"><label><input type="checkbox"
-                            class="form-check-input position-static"><span> Permission 2</span></label></div>
-                        <div class="form-check text-left"><label><input type="checkbox"
-                            class="form-check-input position-static"><span> Permission 3</span></label></div>
-                        <div class="form-check text-left"><label><input type="checkbox"
-                            class="form-check-input position-static"><span> Permission 4</span></label></div>
-                    </div>
-                    </td>
-                </tr>
-                <tr data-widget="expandable-table" aria-expanded="false">
-                    <td class="text-center">183</td>
-                    <td class="text-center">Support</td>
-                    <td class="text-center">11-7-2014</td>
-                    <td class="text-center">
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn bg-olive active ">
-                        <input type="radio" name="options" id="option_b1" autocomplete="off" checked="">
-                        Active
-                        </label>
-                        <label class="btn bg-olive ali">
-                        <input type="radio" name="options" id="option_b3" autocomplete="off"> Disable
-                        </label>
-                    </div>
-                    </td>
-                    <td class="project-actions text-center">
-                    <a class="btn btn-primary btn-sm" href="#">
-                        <i class="fas fa-folder"></i> View/Edit </a>
-
-                    <a class="btn btn-danger btn-sm" href="#"> <i class="fas fa-trash"></i> Delete
-                    </a>
-                    </td>
-                </tr>
+                    <tr class="expandable-body" *ngIf="showPermissions">
+                        <td colspan="5">
+                            <div class="ml-2">
+                                <div class="form-check text-left" *ngFor="let selectedPermission of selectedPermissions">
+                                    <label>
+                                        <input type="checkbox" class="form-check-input position-static" [checked]="selectedPermission.checked"/>
+                                        <span>  {{selectedPermission.permissionName}}</span>
+                                    </label>
+                                </div>
+                                <div class="form-check text-left" *ngFor="let permission of permissions"
+                                >
+                                
+                                    <label>
+                                        <input  type="checkbox" class="form-check-input position-static" />
+                                        <span
+                                        >  {{permission.permissionName}}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
 
                 
                 </tbody>
