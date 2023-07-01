@@ -1,8 +1,16 @@
 import { Component, OnInit,ViewChild,ChangeDetectionStrategy } from '@angular/core';
+<<<<<<< Updated upstream
 import { NgForm } from '@angular/forms';
 import { FormGroup, FormControl, Validator,FormArray } from '@angular/forms';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { DualListComponent } from 'angular-dual-listbox';
+=======
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validator,FormArray } from '@angular/forms';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { DualListComponent } from 'angular-dual-listbox';
+import { PageService } from 'src/app/sharedServices/pageData/page.service/page.service.component';
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'app-page-create',
@@ -12,8 +20,12 @@ import { DualListComponent } from 'angular-dual-listbox';
 
 })
 export class PageCreateComponent implements OnInit {
+<<<<<<< Updated upstream
 	@ViewChild('f', { static: false }) editPageForm!: NgForm;
 	type=['standard','content'];
+=======
+	@ViewChild('f', { static: false }) createPageForm!: FormGroup;
+>>>>>>> Stashed changes
 	parents=[
 	{key:1 ,pageName:'page1'},
 	{key:2 ,pageName:'page2'},
@@ -27,7 +39,12 @@ export class PageCreateComponent implements OnInit {
 	showImageCropper1 = true;
 	showImageCropper2 = true;
 	selectedFile1!: File;
+<<<<<<< Updated upstream
   
+=======
+		pages:any;
+	createPage:FormGroup;
+>>>>>>> Stashed changes
 	  tab = 1;
 	  keepSorted = true;
 	  key: string='';
@@ -41,6 +58,7 @@ export class PageCreateComponent implements OnInit {
 	  disabled = false;
 	  sourceLeft = true;
 	  format: any = DualListComponent.DEFAULT_FORMAT;
+<<<<<<< Updated upstream
   
 	  private sourceModules: Array<any>=[];
 	  private confirmedModules: Array<any>=[];
@@ -72,6 +90,35 @@ export class PageCreateComponent implements OnInit {
 	ngOnInit() {
 	}
   
+=======
+
+  
+  
+	
+  
+  
+		constructor(private pageServ: PageService,private formBuilder: FormBuilder) {
+		}
+  
+	ngOnInit() {
+		this.pageServ.getAllPages().subscribe(data  =>{
+			this.pages=data}
+	)
+	this.createPage = this.formBuilder.group({
+		  type: ['', Validators.required],
+		  title: ['', Validators.required],
+		  url: ['', Validators.required],
+		  parent_id: [''],
+		  tags: [''],
+		  short_description: [''],
+		  hidden: [false],
+		  header_image_url: [''],
+		  cover_image_url: [''],
+	  });
+}
+	
+
+>>>>>>> Stashed changes
 	manualUpdateEvent() {
 	 this.manualUpdate=!this.manualUpdate;
 	}
@@ -111,12 +158,22 @@ export class PageCreateComponent implements OnInit {
 	onLoadImageFailed(): void {
 	  console.log('Load image failed');
 	}
+<<<<<<< Updated upstream
 	onSubmit(){
 	console.log("Submited");
 	console.log(this.editPageForm);
 	
 	}
   
+=======
+	onSubmit( ){
+	console.log("Submited");
+	console.log(this.createPage);
+	this.pageServ.creatPage(this.createPage.value).subscribe(page => this.pages.push(page));
+	}
+ 
+
+>>>>>>> Stashed changes
 	saveCroppedImage(imageType:string) {
 	  if (imageType === 'header') {
 	  this.showImageCropper1 = false;

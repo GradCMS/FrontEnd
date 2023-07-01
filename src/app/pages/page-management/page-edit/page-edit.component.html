@@ -36,16 +36,24 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
+<<<<<<< Updated upstream
                 <form #f="ngForm" (ngSubmit)="onSubmit()">
                     <!-- INPUTS START -->
                     <div class="card-body" formGroupName="pageData" >
                         <div class="row"
                          ngModelGroup="type"
                          #pageType="ngModelGroup">
+=======
+                <form [formGroup]="editPage" (ngSubmit)="onSubmit()">
+                    <!-- INPUTS START -->
+                    <div class="card-body" >
+                        <div class="row">
+>>>>>>> Stashed changes
                             <label>Page Type:</label>
                             <div class="col-sm-6">
 
                                 <!-- radio -->
+<<<<<<< Updated upstream
                                 <div class="form-group clearfix" >
                                     <div class="icheck-primary d-inline">
                                         <input type="radio" 
@@ -102,14 +110,69 @@
 
                             </select>
                         </div>
+=======
+                                <div class="form-group clearfix">
+                                    <div class="icheck-primary d-inline">
+                                      <input type="radio" id="radioPrimary1" name="type" [(ngModel)]="page.type" [value]="'standard'" [checked]="default === 'standard'">
+                                      <label for="radioPrimary1">Standard page</label>
+                                    </div>
+                                    <div class="icheck-primary d-inline">
+                                      <input type="radio" id="radioPrimary2" name="type" [(ngModel)]="page.type" [value]="'content'" [checked]="default === 'content'">
+                                      <label for="radioPrimary2">Content page</label>
+                                    </div>
+                                  </div>
+                                  
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Title*</label>
+                            <input type="Text"
+                             class="form-control"
+                             id="pageTitle"
+                             required
+                             formControlName="title"
+                             [value]="page.title"
+                             >
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">URL*</label>
+                            <input type="Text"
+                             class="form-control" 
+                             id="exampleInputPassword1"
+                                   placeholder="No special characters are allowed" 
+                                   formControlName="url"                             
+                                   required
+                                   [value]="page.url"
+                                   >
+                        </div>
+                        <div class="form-group">
+                            <label>Parent Page</label>
+                            <select class="form-control select2bs4" style="width: 100%;" 
+                            formControlName="parent_id">
+                              <option *ngFor="let parent of parents" 
+                              [selected]="parent.key === page.parent_id"
+                              [value]="parent.key">
+                                {{ parent.pageName }}
+                              </option>
+                            </select>
+                        </div>
+                          
+>>>>>>> Stashed changes
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tags</label>
                             <input type="Text"
                              class="form-control" 
                              id="Tags"
+<<<<<<< Updated upstream
                              ngModel
                              name="tags"
+=======
+                             formControlName="tags"                            
+                              [value]="page.tags"
+>>>>>>> Stashed changes
                              >
                         </div>
                         <!-- textarea -->
@@ -117,8 +180,15 @@
                             <label>Short Description</label>
                             <textarea class="form-control"
                              rows="3"
+<<<<<<< Updated upstream
                              ngModel
                              name="short_description"></textarea>
+=======
+                             [value]="page.short_description"
+                             formControlName="short_description">
+                            </textarea>
+                             
+>>>>>>> Stashed changes
                         </div>
 
                         <div class="form-group">
@@ -131,8 +201,12 @@
                                 <label class="switch"  [ngClass]="{'checked': manualUpdate}">
                                     <input type="checkbox"
                                      [(ngModel)]="manualUpdate" 
+<<<<<<< Updated upstream
                                      
                                      name="hidden">
+=======
+                                     formControlName="hidden">
+>>>>>>> Stashed changes
                                     <span class="slider round"></span>
                                 </label>
                                 
@@ -166,9 +240,13 @@
                             <button class="save-button"
                                 *ngIf="croppedImage1"
                                 (click)="saveCroppedImage('header')"
+<<<<<<< Updated upstream
                                 ngModel
                                 name="header_image_url"
                                 [value]="croppedImage1"
+=======
+                               
+>>>>>>> Stashed changes
                                 >Save</button>
                         </div>
                     </div>
@@ -232,6 +310,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <div class="container-fluid">
+<<<<<<< Updated upstream
                                         
                                                 <dual-list [source]="source"
                                                  [key]="key"
@@ -243,6 +322,24 @@
                                                 [disabled]="disabled">
                                             </dual-list>
                                           
+=======
+                                           
+
+                                                <dual-list
+                                                 [source]="source"
+                                                 [key]="key"
+                                                  [display]="display" 
+                                                [(destination)]="confirmed" 
+                                                [(destination)]="selectedModules"
+                                                height="265px" 
+                                                [format]="format" 
+                                                [disabled]="disabled"
+                                                (destinationChange)="updateSelectedModules()">
+
+                                            </dual-list>
+                                  
+                                                
+>>>>>>> Stashed changes
                                                 <div class="tab-content">
                                                 <div class="tab-pane" [class.active]="tab===1">
                                                 </div>
@@ -298,6 +395,7 @@
                                                             </form>
                                                         </div>
                                                     </div>
+<<<<<<< Updated upstream
                                                     <div class="row">
                                                         <div class="col-sm-12">
                                                             <label>Array source</label>
@@ -313,6 +411,8 @@
                                                         </div>
                                                     </div>
                                                    
+=======
+>>>>>>> Stashed changes
                                                 </div>
                                             </div>
                                         </div>
@@ -333,6 +433,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body ">
+<<<<<<< Updated upstream
                                 <ul class="todo-list ui-sortable " data-widget="todo-list" 
                                 cdkDropList  (cdkDropListDropped)="drop($event)">
                                     <li 
@@ -355,6 +456,23 @@
                                       
                                     </li>
                                 </ul>
+=======
+                                <ul class="todo-list ui-sortable" data-widget="todo-list" cdkDropList (cdkDropListDropped)="drop($event)">
+                                    <li *ngFor="let module of selectedModules; let i = index" cdkDrag>
+                                      <span class="handle ui-sortable-handle">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                        <i class="fas fa-ellipsis-v"></i>
+                                      </span>
+                                      {{ module.placeholder }}
+                                      <!-- drag handle -->
+                                  
+                                      <!-- todo text -->
+                                      <!-- General tools such as edit or delete-->
+                                      <input type="hidden" [formControlName]="i.toString() + '.priority'" [ngModel]="module.priority" />
+                                    </li>
+                                  </ul>
+                                  
+>>>>>>> Stashed changes
                             </div>
                         </div>
 
