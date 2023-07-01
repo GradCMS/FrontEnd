@@ -1,16 +1,9 @@
 import { Component, OnInit,ViewChild,ChangeDetectionStrategy } from '@angular/core';
-<<<<<<< Updated upstream
-import { NgForm } from '@angular/forms';
-import { FormGroup, FormControl, Validator,FormArray } from '@angular/forms';
-import { ImageCroppedEvent } from 'ngx-image-cropper';
-import { DualListComponent } from 'angular-dual-listbox';
-=======
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { FormGroup, FormControl, Validator,FormArray } from '@angular/forms';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { DualListComponent } from 'angular-dual-listbox';
 import { PageService } from 'src/app/sharedServices/pageData/page.service/page.service.component';
->>>>>>> Stashed changes
 
 @Component({
   selector: 'app-page-create',
@@ -20,12 +13,7 @@ import { PageService } from 'src/app/sharedServices/pageData/page.service/page.s
 
 })
 export class PageCreateComponent implements OnInit {
-<<<<<<< Updated upstream
-	@ViewChild('f', { static: false }) editPageForm!: NgForm;
-	type=['standard','content'];
-=======
 	@ViewChild('f', { static: false }) createPageForm!: FormGroup;
->>>>>>> Stashed changes
 	parents=[
 	{key:1 ,pageName:'page1'},
 	{key:2 ,pageName:'page2'},
@@ -39,12 +27,8 @@ export class PageCreateComponent implements OnInit {
 	showImageCropper1 = true;
 	showImageCropper2 = true;
 	selectedFile1!: File;
-<<<<<<< Updated upstream
-  
-=======
 		pages:any;
-	createPage:FormGroup;
->>>>>>> Stashed changes
+	createPage!:FormGroup;
 	  tab = 1;
 	  keepSorted = true;
 	  key: string='';
@@ -58,39 +42,6 @@ export class PageCreateComponent implements OnInit {
 	  disabled = false;
 	  sourceLeft = true;
 	  format: any = DualListComponent.DEFAULT_FORMAT;
-<<<<<<< Updated upstream
-  
-	  private sourceModules: Array<any>=[];
-	  private confirmedModules: Array<any>=[];
-  
-  
-	  arrayType = [
-		  { name: 'Rio Grande', detail: '(object array)', value: 'moduleName' },
-	  ];
-  
-	  Type = this.arrayType[0].value;
-  
-	  private Modules: Array<any> = [
-		  { key: 1, moduleName: 'Model1'},
-		  { key: 2, moduleName: 'Model2' },
-		  { key: 3, moduleName: 'Model3' },
-		  { key: 4, moduleName: 'Model4'},
-		  { key: 5, moduleName: 'Model5'},
-		  { key: 6, moduleName: 'Model6'}
-		  
-	  ];
-	  selectedModulesData: { key: number, moduleName: string }[] = [];
-  
-  
-		// Add the HttpClient module to the constructor parameters
-		constructor(/*private http: HttpClient*/) {
-		  //this.http=http;
-		}
-  
-	ngOnInit() {
-	}
-  
-=======
 
   
   
@@ -118,7 +69,6 @@ export class PageCreateComponent implements OnInit {
 }
 	
 
->>>>>>> Stashed changes
 	manualUpdateEvent() {
 	 this.manualUpdate=!this.manualUpdate;
 	}
@@ -158,14 +108,6 @@ export class PageCreateComponent implements OnInit {
 	onLoadImageFailed(): void {
 	  console.log('Load image failed');
 	}
-<<<<<<< Updated upstream
-	onSubmit(){
-	console.log("Submited");
-	console.log(this.editPageForm);
-	
-	}
-  
-=======
 	onSubmit( ){
 	console.log("Submited");
 	console.log(this.createPage);
@@ -173,7 +115,6 @@ export class PageCreateComponent implements OnInit {
 	}
  
 
->>>>>>> Stashed changes
 	saveCroppedImage(imageType:string) {
 	  if (imageType === 'header') {
 	  this.showImageCropper1 = false;

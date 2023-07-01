@@ -19,40 +19,6 @@
                 </div>
                 <!-- /.card-header -->
   <!-- form start -->
-<<<<<<< Updated upstream
-  <form #f="ngForm" (ngSubmit)="onSubmit()">
-    <!-- INPUTS START -->
-    <div class="card-body" formGroupName="pageData" >
-        <div class="row"
-         ngModelGroup="type"
-         #pageType="ngModelGroup">
-            <label>Page Type:</label>
-            <div class="col-sm-6">
-
-                <!-- radio -->
-                <div class="form-group clearfix" >
-                    <div class="icheck-primary d-inline">
-                        <input type="radio" 
-                        id="radioPrimary1"
-                         name="type" 
-                         ngModel
-                         [value]="type[0]"
-                         >
-                        <label for="radioPrimary1"> Standard page </label>
-                    </div>
-                    <div class="icheck-primary d-inline">
-                        <input type="radio"
-                         id="radioPrimary2"
-                          name="type"
-                          [value]="type[1]"
-                          ngModel>
-                        <label for="radioPrimary2"> Content page </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-=======
   <form [formGroup]="createPage" (ngSubmit)="onSubmit()">
     <!-- INPUTS START -->
     <div class="card-body" >
@@ -74,18 +40,12 @@
           </div>
           
           
->>>>>>> Stashed changes
         <div class="form-group">
             <label for="exampleInputEmail1">Title*</label>
             <input type="Text"
              class="form-control"
              id="pageTitle"
-<<<<<<< Updated upstream
-             ngModel
-             name="title"
-=======
              formControlName="title"
->>>>>>> Stashed changes
              required
              >
         </div>
@@ -95,12 +55,7 @@
              class="form-control" 
              id="exampleInputPassword1"
                    placeholder="No special characters are allowed" 
-<<<<<<< Updated upstream
-                   ngModel
-                   name="url"
-=======
                    formControlName="url"
->>>>>>> Stashed changes
                    required
                    >
         </div>
@@ -108,12 +63,7 @@
             <label>Parent Page</label>
             <select class="form-control select2bs4"
              style="width: 100%;"
-<<<<<<< Updated upstream
-             ngModel
-             name="parent_id"
-=======
              formControlName="parent_id"
->>>>>>> Stashed changes
              
              >
                 <option *ngFor="let parent of parents">
@@ -127,12 +77,7 @@
             <input type="Text"
              class="form-control" 
              id="Tags"
-<<<<<<< Updated upstream
-             ngModel
-             name="tags"
-=======
              formControlName="tags"
->>>>>>> Stashed changes
              >
         </div>
         <!-- textarea -->
@@ -140,12 +85,7 @@
             <label>Short Description</label>
             <textarea class="form-control"
              rows="3"
-<<<<<<< Updated upstream
-             ngModel
-             name="short_description"></textarea>
-=======
              formControlName="short_description"></textarea>
->>>>>>> Stashed changes
         </div>
 
         <div class="form-group">
@@ -158,12 +98,7 @@
                 <label class="switch"  [ngClass]="{'checked': manualUpdate}">
                     <input type="checkbox"
                      [(ngModel)]="manualUpdate" 
-<<<<<<< Updated upstream
-                     
-                     name="hidden">
-=======
                      formControlName="hidden">
->>>>>>> Stashed changes
                     <span class="slider round"></span>
                 </label>
                 
@@ -172,85 +107,6 @@
 
        <!-- IMAGE UPLOAD -->
 <div class="form-group">
-<<<<<<< Updated upstream
-<div class="column w-100">
-<label>Header Image</label>
-<div class="card-body">
-<div id="actions" class="row">
-<div *ngIf="showImageCropper1">
-    <div class="image-upload-container">
-        <label class="image-upload-label" for="header-image-upload-input">Select an image to upload</label>
-        <input id="header-image-upload-input" type="file" (change)="onFileSelected($event)" accept="image/*">
-        <div class="image-preview-container">
-            <image-cropper
-                *ngIf="imageChangedEvent1"
-                [imageChangedEvent]="imageChangedEvent1"
-                [maintainAspectRatio]="true"
-                [aspectRatio]="4 / 3"
-                [resizeToWidth]="300"
-                format="png"
-                (imageCropped)="onImageCropped($event,'header')"
-                (imageLoaded)="onImageLoaded()"
-                (loadImageFailed)="onLoadImageFailed()">
-            </image-cropper>
-            <img class="image-preview" 
-                [src]="croppedImage1" *ngIf="croppedImage1">
-            <button class="save-button"
-                *ngIf="croppedImage1"
-                (click)="saveCroppedImage('header')"
-                ngModel
-                name="header_image_url"
-                [value]="croppedImage1"
-                >Save</button>
-        </div>
-    </div>
-</div>
-<div *ngIf="!showImageCropper1">
-    <p>Image saved</p>
-    <img [src]="croppedImage1">
-    <button (click)="showImageCropper1 = true">Edit</button>
-</div>
-</div>
-</div>
-</div>
-<div class="column w-100">
-<label>Cover Image</label>
-<div class="card-body">
-<div id="actions" class="row">
-<div *ngIf="showImageCropper2">
-    <div class="image-upload-container">
-        <label class="image-upload-label" for="cover-image-upload-input">Select an image to upload</label>
-        <input id="cover-image-upload-input" type="file" (change)="onFileSelected($event)" accept="image/*">
-        <div class="image-preview-container">
-            <image-cropper
-                *ngIf="imageChangedEvent2"
-                [imageChangedEvent]="imageChangedEvent2"
-                [maintainAspectRatio]="true"
-                [aspectRatio]="4 / 3"
-                [resizeToWidth]="300"
-                format="png"
-                (imageCropped)="onImageCropped($event,'cover')"
-                (imageLoaded)="onImageLoaded()"
-                (loadImageFailed)="onLoadImageFailed()">
-            </image-cropper>
-            <img class="image-preview" 
-                [src]="croppedImage2"
-                *ngIf="croppedImage2">
-            <button class="save-button"
-                *ngIf="croppedImage2"
-                (click)="saveCroppedImage('cover')">Save</button>
-        </div>
-    </div>
-</div>
-<div *ngIf="!showImageCropper2">
-    <p>Image saved</p>
-    <img [src]="croppedImage2">
-    <button (click)="showImageCropper2 = true">Edit</button>
-</div>
-</div>
-</div>
-</div>  
-=======
     <div class="column w-100">
         <label>Header Image</label>
         <div class="card-body">
@@ -318,7 +174,6 @@
         </div>
       </div>
       
->>>>>>> Stashed changes
 </div>
 
         <!-- END IMAGE UPLOAD -->

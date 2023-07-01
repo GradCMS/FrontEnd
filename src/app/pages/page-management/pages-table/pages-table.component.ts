@@ -9,7 +9,7 @@ import { MatTreeNestedDataSource } from '@angular/material/tree';
   styleUrls: ['./pages-table.component.css']
 })
 export class PagesTableComponent implements OnInit {
-  tree: any[];
+  tree!: any[];
   treeControl = new NestedTreeControl<any>(node => node.children);
   dataSource = new MatTreeNestedDataSource<any>();
 

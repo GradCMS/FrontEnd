@@ -49,7 +49,7 @@ const routes: Routes = [
   {path:'CreatePage',component:PageCreateComponent},
   {path: 'CreateUser', component:UserCreateComponent},
   {path: 'EditUser/:id', component:UserEditComponent},
-  {path: 'EditPage/:id', component:PageEditComponent}
+  {path: 'EditPage/:id', component:PageEditComponent},
 
   // make sure this is the last route for the not found pages
 

@@ -8,7 +8,7 @@ import { UserService } from 'src/app/sharedServices/userData/user.service/user.s
 })
 export class UserCreateComponent implements OnInit {
   
-  createUser: FormGroup;
+  createUser!: FormGroup;
   constructor(private userServ: UserService) { }
   users:any;
  ngOnInit(): void {

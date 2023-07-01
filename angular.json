@@ -34,17 +34,8 @@
               "src/assets/css/bootstrap-duallistbox.min.css",
               "src/assets/css/dropzone.min.css",
               "src/assets/css/adminlte.plugins.css",
-              "node_modules/angular-bootstrap-colorpicker/css/colorpicker.min.css",
-              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "src/assets/css/switchButton.css",
-              "src/assets/css/upload-image.css",
-              "src/assets/css/adminlte.plugins.css",
-              "src/styles.css"
-
-               
-
-
-
+              "src/styles.css",
+              "node_modules/angular-bootstrap-colorpicker/css/colorpicker.min.css"
             ],
             "scripts": [
               "src/assets/js/jquery.min.js",
@@ -65,7 +56,6 @@
               "src/assets/js/dashboard.js",
               "src/assets/js/TodoList.js",
               "src/assets/js/jquery.bootstrap-duallistbox.min.js",
-              "src/assets/js/jquery.bootstrap-duallistbox.js",
               "src/assets/js/dropzone.min.js",
               "src/assets/js/ExpandableTable.js",
               "src/assets/js/CardWidget.js",

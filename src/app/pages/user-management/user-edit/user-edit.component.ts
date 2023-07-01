@@ -5,11 +5,11 @@ import { UserService } from 'src/app/sharedServices/userData/user.service/user.s
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
-  styleUrls: ['./user-edit.component.css']
+  styleUrls: []
 })
 export class UserEditComponent implements OnInit {
   object:any;
-  editUser: FormGroup;
+  editUser!: FormGroup;
    user:any;
   users:any;
   constructor(private route: ActivatedRoute, private userServ: UserService) { }

@@ -6,8 +6,6 @@
 .card-header .card-title {
     margin-right: auto;
 }
-<<<<<<< Updated upstream
-=======
 .example-tree-invisible {
   display: none;
 }
@@ -26,4 +24,3 @@
 .example-tree div[role=group] > .mat-tree-node {
   padding-left: 40px;
 }
->>>>>>> Stashed changes

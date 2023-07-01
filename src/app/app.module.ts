@@ -52,12 +52,15 @@ import { DragDropModule} from '@angular/cdk/drag-drop';
 import { UserCreateComponent } from './pages/user-management/user-create/user-create.component';
 import { UserEditComponent } from './pages/user-management/user-edit/user-edit.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModuleHeaderComponent } from './pages/module-management/module-display/module-header/module-header.component';
+import { DisplayHeaderComponent } from './pages/display-management/display-header/display-header.component';
+import { ModuleDisplayComponent } from './pages/module-management/module-display/module-display-form/module-display.component';
 import { AngularDualListBoxModule } from 'angular-dual-listbox';
 import { MatTreeModule, MatTreeNodeToggle } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
-import { RoleServiceComponent } from './sharedServices/roleData/role.service/role.service.component';
-import { PermissionServiceComponent } from './sharedServices/roleData/permission.service/permission.service.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+// import { RoleServiceComponent } from './sharedServices/roleData/role.service/role.service.component';
+// import { PermissionServiceComponent } from './sharedServices/roleData/permission.service/permission.service.component';
 
 
 
@@ -107,33 +110,26 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     PageCreateComponent,
     UserCreateComponent,
     UserEditComponent,
+    ModuleHeaderComponent,
+    DisplayHeaderComponent,
+    ModuleDisplayComponent,
     // RoleServiceComponent,
     //PermissionServiceComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    CKEditorModule,
-    HttpClientModule,
-    FormsModule,
     NgxPaginationModule,
     DragDropModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     CKEditorModule,
-    HttpClientModule,
-    FormsModule,
-    //MatTreeModule,
-    //MatIconModule,
+    MatTreeModule,
+    MatIconModule,
     BrowserModule, 
-   // AngularDualListBoxModule, 
-   // ImageCropperModule,
+    AngularDualListBoxModule, 
+    ImageCropperModule,
     AppRoutingModule,
     FormsModule,
-    DragDropModule
 
   ],
   
