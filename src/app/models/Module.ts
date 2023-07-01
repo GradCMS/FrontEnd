@@ -3,7 +3,10 @@ export class Module{
   animation_style!:string
   class_id!:number
   content!:Text
-  width!:number  
-
-
+  width!:number 
+  title !:string
+  subtitle !:string
+  created_at?:string
+  updated_at?:string
+  id?:number
 }

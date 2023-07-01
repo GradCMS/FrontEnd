@@ -1,0 +1,8 @@
+.alert-required {
+    font-size: 0.6rem;
+    padding: 0.2rem;
+    display: inline-block;
+    width: auto;
+    margin-top: 2px;
+    float: left;
+}

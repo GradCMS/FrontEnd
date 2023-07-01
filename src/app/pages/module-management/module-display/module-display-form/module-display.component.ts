@@ -16,6 +16,7 @@ export class ModuleDisplayComponent implements OnInit {
   ngOnInit() {
     this.moduleServ.getModules().subscribe(data  =>{
       this.modules=data
+      this.modules=this.modules.modules
      })
 
   }

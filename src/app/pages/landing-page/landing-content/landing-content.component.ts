@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {SnackbarComponent} from "../../../snackbar/snackbar.component";
+import {SnackbarComponent} from "../../../shared/snackbar/snackbar.component";
 
 @Component({
   selector: 'app-landing-content',

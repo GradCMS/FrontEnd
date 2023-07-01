@@ -48,8 +48,7 @@ import { InsertNavbarMainComponent } from './pages/navbar-management/navbar-inse
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { SnackbarComponent } from './snackbar/snackbar.component';
-import { TestPageComponent } from './test-page/test-page.component';
+import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 import { ClassBuilderEditComponent } from './pages/class-builder/class-builder-edit/class-builder-edit.component';
 
 
@@ -96,9 +95,8 @@ import { ClassBuilderEditComponent } from './pages/class-builder/class-builder-e
     InsertNavbarFormComponent,
     InsertNavbarMainComponent,
     PageNotFoundComponent,
-    // LoginPageComponent,
+    LoginPageComponent,
     SnackbarComponent,
-    TestPageComponent,
     ClassBuilderEditComponent,
   ],
   imports: [

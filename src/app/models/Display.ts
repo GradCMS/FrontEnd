@@ -7,5 +7,6 @@ export class Display{
     source_page_id!: number;
     slider_setting?: SliderSetting;
     grid_setting?: GridSetting;  
+ 
 
 }

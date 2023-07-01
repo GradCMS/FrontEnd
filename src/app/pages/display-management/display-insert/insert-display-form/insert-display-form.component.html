@@ -1,58 +1,69 @@
 <!-- DISPLAY MANAGER -->
-<div class="card">
-    <table class="table table-bordered ">
-
+<form [formGroup]="displayManagerForm" >
+    <div class="card">
+      <table class="table table-bordered">
         <tbody>
-            <tr>
-                <td colspan="1" class="text-center">Placeholder:</td>
-                <td colspan="4" class="text-center">
-                    <input [(ngModel)]="newDisplay.placeholder" type="Text" class="form-control">
-                </td>
-            </tr>
+          <tr>
+            <td colspan="1" class="text-center">Placeholder:</td>
+            <td colspan="4" class="text-center">
+              <input [(ngModel)]="newDisplay.placeholder" [formControl]="placeholderControl" required type="text" class="form-control">
+              <div class="alert alert-danger alert-required" 
+              *ngIf="placeholderControl.invalid &&placeholderControl.errors?.['required']&& (placeholderControl.dirty || placeholderControl.touched || displayBool)">
 
+              Placeholder is required.
+            </div>
+            <div class="alert alert-danger alert-required" 
+            *ngIf="placeholderControl.invalid &&placeholderControl.errors?.['minlength']&& (placeholderControl.dirty || placeholderControl.touched || displayBool )">
 
+          
+            *Minimum length is 3 characters
+          </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="1" class="text-center">Display Type:</td>
+            <td>
+              <div class="form-group clearfix">
+                <div class="icheck-primary d-inline">
+                  <label>
+                    <input type="radio" name="choice" value="slider" [(ngModel)]="newDisplay.type" [formControl]="typeControl"  (change)="checkStatus($event);"> Slider
+                  </label>
+                </div>
+                <div class="icheck-primary d-inline px-3">
+                  <label>
+                    <input type="radio" name="choice" value="grid" [(ngModel)]="newDisplay.type" [formControl]="typeControl"  (change)="checkStatus($event);"> Grid
+                  </label>
+                </div>
+              </div>
+              <div class="alert alert-danger alert-required" 
+              *ngIf="typeControl.invalid &&typeControl.errors?.['required']&& (typeControl.dirty || typeControl.touched || displayBool)">
 
-            <tr>
-                <td colspan="1" class="text-center">Display Type:</td>
-                <td>
-                    <div class="form-group clearfix">
+              Please select a display type.
+            </div>
+             
+            </td>
+            <td colspan="1" class="text-center">Displaysource:</td>
+            <td colspan="4" class="text-center">
+              <select class="form-control select2bs4" style="width: 100%;" [(ngModel)]="newDisplay.source_page_id" [formControl]="source_page_idControl">
+                <option value="1">Parent page 1</option>
+                <option value="2">Parent page 2</option>
+                <option value="3">Parent page 3</option>
+                <option value="4">Parent page 4</option>
+              </select>
+              <div class="alert alert-danger alert-required" 
+              *ngIf="source_page_idControl.invalid &&source_page_idControl.errors?.['required']&& (source_page_idControl.dirty || source_page_idControl.touched || displayBool)">
 
-                        <div class="icheck-primary d-inline">
-                            <label>
-                                <input type="radio" name="choice" value="slider" [(ngModel)]="newDisplay.type"
-                                    (change)="checkStatus($event)"> Slider
-                            </label>
-                        </div>
-                        <div class="icheck-primary d-inline px-3">
-                            <label>
-                                <input type="radio" name="choice" value="grid" [(ngModel)]="newDisplay.type"
-                                    (change)="checkStatus($event);"> Grid
-                            </label>
-                        </div>
-                    </div>
-                </td>
-
-                <td colspan="1" class="text-center">Displaysource:</td>
-                <td colspan="4" class="text-center">
-                    <select class="form-control select2bs4" style="width: 100%;"
-                        [(ngModel)]="newDisplay.source_page_id">
-                        <option value="1">Parent page 1</option>
-                        <option value="1">Parent page 2</option>
-                        <option value="1">Parent page 3</option>
-                        <option value="1">Parent page 4</option>
-                    </select>
-                </td>
-
-            </tr>
-
-            <tr>
-
-            </tr>
+              Please select a display type.
+            </div>
+        
+            </td>
+          </tr>
+          <tr></tr>
         </tbody>
+      </table>
+    </div>
 
-    </table>
-</div>
-
+  </form>
 
 <!-- SLIDER SETTINGS -->
 <section class="content-header" *ngIf="isSliderChecked">
@@ -64,7 +75,7 @@
         </div>
     </div>
 </section>
-
+<form [formGroup]="sliderForm" >
 <section class="content" *ngIf="isSliderChecked">
     <!-- Default box -->
     <div class="card">
@@ -77,24 +88,48 @@
                         <tr>
                             <td colspan="1" class="text-center">Sliders per row:</td>
                             <td colspan="1" class="text-center">
-                                <input type="Text" class="form-control" [(ngModel)]="slider.slides_per_row">
+
+                                <button class="btn btn-secondary  btn-sm mr-1" type="button"
+                                    (click)="slider.slides_per_row=decrement(slider.slides_per_row,1)">-</button>
+                                <input id="range" type="range" [formControl]="slidesPerRowControl" [(ngModel)]="slider.slides_per_row" min="1" max="7">
+                                <button class="btn btn-primary  btn-sm ml-1" type="button"
+                                    (click)="slider.slides_per_row=increment(slider.slides_per_row,7)">+</button>
+                                <p> {{ slider.slides_per_row }} </p>
+
+
                             </td>
 
                             <td colspan="1">Sliders per column:</td>
                             <td colspan="1" class="text-center">
-                                <input type="Text" class="form-control" [(ngModel)]="slider.slides_per_column">
+                                <button class="btn btn-secondary  btn-sm mr-1" type="button"
+                                    (click)="slider.slides_per_column=decrement(slider.slides_per_column,1)">-</button>
+                                <input id="range" type="range" [formControl]="slidesPerColumnControl" [(ngModel)]="slider.slides_per_column" min="1" max="7">
+                                <button class="btn btn-primary  btn-sm ml-1" type="button"
+                                    (click)="slider.slides_per_column=increment(slider.slides_per_column,7)">+</button>
+                                <p> {{ slider.slides_per_column }} </p>
                             </td>
                         </tr>
 
                         <tr>
                             <td colspan="1" class="text-center">Total slides:</td>
                             <td colspan="1" class="text-center">
-                                <input type="Text" class="form-control" [(ngModel)]="slider.total_slides">
+                                <button class="btn btn-secondary  btn-sm mr-1" type="button"
+                                    (click)="slider.total_slides=decrement(slider.total_slides,1)">-</button>
+                                <input id="range" type="range" [formControl]=" totalSlidesControl" [(ngModel)]="slider.total_slides" min="1" max="150">
+                                <button class="btn btn-primary  btn-sm ml-1" type="button"
+                                    (click)="slider.total_slides=increment(slider.total_slides,150)">+</button>
+                                <p> {{ slider.total_slides }} </p>
+
                             </td>
 
                             <td colspan="1">Slides spacing:</td>
                             <td colspan="1" class="text-center">
-                                <input type="Text" class="form-control" [(ngModel)]="slider.slides_spacing">
+                                <button class="btn btn-secondary  btn-sm mr-1" type="button"
+                                    (click)="slider.slides_spacing=decrement(slider.slides_spacing,1)">-</button>
+                                <input id="range" type="range" [formControl]="  slidesSpacingControl" [(ngModel)]="slider.slides_spacing" min="1" max="20">
+                                <button class="btn btn-primary  btn-sm ml-1" type="button"
+                                    (click)="slider.slides_spacing=increment(slider.slides_spacing,20)">+</button>
+                                <p> {{ slider.slides_spacing }} px</p>
                             </td>
                         </tr>
 
@@ -103,7 +138,7 @@
                             <td colspan="1" class="text-center">
                                 <div class="card-body">
                                     <label class="switch">
-                                        <input type="checkbox" [(ngModel)]="slider.center_slides">
+                                        <input type="checkbox" [formControl]="centerSlidesControl" [(ngModel)]="slider.center_slides">
                                         <span class="slider round"></span>
                                     </label>
                                 </div>
@@ -113,7 +148,7 @@
                             <td colspan="1" class="text-center">
                                 <div class="card-body">
                                     <label class="switch">
-                                        <input type="checkbox" [(ngModel)]="slider.loop_slides">
+                                        <input type="checkbox" [formControl]="loopSlidesControl" [(ngModel)]="slider.loop_slides">
                                         <span class="slider round"></span>
                                     </label>
                                 </div>
@@ -125,7 +160,7 @@
                             <td colspan="1" class="text-center">
                                 <div class="card-body">
                                     <label class="switch">
-                                        <input type="checkbox" [(ngModel)]="slider.auto_height">
+                                        <input type="checkbox" [formControl]="autoHeightControl" [(ngModel)]="slider.auto_height">
                                         <span class="slider round"></span>
                                     </label>
                                 </div>
@@ -135,7 +170,7 @@
                             <td colspan="1" class="text-center">
                                 <div class="card-body">
                                     <label class="switch">
-                                        <input type="checkbox" [(ngModel)]="slider.stretch_height">
+                                        <input type="checkbox" [formControl]="stretchHeightControl" [(ngModel)]="slider.stretch_height">
                                         <span class="slider round"></span>
                                     </label>
                                 </div>
@@ -145,18 +180,34 @@
                         <tr>
                             <td colspan="1" class="text-center">Slides class:</td>
                             <td colspan="1" class="text-center">
-                                <select class="form-control select2bs4" style="width: 100%;"  [(ngModel)]="slider.class_id" >
-                                    <option *ngFor="let css of cssclasses"[value]="css.id">{{css.placeholder}}</option>
+                                <select class="form-control select2bs4" style="width: 100%;"
+                                    [(ngModel)]="slider.class_id" [formControl]="classIdControl">
+                                    <option *ngFor="let css of cssclasses" [value]="css.id">{{css.placeholder}}</option>
                                 </select>
-                
+                                <div class="alert alert-danger alert-required" 
+                                *ngIf="classIdControl.invalid &&classIdControl.errors?.['required']&& (classIdControl.dirty || classIdControl.touched||sliderBool)">
+                  
+                                Class css is required.
+                              </div>
+                              
                             </td>
 
                             <td colspan="1">Animation:</td>
                             <td colspan="1" class="text-center">
-                                <select class="form-control select2bs4" style="width: 100%;" [(ngModel)]="slider.animation">
-                                    <option>animation 1</option>
-                                    <option>adnimation 2</option>
+                                <select class="form-control select2bs4" style="width: 100%;"
+                                    [(ngModel)]="slider.animation" [formControl]="animationControl">
+                                    <option>fade-in</option>
+                                    <option>fade-out</option>
+                                    <option>slide-in </option>
+                                    <option>slide-out</option>
+                                    <option>slide-left</option>
+                                    <option>slide-right</option>
                                 </select>
+                                <div class="alert alert-danger alert-required" 
+                                *ngIf="animationControl.invalid &&animationControl.errors?.['required']&& (animationControl.dirty || animationControl.touched || sliderBool)">
+                  
+                                Animation is required.
+                              </div>
                             </td>
 
                         </tr>
@@ -166,37 +217,46 @@
                             <td colspan="1" class="text-center">
                                 <div class="card-body">
                                     <label class="switch">
-                                        <input type="checkbox" [(ngModel)]="slider.auto_play">
+                                        <input type="checkbox" [(ngModel)]="slider.auto_play" [formControl]="autoPlayControl">
                                         <span class="slider round"></span>
                                     </label>
                                 </div>
+
                             </td>
 
                             <td colspan="1">Slide Effect:</td>
-                            <td colspan="1" class="text-center" >
-                               <button class="btn btn-secondary " type="button" (click)="decrement()">-</button>
-                               <input id="range" type="range" [(ngModel)]="slider.effect_speed_ms" min="0" max="100">
-                              <button class="btn btn-primary" type="button" (click)="increment()">+</button>
-                                  <p> {{ slider.effect_speed_ms }} ms</p>
+                            <td colspan="1" class="text-center">
+                                <button class="btn btn-secondary  btn-sm mr-1" type="button"
+                                    (click)="slider.effect_speed_ms=decrement(slider.effect_speed_ms,0)">-</button>
+                                <input id="range" type="range" [(ngModel)]="slider.effect_speed_ms" min="0" max="100" [formControl]="effectSpeedMsControl">
+                                <button class="btn btn-primary  btn-sm ml-1" type="button"
+                                    (click)="slider.effect_speed_ms=increment(slider.effect_speed_ms,100)">+</button>
+                                <p> {{ slider.effect_speed_ms }} ms</p>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="1" class="text-center">Chosse:</td>
                             <td>
                                 <div class="form-group clearfix">
-            
+
                                     <div class="icheck-primary d-inline">
                                         <label>
-                                            <input type="radio" name="choice" value="Arrow" 
-                                            [(ngModel)]="arrowAndBullet"> Arrows
+                                            <input type="radio" name="choice1" value="Arrow"
+                                                [(ngModel)]="arrowAndBullet" [formControl]="arrowAndBulletControl"> Arrows
                                         </label>
                                     </div>
                                     <div class="icheck-primary d-inline px-3">
                                         <label>
-                                            <input type="radio" name="choice" value="Bullet" [(ngModel)]="arrowAndBullet"> Bullets
+                                            <input type="radio" name="choice1" value="Bullet"
+                                                [(ngModel)]="arrowAndBullet" [formControl]="arrowAndBulletControl" (click)="print()"> Bullets
                                         </label>
                                     </div>
                                 </div>
+                                <div class="alert alert-danger alert-required" 
+                                *ngIf="arrowAndBulletControl.invalid &&arrowAndBulletControl.errors?.['required']&& (arrowAndBulletControl.dirty || arrowAndBulletControl.touched || sliderBool)">
+                  
+                                 *Required.
+                              </div>
                             </td>
                         </tr>
                     </tbody>
@@ -208,6 +268,7 @@
     <!-- /.card -->
 
 </section>
+</form>
 <!-- END OF SLIDER SETTINGS -->
 
 <!-- GRID SETTINGS -->
@@ -220,7 +281,7 @@
         </div>
     </div>
 </section>
-
+<form [formGroup]="gridForm" >
 <section class="content" *ngIf="isGridChecked">
     <!-- Default box -->
     <div class="card">
@@ -235,36 +296,71 @@
                         <tr>
                             <td colspan="1" class="text-center">Blocks count:</td>
                             <td colspan="3" class="text-center">
-                                <input type="Text" class="form-control" [(ngModel)]="grid.blocks_count">
+                                <button class="btn btn-secondary  btn-sm mr-1" type="button"
+                                    (click)="grid.blocks_count=decrement(grid.blocks_count,1)">-</button>
+                                <input id="range" type="range" [(ngModel)]="grid.blocks_count" min="1" max="150" [formControl]="blocks_count">
+                                <button class="btn btn-primary  btn-sm ml-1" type="button"
+                                    (click)="grid.blocks_count=increment(grid.blocks_count,150)">+</button>
+                                <p> {{ grid.blocks_count }} </p>
+
                             </td>
                         </tr>
 
                         <tr>
                             <td colspan="1" class="text-center">Blocks Per Row:</td>
                             <td colspan="1" class="text-center">
-                                <input type="Text" class="form-control" [(ngModel)]="grid.blocks_per_row">
+                                <button class="btn btn-secondary  btn-sm mr-1" type="button"
+                                    (click)="grid.blocks_per_row=decrement(grid.blocks_per_row,1)">-</button>
+                                <input id="range" type="range" [(ngModel)]="grid.blocks_per_row" min="1" max="7" [formControl]="blocks_per_row">
+                                <button class="btn btn-primary  btn-sm ml-1" type="button"
+                                    (click)="grid.blocks_per_row=increment(grid.blocks_per_row,7)">+</button>
+                                <p> {{ grid.blocks_per_row }} </p>
+
                             </td>
 
                             <td colspan="1">Blocks spacing:</td>
                             <td colspan="1" class="text-center">
-                                <input type="Text" class="form-control" [(ngModel)]="grid.blocks_spacing">
+                                <button class="btn btn-secondary  btn-sm mr-1" type="button"
+                                    (click)="grid.blocks_spacing=decrement(grid.blocks_spacing,1)">-</button>
+                                <input id="range" type="range" [(ngModel)]="grid.blocks_spacing" min="1" max="20" [formControl]="blocks_spacing">
+                                <button class="btn btn-primary  btn-sm ml-1" type="button"
+                                    (click)="grid.blocks_spacing=increment(grid.blocks_spacing,20)">+</button>
+                                <p> {{ grid.blocks_spacing }} px</p>
+
                             </td>
                         </tr>
 
                         <tr>
                             <td colspan="1" class="text-center">Blocks class:</td>
                             <td colspan="1" class="text-center">
-                                <select class="form-control select2bs4" style="width: 100%;"  [(ngModel)]="grid.class_id" >
-                                    <option *ngFor="let css of cssclasses"[value]="css.id">{{css.placeholder}}</option>
+                                <select class="form-control select2bs4" style="width: 100%;"
+                                    [(ngModel)]="grid.class_id" [formControl]="class_id">
+                                    <option *ngFor="let css of cssclasses" [value]="css.id">{{css.placeholder}}</option>
                                 </select>
+                                <div class="alert alert-danger alert-required" 
+                                *ngIf="class_id.invalid &&class_id.errors?.['required']&& (class_id.dirty || class_id.touched || gridBool)">
+                  
+                                Please select a Class Css.
+                              </div>
                             </td>
 
                             <td colspan="1">Animation:</td>
                             <td colspan="1" class="text-center">
-                                <select class="form-control select2bs4" style="width: 100%;" [(ngModel)]="grid.blocks_animation">
-                                    <option>animation 1</option>
-                                    <option>adnimation 2</option>
+                                <select class="form-control select2bs4" style="width: 100%;"
+                                    [(ngModel)]="grid.blocks_animation" [formControl]="blocks_animation">
+                                    <option>fade-in</option>
+                                    <option>fade-out</option>
+                                    <option>slide-in </option>
+                                    <option>slide-out</option>
+                                    <option>slide-left</option>
+                                    <option>slide-right</option>
+
                                 </select>
+                                <div class="alert alert-danger alert-required" 
+                                *ngIf="class_id.invalid &&class_id.errors?.['required']&& (class_id.dirty || class_id.touched || gridBool)">
+                  
+                                Please select a Animation.
+                              </div>
                             </td>
 
                         </tr>
@@ -272,7 +368,8 @@
                         <tr>
                             <td colspan="1" class="text-center">Horizontal Alignment:</td>
                             <td colspan="1" class="text-center">
-                                <select class="form-control select2bs4" style="width: 100%;" [(ngModel)]="grid.horizontal_alignment">
+                                <select class="form-control select2bs4" style="width: 100%;"
+                                    [(ngModel)]="grid.horizontal_alignment" [formControl]="horizontal_alignment">
                                     <option>Effect 1</option>
                                     <option>Effect 2</option>
                                 </select>
@@ -280,7 +377,8 @@
 
                             <td colspan="1">Vertical Alignment:</td>
                             <td colspan="1" class="text-center">
-                                <select class="form-control select2bs4" style="width: 100%;" [(ngModel)]="grid.vertical_alignment">
+                                <select class="form-control select2bs4" style="width: 100%;"
+                                    [(ngModel)]="grid.vertical_alignment" [formControl]="vertical_alignment" >
                                     <option>Effect 1</option>
                                     <option>Effect 2</option>
                                 </select>
@@ -296,7 +394,7 @@
 
 </section>
 <!-- END OF GRID SETTINGS -->
-
+</form>
 
 
 
@@ -311,11 +409,12 @@
             <!-- Module Form & Editor -->
             <div class="card">
                 <div class="card-footer">
-                    <button type="button" class="btn btn-block btn-success btn-lg" (click)="insertNewDisplay()">Insert
+                    <button type="button" class="btn btn-block btn-success btn-lg"  (click)="insertNewDisplay()">Insert
                     </button>
+                    <!-- [disabled]="displayManagerForm.invalid||(sliderForm.invalid&&isSliderChecked)" -->
                 </div>
             </div>
         </div>
     </div> <!-- /.card -->
-
+ 
 </section>

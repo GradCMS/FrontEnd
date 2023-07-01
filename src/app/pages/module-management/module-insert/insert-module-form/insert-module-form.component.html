@@ -1,5 +1,5 @@
-               <!-- Module Form & Editor -->
-               <!-- <div class="card">
+<!-- Module Form & Editor -->
+<!-- <div class="card">
                 <table class="table table-bordered ">
 
                         <tbody>
@@ -65,90 +65,134 @@
                     
                 </table>
             </div> -->
-            <!-- END HERE -->
+<!-- END HERE -->
 
 
 
- <form [formGroup]="moduleForm">
-            <div class="card">
-                <table class="table table-bordered">
-                  <tbody>
-                    <tr>
-                      <td colspan="1" class="text-center">Placeholder</td>
-                      <td colspan="4" class="text-center">
-                        <input type="text" class="form-control" placeholder="Module content" style="width:100%"
-                          [(ngModel)]="newModule.placeholder" [formControl]="placeholderControl" required (input)="updateButtonDisabledState()">
-                        <div *ngIf="placeholderControl.invalid && (placeholderControl.dirty || placeholderControl.touched)">
-                          <div *ngIf="placeholderControl.errors?.['required']">Placeholder is required.</div>
-                        </div>
-                      </td>
-                    </tr>
-              
-                    <tr>
-                      <td class="text-center">Width</td>
-                      <td class="text-center" colspan="4">
-                        <div class="input-group">
-                          <input type="number" id="web" name="quantity" class="form-control" min="0" max="100" step="5"
-                            placeholder="Percentage" [(ngModel)]="newModule.width" [formControl]="widthControl" required  (change)="updateButtonDisabledState()">
-                          <div class="input-group-append">
-                            <button class="btn btn-primary" type="button" onclick="document.getElementById('web').stepUp()">+</button>
-                            <button class="btn btn-secondary" type="button" onclick="document.getElementById('web').stepDown()">-</button>
-                          </div>
-                        </div>
-                        <div *ngIf="widthControl.invalid && (widthControl.dirty || widthControl.touched)">
-                          <div *ngIf="widthControl.errors?.['required']">Width is required.</div>
-                        </div>
-                      </td>
-                    </tr>
-              
-                    <tr>
-                      <td colspan="1" class="text-center">Animation Style</td>
-                      <td>
-                        <select class="form-control select2bs4" style="width: 100%;" [(ngModel)]="newModule.animation_style"
-                          [formControl]="animationControl" required (change)="updateButtonDisabledState()">
-                          <option value="">Select an animation style</option>
-                          <option>style1</option>
-                          <option>style2</option>
-                          <option>style3</option>
-                          <option>style4</option>
-                          <option>style5</option>
-                          <option>style6</option>
-                        </select>
-                        <div *ngIf="animationControl.invalid && (animationControl.dirty || animationControl.touched)">
-                          <div *ngIf="animationControl.errors?.['required']">Animation style is required.</div>
-                        </div>
-                      </td>
-                      <td colspan="1">Class</td>
-                      <td>
-                        <select class="form-control select2bs4" style="width: 100%;" [(ngModel)]="newModule.class_id"
-                          [formControl]="classControl" required (change)="updateButtonDisabledState()">
-                          <option value="">Select a class</option>
-                          <option *ngFor="let css of cssclasses" [value]="css.id">{{css.placeholder}}</option>
-                        </select>
-                        <div *ngIf="classControl.invalid && (classControl.dirty || classControl.touched)">
-                          <div *ngIf="classControl.errors?.['required']">Class is required.</div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="1" class="text-center">Content</td>
-                      <td class="card-body" colspan="3">
-                        <ckeditor [(ngModel)]="newModule.content" [formControl]="ckeditorcontrol" (change)="updateButtonDisabledState()"></ckeditor>
-                      </td>
-                    </tr>
-              
-                    <td colspan="4">
-                      <div class="card-footer">
-                        <button type="button" class="btn btn-block btn-success btn-lg" (click)="insertModule()"
-                          [disabled]="moduleForm.invalid">Save</button>
-                      </div>
-                    </td>
-                  </tbody>
-                </table>
-              </div>
-            
-            
+<form [formGroup]="moduleForm">
+  <div class="card">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td colspan="1" class="text-center">Placeholder</td>
+          <td colspan="1" class="text-center">
+            <input type="text" class="form-control" placeholder="Placeholder" style="width:100%"
+              [(ngModel)]="newModule.placeholder" [formControl]="placeholderControl" required>
+            <div class="alert alert-danger alert-required" 
+              *ngIf="placeholderControl.invalid &&placeholderControl.errors?.['required']&& (placeholderControl.dirty || placeholderControl.touched)">
+
+              Placeholder is required.
+            </div>
+            <div class="alert alert-danger alert-required" 
+            *ngIf="placeholderControl.invalid &&placeholderControl.errors?.['minlength']&& (placeholderControl.dirty || placeholderControl.touched)">
+
+            *Minimum length is 3 characters
+          </div>
+        
+          </td>
+          <td colspan="1" class="text-center">Title </td>
+          <td>
+            <input type="Text" class="form-control" placeholder="Title" style="width:100%" [(ngModel)]="newModule.title"
+              [formControl]="titleControl" required>
+            <div class="alert alert-danger alert-required" 
+              *ngIf="titleControl.invalid &&titleControl.errors?.['required']&& (titleControl.dirty || titleControl.touched)">
+
+              Title is required.
+            </div>
+            <div class="alert alert-danger alert-required" 
+              *ngIf="titleControl.invalid &&titleControl.errors?.['minlength']&& (titleControl.dirty || titleControl.touched)">
+
+              *Minimum length is 3 characters
+            </div>
+          </td>
+        </tr>
+        <tr>
+     
+          <td colspan="1" class="text-center">Sub Title</td>
+          <td>
+            <input type="Text" class="form-control" placeholder="Sub Title" style="width:100%"
+              [(ngModel)]="newModule.subtitle" [formControl]="subtitleControl" required>
+            <div class="alert alert-danger alert-required" 
+              *ngIf="subtitleControl.invalid &&subtitleControl.errors?.['required']&& (subtitleControl.dirty || subtitleControl.touched)">
+
+              SubTitle is required.
+            </div>
+          <div class="alert alert-danger alert-required" 
+          *ngIf="subtitleControl.invalid &&subtitleControl.errors?.['minlength']&& (subtitleControl.dirty || subtitleControl.touched)">
+
+          *Minimum length is 3 characters
+        </div>
+          </td>
+          <td class="text-center">Width</td>
+        
+          <td class="text-center" colspan="4">
+            <button class="btn btn-secondary " type="button" (click)="decrement()">-</button>
+            <input  required [formControl]="widthControl" id="range" type="range" [(ngModel)]="newModule.width" min="0" max="100">
+           <button class="btn btn-primary" type="button" (click)="increment()">+</button>
+               <p> {{ newModule.width }} %</p>
+            <div class="alert alert-danger alert-required"
+            *ngIf="widthControl.invalid &&widthControl.errors?.['required']&& (widthControl.dirty || widthControl.touched)">
+
+            Width is required.
+          </div>
+          </td>
+
+        </tr>
+   
+
+        <tr>
+          <td colspan="1" class="text-center">Animation Style</td>
+          <td>
+            <select class="form-control select2bs4" style="width: 100%;" [(ngModel)]="newModule.animation_style"
+              [formControl]="animationControl" required>
+             
+              <option>fade-in</option>
+              <option>fade-out</option>
+              <option>slide-in </option>
+              <option>slide-out</option>
+              <option>slide-left</option>
+              <option>slide-right</option>
+            </select>
+            <div class="alert alert-danger alert-required" 
+            *ngIf="animationControl.invalid &&animationControl.errors?.['required']&& (animationControl.dirty || animationControl.touched)">
+
+            Animation Style is required.
+          </div>
+          </td>
+          <td colspan="1">Class</td>
+          <td>
+            <select class="form-control select2bs4" style="width: 100%;" [(ngModel)]="newModule.class_id"
+              [formControl]="classControl" required>
+              <option *ngFor="let css of cssclasses" [value]="css.id">{{css.placeholder}}</option>
+            </select>
+            <div class="alert alert-danger alert-required" 
+            *ngIf="classControl.invalid &&classControl.errors?.['required']&& (classControl.dirty || classControl.touched)">
+
+            Class Css is required.
+          </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" class="text-center">Content</td>
+          <td class="card-body" colspan="3">
+            <ckeditor [(ngModel)]="newModule.content" [formControl]="ckeditorControl"></ckeditor>
+            <div class="alert alert-danger alert-required"
+            *ngIf="ckeditorControl.invalid &&ckeditorControl.errors?.['required']&&  ckeditorControl.touched">
+
+            Data to dispaly is required.
+          </div>
+          </td>
+        </tr>
+
+        <td colspan="4">
+          <div class="card-footer">
+            <button type="button" class="btn btn-block btn-success btn-lg" (click)="insertModule()"
+              [disabled]="moduleForm.invalid">Save</button>
+          </div>
+        </td>
+      </tbody>
+    </table>
+  </div>
+
+
 </form>
-            
-
-

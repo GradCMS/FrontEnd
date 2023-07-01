@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { CssClassService } from 'src/app/sharedServices/classData/css-class.service';
+import { ClassbuilderService } from 'src/app/sharedServices/classbuilder/classbuilder.service';
 import { ModuleService } from 'src/app/sharedServices/moduleData/module.service';
 import{Module} from 'src/app/models/Module'
 import { Router } from '@angular/router';
@@ -16,26 +16,33 @@ export class InsertModuleFormComponent implements OnInit {
   cssID!: number
   cssclasses: any;
 
-   placeholderControl = new FormControl('', Validators.required);
-   widthControl = new FormControl('', Validators.required);
-   animationControl = new FormControl('', Validators.required);
-   classControl = new FormControl('', Validators.required);
-   ckeditorcontrol=new FormControl('', [Validators.required]);
-  moduleForm!: FormGroup;
+ 
   isButtonDisabled = true;
-  constructor(private cssServ: CssClassService,private moduleServ: ModuleService,private route :Router,private formBuilder: FormBuilder)
+  constructor(private cssServ: ClassbuilderService,private moduleServ: ModuleService,private route :Router,private formBuilder: FormBuilder)
    {
 
     }
   ngOnInit(){
-    this.cssServ.getCssClass().subscribe(data  =>{
+    this.cssServ.getClasses().subscribe(data  =>{
       this.cssclasses=data
-     })
-    
+      this.cssclasses=this.cssclasses.cssClasses
+     },
+     )
+     this.newModule.width=0 
+     //Validation 
      this.createForm();
 
   }
 
+
+  placeholderControl = new FormControl('', [Validators.required,Validators.minLength(3)]);
+  widthControl = new FormControl('');
+  animationControl = new FormControl('', Validators.required);
+  classControl = new FormControl('', Validators.required);
+  ckeditorControl=new FormControl('', [Validators.required]);
+  titleControl=new FormControl('', [Validators.required,Validators.minLength(3)]);
+  subtitleControl=new FormControl('', [Validators.required,Validators.minLength(3)]);
+   moduleForm!: FormGroup;
 
   createForm() {
     this.moduleForm = this.formBuilder.group({
@@ -43,7 +50,9 @@ export class InsertModuleFormComponent implements OnInit {
       widthControl: this.widthControl,
       animationControl: this.animationControl,
       classControl: this.classControl,
-      ckeditorcontrol:this.ckeditorcontrol
+      ckeditorcontrol:this.ckeditorControl,
+      titleControl:this.titleControl,
+      subtitleControl:this.subtitleControl
     });
   }
 
@@ -53,13 +62,20 @@ export class InsertModuleFormComponent implements OnInit {
       this.route.navigateByUrl('ModuleManagement')
     })}
 
-    updateButtonDisabledState() {
-      this.isButtonDisabled = !(
-       this.moduleForm.valid
-      );
+
+
+// Width Handle
+    increment(): void {
+      if (this.newModule.width < 100) {
+        this.newModule.width++;
+      }
     }
-
-
+  
+    decrement(): void {
+      if (this.newModule.width > 0) {
+        this.newModule.width--;
+      }
+    }
 
 
   }

@@ -7,169 +7,123 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body ">
-        <ul class="todo-list " data-widget="todo-list">
-            <li *ngFor="let element of navElements | paginate: { itemsPerPage: 5, currentPage: p }" style="justify-content: center; align-items: center;">
+        <ul class="todo-list " data-widget="todo-list" cdkDropList
+            (cdkDropListDropped)="changePriorityOfElem($event,navElements)">
+            <li cdkDrag [cdkDragData]="element.name" [cdkDragDisabled]="disableDrag" (cdkDragStarted)="isDragging = true" (cdkDragEnded)="isDragging = false"*ngFor="let element of getSortedData(navElements,'asc') "
+                style="justify-content: center; align-items: center;">
                 <!-- edits tools -->
-                <span class="tools">
+                <span class="tools" >
                     <a routerLink="/NavElementEdit/{{element.id}}" class="fas fa-edit " style="color: #dc3545;"></a>
                     <a routerLink="/NavbarElements" (click)="deleteDisplay(element.id)" class="fas fa-trash "
                         style="color: #dc3545;"></a>
-                        
+
                 </span>
-                
+
                 <div class="card-body ">
-                    <div class="text-center">{{element.name}}</div>
-               
-                  <button  class="btn btn-info btn-xs" style="float: right;" (click)="displayDropDownForm(element.id)" >
-                        <i class="fa fa-angle-double-down"></i>
-                      </button>
-                </div>
-            <!-- D R O P   D O W N   E L E M E  N  T  S  -->
-<div *ngIf="showForm && showFormID===element.id" class="card " >
-    <div class="card-header " >
-        <h3 class="card-title mt-3" style="color: cadetblue; " >
-            DropDown Elements
-        </h3>
+                    <div class="text-center" cdkDragHandle>{{element.name}}</div>
 
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body " style="" >
-        <ul class="todo-list " data-widget="todo-list"  >
-            <!-- <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table> -->
-         <table class="table table-sm table-bordered table-striped text-center">
-	<thead>
-		<tr>
-			<th scope="col">
-				Id
-			</th>
-			<th scope="col">
-				Name
-			</th>
-			<th scope="col">
-				Price
-			</th>
-		</tr>
-	</thead>
-	<tbody cdkDropList (cdkDropListDropped)="drop($event)">
-		<tr cdkDrag cdkDragLockAxis="y" *ngFor="let data of dataSource">
-			<td cdkDragHandle>{{data.id}}</td>
-			<td cdkDragHandle>{{data.name}}</td>
-			<td cdkDragHandle>{{data.price}}</td>
-
-			<!-- Preview -->
-			<div *cdkDragPreview matchSize="true" class="container dragdrop-placeholder">
-				{{data.name}}
-			</div>
-		</tr>
-	</tbody>
-</table>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              
-            <li *ngFor="let dropelement of element.drop_down_elements | paginate: { itemsPerPage: 5, currentPage: p }" style=" background-color: rgb(139, 138, 137); color: aliceblue;">
-                <!-- edits tools -->
-                <span class="tools">
-                    <a routerLink="/NavElementEdit/{{dropelement.id}}" class="fas fa-edit " style="color: #dc3545;"></a>
-                    <a routerLink="/NavbarElements" (click)="deleteDisplay(dropelement.id)" class="fas fa-trash "
-                        style="color: #dc3545;"></a>
-                        
-                </span>
-                
-                <div class="card-body ">
-                    <div class="text-center">{{dropelement.name}}</div>
-               
+                    <button  class="btn btn-info btn-xs" style="float: right;"
+                        (click)="displayDropDownForm(element.id,element.drop_down_elements.length)">
+                        <i  class="fa fa-angle-double-down"></i>
+                    </button>
                 </div>
 
+                <!-- D R O P   D O W N   E L E M E  N  T  S  -->
+                <div *ngIf="showForm && showFormID===element.id" class="card ">
+                    <div class="card-header ">
+                        <h3 class="card-title mt-3" style="color: cadetblue; ">
+                            DropDown Elements
+                        </h3>
+
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body ">
+                        <ul class="todo-list " data-widget="todo-list" *ngIf="element.drop_down_elements.length!=0">
+
+                            <table class="table table-sm table-bordered table-striped text-center">
+                                <thead>
+                                    <tr>
+
+                                        <th scope="col">
+                                            Priority
+                                        </th>
+                                        <th scope="col">
+                                            Name
+                                        </th>
+
+                                        <th scope="col">
+                                            Edit
+                                        </th>
+                                        <th scope="col">
+                                            Delete
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody cdkDropList
+                                    (cdkDropListDropped)="changePriorityOfElem($event,element.drop_down_elements,element.id)">
+                                    <tr cdkDrag cdkDragLockAxis="y"
+                                        *ngFor="let dropelement of getSortedData(element.drop_down_elements,'asc')  | paginate: { itemsPerPage: 5, currentPage: p2 } ">
+                                        <td cdkDragHandle>{{dropelement.priority}}</td>
+                                        <td cdkDragHandle>{{dropelement.name}}</td>
+                                        <td> <a routerLink="/NavElementEdit/{{dropelement.id}}" class="fas fa-edit "
+                                                style="color: #dc3545;"></a>
+                                        </td>
+                                        <td> <a routerLink="/NavbarElements" (click)="deleteDisplay(dropelement.id)"
+                                                class="fas fa-trash " style="color: #dc3545;"></a>
+                                        </td>
+
+                                        <!-- Preview -->
+                                        <div *cdkDragPreview matchSize="true" class="container dragdrop-placeholder">
+                                            {{dropelement.name}}
+                                        </div>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+
+
+                        </ul>
+                        <div class="container">
+                            <div class="row">
+                                <div class="card-footer col-sm-6" style="background-color:white;">
+                                </div>
+                                <div class="card-footer col-sm-6" style="background-color:white; ">
+
+                                    <a [routerLink]="['/NavElementInsert', parent_id,  newDropElemPri]"
+                                        class="btn btn-secondary btn-xs" data-toggle="modal" style="float: right;"><i
+                                            class="fa fa-plus">&#xE147;</i> <span>Insert Drop Down Element</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
 
             </li>
         </ul>
-        <pagination-controls style=" font-size: 0.8rem;
-        padding: 0.25rem 0.5rem; " (pageChange)="p = $event"></pagination-controls>
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="container">
             <div class="row">
                 <div class="card-footer col-sm-6" style="background-color:white;">
                 </div>
                 <div class="card-footer col-sm-6" style="background-color:white; ">
-                    <a routerLink="/NavElementInsert" class="btn btn-secondary btn-xs" data-toggle="modal" style="float: right;"><i
-                            class="fa fa-plus">&#xE147;</i> <span>Insert Drop Down Element</span></a>
+                    <a [routerLink]="['/NavElementInsert', 0,  newElemPri]" class="btn btn-success" data-toggle="modal"
+                        style="float: right;"><i class="fa fa-plus">&#xE147;</i> <span>Add New Element</span></a>
                 </div>
             </div>
         </div>
-
-
-
-</div>
-</div>
-
-            </li>
-        </ul>
-
-
-
-
-
-
-
-
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
-
-
-
-    <div class="container">
-        <div class="row">
-            <div class="card-footer col-sm-6" style="background-color:white;">
-            </div>
-            <div class="card-footer col-sm-6" style="background-color:white; ">
-                <a routerLink="/NavElementInsert" class="btn btn-success" data-toggle="modal" style="float: right;"><i
-                        class="fa fa-plus">&#xE147;</i> <span>Add New Element</span></a>
-            </div>
-        </div>
     </div>
-</div>

@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {SnackbarComponent} from "../../snackbar/snackbar.component";
+import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 import {SiteIdentityService} from "../../sharedServices/siteIdentity/site-identity.service";
 
 interface modifiedFormValues {
@@ -53,6 +53,29 @@ export class SiteIdentityComponent implements OnInit {
   rowContact: boolean = false;
   rowAbout: boolean = false;
   rowImages: boolean = false;
+  // phone number validator
+  phoneNumberValidator(control: FormControl): { [key: string]: any } | null {
+    const phoneNumberPattern = /^\+\d{11}$/;
+    if (!phoneNumberPattern.test(control.value)) {
+      return { invalidPhoneNumber: true };
+    }
+    return null;
+  }
+  landLineValidator(control: FormControl): { [key: string]: any } | null {
+    const numberPattern = /^\d{10}$/;
+    if (!numberPattern.test(control.value)) {
+      return { invalidNumber: true };
+    }
+    return null;
+  }
+
+  urlValidator(control: FormControl): { [key: string]: any } | null {
+    const urlPattern = /^(http|https):\/\/[^ "]+$/;
+    if (!urlPattern.test(control.value)) {
+      return { invalidUrl: true };
+    }
+    return null;
+  }
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router,private siteIdentityService:SiteIdentityService) {
 
@@ -82,17 +105,16 @@ export class SiteIdentityComponent implements OnInit {
     this.contactusForm = this.fb.group(
       {
         universityAddress: ['', Validators.required],
-        universityEmail: ['', Validators.required],
-        mainPhoneNumber: ['', Validators.required],
-        universityLandline: ['', Validators.required],
+        universityEmail: ['', [Validators.required,Validators.email]],
+        mainPhoneNumber: ['', [Validators.required,this.phoneNumberValidator]],
+        universityLandline: ['', [Validators.required,this.landLineValidator]],
       })
     this.socialMediaForm = this.fb.group(
       {
-        facebookLink: ['', Validators.required],
-        twitterLink: ['', Validators.required],
-        instagramLink: ['', Validators.required],
-        otherLink: ['', Validators.required],
-
+        facebookLink: ['', [this.urlValidator]],
+        twitterLink: ['', [this.urlValidator]],
+        instagramLink: ['', [this.urlValidator]],
+        otherLink: ['', [this.urlValidator]],
       })
     this.getDataIntoForm();
   }

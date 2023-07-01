@@ -16,6 +16,7 @@ export class DisplayShowFormComponent implements OnInit {
   ngOnInit(){
     this.displayServ.getDisplay().subscribe(data =>{
       this.displays=data
+      this.displays=this.displays.Displays
     })
 
   }

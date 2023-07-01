@@ -4,8 +4,7 @@ import { Display } from 'src/app/models/Display';
 import { GridSetting } from 'src/app/models/GridSetting';
 import { SliderSetting } from 'src/app/models/SliderSetting';
 import { DisplayService } from 'src/app/sharedServices/DisplayData/display.service';
-import { CssClassService } from 'src/app/sharedServices/classData/css-class.service';
-
+import { ClassbuilderService } from 'src/app/sharedServices/classbuilder/classbuilder.service';
 @Component({
   selector: 'app-edit-display-form',
   templateUrl: './edit-display-form.component.html',
@@ -35,7 +34,10 @@ export class EditDisplayFormComponent implements OnInit {
     bullets: 0,
     class_id: this.num,
     animation: this.str,
-    effect_speed_ms: 0
+    effect_speed_ms: 0,
+    created_at:this.str,
+    updated_at:this.str,
+    id:this.num
   }
   grid: GridSetting = {
     blocks_count: this.num,
@@ -44,20 +46,27 @@ export class EditDisplayFormComponent implements OnInit {
     class_id: this.num,
     blocks_animation: this.str,
     horizontal_alignment: this.str,
-    vertical_alignment: this.str
+    vertical_alignment: this.str,
+    created_at:this.str,
+    updated_at:this.str,
+    id:this.num
   };
-  constructor(private cssServ: CssClassService, private displayserv: DisplayService, private route: Router, private routeactive: ActivatedRoute) { }
+  constructor(private cssServ: ClassbuilderService, private displayserv: DisplayService, private route: Router, private routeactive: ActivatedRoute) { }
 
   ngOnInit(): void {
 
     this.routeactive.params.subscribe(params => {
       this.displayID = params['id'];
     });
-    this.cssServ.getCssClass().subscribe(data => {
-      this.cssclasses = data
+    this.cssServ.getClasses().subscribe(data => {
+      this.cssclasses=data
+      this.cssclasses=this.cssclasses.cssClasses
+   
     })
     this.displayserv.getDisplayByID(this.displayID).subscribe(data => {
-      this.display = data
+      this.display=data.Display
+      console.log(this.display.grid_setting)
+      console.log(this.display)
       if (this.display.grid_setting) {
         console.log(this.display.type)
         this.grid = this.display.grid_setting

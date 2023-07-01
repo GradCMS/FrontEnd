@@ -13,4 +13,7 @@ export interface SliderSetting {
     class_id: number;
     animation: string;
     effect_speed_ms: number;
+    updated_at?:string
+    created_at?:string
+    id?:number
   }

@@ -1,0 +1,14 @@
+.alert-required {
+    font-size: 0.6rem;
+    padding: 0.2rem;
+    display: inline-block;
+    width: auto;
+    margin-top: 2px;
+    float: left;
+}
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}

@@ -22,7 +22,6 @@ import {ClassBuilderMainComponent} from "./pages/class-builder/class-builder-mai
 import {SiteIdentityComponent} from "./pages/site-identity/site-identity.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {LoginPageComponent} from "./login-page/login-page.component";
-import {TestPageComponent} from "./test-page/test-page.component";
 import {ClassBuilderEditComponent} from "./pages/class-builder/class-builder-edit/class-builder-edit.component";
 const routes: Routes = [
   {path: '', component: LandingMainComponent , title: 'Landing Page'},
@@ -39,12 +38,11 @@ const routes: Routes = [
   {path: 'SiteIdentity', component:SiteIdentityComponent },
   {path: 'ClassBuilder', component: ClassBuilderMainComponent},
   {path:'NavbarElements',component:NavbarDisplayMainComponent},
-  {path:'NavElementInsert',component:InsertNavbarMainComponent},
+  {path:'NavElementInsert/:parentId/:newPriority',component:InsertNavbarMainComponent},
   {path:'NavElementEdit/:id',component:EditNavbarMainComponent},
   {path: 'SiteIdentity', component: SiteIdentityComponent , title: 'Site Identity' },
   {path: 'ClassBuilder', component: ClassBuilderMainComponent , title: 'Class Builder'},
   {path: 'login', component: LoginPageComponent , title: 'Login'},
-  {path: 'Test', component: TestPageComponent , title: 'Test Page'},
   {path: 'ClassBuilder-Edit/:id', component: ClassBuilderEditComponent , title: 'Edit Class'},
 
   // make sure this is the last route for the not found pages

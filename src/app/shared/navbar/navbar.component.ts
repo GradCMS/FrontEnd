@@ -15,11 +15,12 @@ export class NavbarComponent implements OnInit {
   constructor(private router : Router , private authService:AuthServiceService) { }
 
   ngOnInit(): void {
+
   }
   logout() {
     this.authService.logout();
   }
-
+  
 
 
   // check this link => https://medium.com/letsboot/lets-logout-of-your-angular4-app-5f4f6bd95159

@@ -14,8 +14,8 @@ export class ModuleService {
 
   }
    //Create
-   addModule(object:any): Observable<Module>{
-    return this.http.post<Module>(this.configUrl,object)
+   addModule(object:any): Observable<any>{
+    return this.http.post<any>(this.configUrl,object)
    
    }
   //Read
@@ -23,14 +23,14 @@ export class ModuleService {
     return this.http.get<Module>(this.configUrl);  
 
   }
-  getModuleByID(id:number):Observable<Module>{
-    return this.http.get<Module>(this.configUrl+`/${id}`);  
+  getModuleByID(id:number):Observable<any>{
+    return this.http.get<any>(this.configUrl+`/${id}`);  
 
   }
  
   //Update
-  updateModule(object:any ,ID:number): Observable<Module>{
-  return this.http.patch<Module>(this.configUrl+`/${ID}`,object) 
+  updateModule(object:any ,ID:number): Observable<any>{
+  return this.http.patch<any>(this.configUrl+`/${ID}`,object) 
   
 
   }

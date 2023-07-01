@@ -3,9 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
-import {ToastrService} from "ngx-toastr";
 import {AuthServiceService} from "../sharedServices/Auth/auth-service.service";
-import {SnackbarComponent} from "../snackbar/snackbar.component";
+import {SnackbarComponent} from "../shared/snackbar/snackbar.component";
 
 
 interface modifiedFormValues {
@@ -39,14 +38,13 @@ export class LoginPageComponent implements OnInit {
 
   form!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient , private router: Router , private toastr: ToastrService , private authService:AuthServiceService ) {
+  constructor(private formBuilder: FormBuilder, private http: HttpClient , private router: Router  , private authService:AuthServiceService ) {
   }
 
 
 
   ngOnInit(): void {
     if (this.authService.isAuth()) {
-      this.toastr.success('You are already logged in', 'Welcome Back');
       this.router.navigate(['']);
     }
     this.rememberMe = false;
