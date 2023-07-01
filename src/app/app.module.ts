@@ -96,7 +96,7 @@ import { ClassBuilderEditComponent } from './pages/class-builder/class-builder-e
     InsertNavbarFormComponent,
     InsertNavbarMainComponent,
     PageNotFoundComponent,
-    // LoginPageComponent,
+    LoginPageComponent,
     SnackbarComponent,
     TestPageComponent,
     ClassBuilderEditComponent,
