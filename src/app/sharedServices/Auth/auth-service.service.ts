@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from "@angular/router";
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-
+import { ToastrService } from "ngx-toastr";
 
 
 @Injectable({
@@ -12,7 +12,12 @@ export class AuthServiceService {
 
   url = 'http://localHost:8000/api/auth/login';
 
-  constructor( private router : Router ) { }
+  constructor( private router : Router ,private http : HttpClient) { }
+
+  login(user_name: string, password: string) {
+    const body = { user_name, password };
+    return this.http.post(this.url, body);
+  }
 
   isAuth() {
     if (sessionStorage.getItem('token')) {
