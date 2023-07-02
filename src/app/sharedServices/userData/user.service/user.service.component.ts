@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class UserService {
   
-  private configUrl="http://localhost:3000/users"
+  private configUrl="http://LocalHost:8000/api/users"
   constructor(private http: HttpClient) { 
 
 
@@ -36,12 +36,12 @@ export class UserService {
   }
   //susbend
   susbendUser(object:any ,ID:number): Observable<any>{
-   return this.http.put<any>(this.configUrl+`/${ID}`,object)
+   return this.http.patch<any>(this.configUrl+`/${ID}`,object)
 }
 
   //unsusbend
   unsusbendUser(object:any ,ID:number): Observable<any>{
-    return this.http.put<any>(this.configUrl+`/${ID}`,object)
+    return this.http.patch<any>(this.configUrl+`/${ID}`,object)
  }
 }
 

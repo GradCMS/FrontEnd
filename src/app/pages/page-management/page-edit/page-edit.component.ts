@@ -91,17 +91,11 @@ export class PageEditComponent implements OnInit {
 		console.log(this.object)
 	});
 	this.pageServ.getAllPages().subscribe(data  =>{
-	  this.pages=data
-	  console.log(this.pages)
-
+	  this.pages=data.pages
 	  this.parents= this.pages.map((item: { id: any; title: any; }) => ({key:item.id, pageName: item.title }))
-	    console.log(this.parents)
 	 })
 	this.pageServ.getPageByID(this.object.id).subscribe(data  =>{
-	  this.page=data
-      console.log(this.page)
-	
-
+	  this.page=data.page
 		this.default=this.page.type
 		this.manualUpdate=this.page.hidden
 		this.display_placeholders=this.page.page_displays

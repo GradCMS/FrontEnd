@@ -35,7 +35,7 @@ export class PageService {
  
   //Update
   updatePage(object:any ,ID:number): Observable<any>{
-  return this.http.put<any>(this.configUrl+`/${ID}`,object) 
+  return this.http.patch<any>(this.configUrl+`/${ID}`,object) 
   
 
   }

@@ -1,385 +1,374 @@
 <body class="hold-transition sidebar-mini layout-fixed">
-  <div class="wrapper">
-  <app-navbar></app-navbar>
- <app-sidebar></app-sidebar>
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <section class="content-header">
-      <div class="container-fluid">
-          <div class="row mb-2">
-              <div class="col-sm-6">
-                  <h1>Page1</h1>
-              </div>
-              <div class="col-sm-6">
-                  <ol class="breadcrumb float-sm-right">
-                      <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
-                      <li class="breadcrumb-item active">Page1</li>
-                  </ol>
-              </div>
-          </div>
-      </div><!-- /.container-fluid -->
-  </section>
+    <div class="wrapper">
+        <app-navbar></app-navbar>
+        <app-sidebar></app-sidebar>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>Page1</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                                <li class="breadcrumb-item active">Page1</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
 
-  <!-- Main content -->
-  <section class="content">
+            <!-- Main content -->
+            <section class="content">
 
-      <!-- Default box -->
+                <!-- Default box -->
 
 
-      <div class="card-body">
-          <!-- HERE -->
-          <!-- general form elements -->
-          <div class="card card-primary">
-              <div class="card-header">
-                  <h3 class="card-title">Settings</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form [formGroup]="editPage" (ngSubmit)="onSubmit()">
-                  <!-- INPUTS START -->
-                  <div class="card-body" >
-                      <div class="row">
-                          <label>Page Type:</label>
-                          <div class="col-sm-6">
+                <div class="card-body">
+                    <!-- HERE -->
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Settings</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form [formGroup]="editPage" (ngSubmit)="onSubmit()">
+                            <!-- INPUTS START -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <label>Page Type:</label>
+                                    <div class="col-sm-6">
 
-                              <!-- radio -->
-                              <div class="form-group clearfix">
-                                  <div class="icheck-primary d-inline">
-                                    <input type="radio" id="radioPrimary1" name="type" [(ngModel)]="page.type" [value]="'standard'" [checked]="default === 'standard'">
-                                    <label for="radioPrimary1">Standard page</label>
-                                  </div>
-                                  <div class="icheck-primary d-inline">
-                                    <input type="radio" id="radioPrimary2" name="type" [(ngModel)]="page.type" [value]="'content'" [checked]="default === 'content'">
-                                    <label for="radioPrimary2">Content page</label>
-                                  </div>
+                                        <!-- radio -->
+                                        <div class="form-group clearfix">
+                                            <div class="icheck-primary d-inline">
+                                                <input type="radio" id="radioPrimary1" name="type"
+                                                    [(ngModel)]="page.type" [value]="'standard'"
+                                                    [checked]="default === 'standard'">
+                                                <label for="radioPrimary1">Standard page</label>
+                                            </div>
+                                            <div class="icheck-primary d-inline">
+                                                <input type="radio" id="radioPrimary2" name="type"
+                                                    [(ngModel)]="page.type" [value]="'content'"
+                                                    [checked]="default === 'content'">
+                                                <label for="radioPrimary2">Content page</label>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
                                 </div>
-                                
 
-                          </div>
-                      </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Title*</label>
+                                    <input type="Text" class="form-control" id="pageTitle" required
+                                        formControlName="title" [value]="page.title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">URL*</label>
+                                    <input type="Text" class="form-control" id="exampleInputPassword1"
+                                        placeholder="No special characters are allowed" formControlName="url" required
+                                        [value]="page.url">
+                                </div>
+                                <div class="form-group">
+                                    <label>Parent Page</label>
+                                    <select class="form-control select2bs4" style="width: 100%;"
+                                        formControlName="parent_id">
+                                        <option *ngFor="let parent of parents"
+                                            [selected]="parent.key === page.parent_id" [value]="parent.key">
+                                            {{ parent.pageName }}
+                                        </option>
+                                    </select>
+                                </div>
 
-                      <div class="form-group">
-                          <label for="exampleInputEmail1">Title*</label>
-                          <input type="Text"
-                           class="form-control"
-                           id="pageTitle"
-                           required
-                           formControlName="title"
-                           [value]="page.title"
-                           >
-                      </div>
-                      <div class="form-group">
-                          <label for="exampleInputPassword1">URL*</label>
-                          <input type="Text"
-                           class="form-control" 
-                           id="exampleInputPassword1"
-                                 placeholder="No special characters are allowed" 
-                                 formControlName="url"                             
-                                 required
-                                 [value]="page.url"
-                                 >
-                      </div>
-                      <div class="form-group">
-                          <label>Parent Page</label>
-                          <select class="form-control select2bs4" style="width: 100%;" 
-                          formControlName="parent_id">
-                            <option *ngFor="let parent of parents" 
-                            [selected]="parent.key === page.parent_id"
-                            [value]="parent.key">
-                              {{ parent.pageName }}
-                            </option>
-                          </select>
-                      </div>
-                        
 
-                      <div class="form-group">
-                          <label for="exampleInputEmail1">Tags</label>
-                          <input type="Text"
-                           class="form-control" 
-                           id="Tags"
-                           formControlName="tags"                            
-                            [value]="page.tags"
-                           >
-                      </div>
-                      <!-- textarea -->
-                      <div class="form-group">
-                          <label>Short Description</label>
-                          <textarea class="form-control"
-                           rows="3"
-                           [value]="page.short_description"
-                           formControlName="short_description">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Tags</label>
+                                    <input type="Text" class="form-control" id="Tags" formControlName="tags"
+                                        [value]="page.tags">
+                                </div>
+                                <!-- textarea -->
+                                <div class="form-group">
+                                    <label>Short Description</label>
+                                    <textarea class="form-control" rows="3" [value]="page.short_description"
+                                        formControlName="short_description">
                           </textarea>
-                           
-                      </div>
 
-                      <div class="form-group">
+                                </div>
 
-                          <!-- Rounded switch -->
-                          <div class="card-body">
-                              <label> Hidden</label>
-                          </div>
-                          <div class="card-body">
-                              <label class="switch"  [ngClass]="{'checked': manualUpdate}">
-                                  <input type="checkbox"
-                                   [(ngModel)]="manualUpdate" 
-                                   formControlName="hidden">
-                                  <span class="slider round"></span>
-                              </label>
-                              
-                          </div>
-                      </div>
+                                <div class="form-group">
 
-                     <!-- IMAGE UPLOAD -->
-<div class="form-group">
-  <div class="column w-100">
-      <label>Header Image</label>
-      <div class="card-body">
-          <div id="actions" class="row">
-              <div *ngIf="showImageCropper1">
-                  <div class="image-upload-container">
-                      <label class="image-upload-label" for="header-image-upload-input">Select an image to upload</label>
-                      <input id="header-image-upload-input" type="file" (change)="onFileSelected($event)" accept="image/*">
-                      <div class="image-preview-container">
-                          <image-cropper
-                              *ngIf="imageChangedEvent1"
-                              [imageChangedEvent]="imageChangedEvent1"
-                              [maintainAspectRatio]="true"
-                              [aspectRatio]="4 / 3"
-                              [resizeToWidth]="300"
-                              format="png"
-                              (imageCropped)="onImageCropped($event,'header')"
-                              (imageLoaded)="onImageLoaded()"
-                              (loadImageFailed)="onLoadImageFailed()">
-                          </image-cropper>
-                          <img class="image-preview" 
-                              [src]="croppedImage1" *ngIf="croppedImage1">
-                          <button class="save-button"
-                              *ngIf="croppedImage1"
-                              (click)="saveCroppedImage('header')"
-                             
-                              >Save</button>
-                      </div>
-                  </div>
-              </div>
-              <div *ngIf="!showImageCropper1">
-                  <p>Image saved</p>
-                  <img [src]="croppedImage1">
-                  <button (click)="showImageCropper1 = true">Edit</button>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="column w-100">
-      <label>Cover Image</label>
-      <div class="card-body">
-          <div id="actions" class="row">
-              <div *ngIf="showImageCropper2">
-                  <div class="image-upload-container">
-                      <label class="image-upload-label" for="cover-image-upload-input">Select an image to upload</label>
-                      <input id="cover-image-upload-input" type="file" (change)="onFileSelected($event)" accept="image/*">
-                      <div class="image-preview-container">
-                          <image-cropper
-                              *ngIf="imageChangedEvent2"
-                              [imageChangedEvent]="imageChangedEvent2"
-                              [maintainAspectRatio]="true"
-                              [aspectRatio]="4 / 3"
-                              [resizeToWidth]="300"
-                              format="png"
-                              (imageCropped)="onImageCropped($event,'cover')"
-                              (imageLoaded)="onImageLoaded()"
-                              (loadImageFailed)="onLoadImageFailed()">
-                          </image-cropper>
-                          <img class="image-preview" 
-                              [src]="croppedImage2"
-                              *ngIf="croppedImage2">
-                          <button class="save-button"
-                              *ngIf="croppedImage2"
-                              (click)="saveCroppedImage('cover')">Save</button>
-                      </div>
-                  </div>
-              </div>
-              <div *ngIf="!showImageCropper2">
-                  <p>Image saved</p>
-                  <img [src]="croppedImage2">
-                  <button (click)="showImageCropper2 = true">Edit</button>
-              </div>
+                                    <!-- Rounded switch -->
+                                    <div class="card-body">
+                                        <label> Hidden</label>
+                                    </div>
+                                    <div class="card-body">
+                                        <label class="switch" [ngClass]="{'checked': manualUpdate}">
+                                            <input type="checkbox" [(ngModel)]="manualUpdate" formControlName="hidden">
+                                            <span class="slider round"></span>
+                                        </label>
+
+                                    </div>
+                                </div>
+
+                                <!-- IMAGE UPLOAD -->
+                                <div class="form-group">
+                                    <div class="column w-100">
+                                        <label>Header Image</label>
+                                        <div class="card-body">
+                                            <div id="actions" class="row">
+                                                <div *ngIf="showImageCropper1">
+                                                    <div class="image-upload-container">
+                                                        <label class="image-upload-label"
+                                                            for="header-image-upload-input">Select an image to
+                                                            upload</label>
+                                                        <input id="header-image-upload-input" type="file"
+                                                            (change)="onFileSelected($event)" accept="image/*">
+                                                        <div class="image-preview-container">
+                                                            <image-cropper *ngIf="imageChangedEvent1"
+                                                                [imageChangedEvent]="imageChangedEvent1"
+                                                                [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
+                                                                [resizeToWidth]="300" format="png"
+                                                                (imageCropped)="onImageCropped($event,'header')"
+                                                                (imageLoaded)="onImageLoaded()"
+                                                                (loadImageFailed)="onLoadImageFailed()">
+                                                            </image-cropper>
+                                                            <img class="image-preview" [src]="croppedImage1"
+                                                                *ngIf="croppedImage1">
+                                                            <button class="save-button" *ngIf="croppedImage1"
+                                                                (click)="saveCroppedImage('header')">Save</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="!showImageCropper1">
+                                                    <p>Image saved</p>
+                                                    <img [src]="croppedImage1">
+                                                    <button (click)="showImageCropper1 = true">Edit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column w-100">
+                                        <label>Cover Image</label>
+                                        <div class="card-body">
+                                            <div id="actions" class="row">
+                                                <div *ngIf="showImageCropper2">
+                                                    <div class="image-upload-container">
+                                                        <label class="image-upload-label"
+                                                            for="cover-image-upload-input">Select an image to
+                                                            upload</label>
+                                                        <input id="cover-image-upload-input" type="file"
+                                                            (change)="onFileSelected($event)" accept="image/*">
+                                                        <div class="image-preview-container">
+                                                            <image-cropper *ngIf="imageChangedEvent2"
+                                                                [imageChangedEvent]="imageChangedEvent2"
+                                                                [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
+                                                                [resizeToWidth]="300" format="png"
+                                                                (imageCropped)="onImageCropped($event,'cover')"
+                                                                (imageLoaded)="onImageLoaded()"
+                                                                (loadImageFailed)="onLoadImageFailed()">
+                                                            </image-cropper>
+                                                            <img class="image-preview" [src]="croppedImage2"
+                                                                *ngIf="croppedImage2">
+                                                            <button class="save-button" *ngIf="croppedImage2"
+                                                                (click)="saveCroppedImage('cover')">Save</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="!showImageCropper2">
+                                                    <p>Image saved</p>
+                                                    <img [src]="croppedImage2">
+                                                    <button (click)="showImageCropper2 = true">Edit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- END IMAGE UPLOAD -->
+
+                                <!-- ADD MODULES TO PAGE -->
+
+
+                                <!-- put modules to page -->
+                                <label>Modules</label>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <div class="container-fluid">
+
+
+                                                    <dual-list [source]="source" [key]="key" [display]="display"
+                                                        [(destination)]="confirmed" [(destination)]="selectedModules"
+                                                        height="265px" [format]="format" [disabled]="disabled"
+                                                        (destinationChange)="updateSelectedModules()">
+
+                                                    </dual-list>
+
+
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane" [class.active]="tab===1">
+                                                        </div>
+                                                        <div class="tab-pane" [class.active]="tab===2">
+                                                            <form class="form">
+                                                                <div class="form-group">
+                                                                    <label style="display:block;">Direction</label>
+                                                                    <div class="btn-group">
+                                                                        <button type="button" class="btn"
+                                                                            [ngClass]="{ 'btn-primary' : sourceLeft, 'btn-default' : !sourceLeft }"
+                                                                            (click)="swapDirection()">left-to-right</button>
+                                                                        <button type="button" class="btn"
+                                                                            [ngClass]="{ 'btn-primary' : !sourceLeft, 'btn-default' : sourceLeft }"
+                                                                            (click)="swapDirection()">right-to-left</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Locale</label>
+                                                                    <input class="form-control"
+                                                                        [(ngModel)]="format.locale" name="locale">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Add button</label>
+                                                                    <input class="form-control" [(ngModel)]="format.add"
+                                                                        name="addBtn">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Remove button</label>
+                                                                    <input class="form-control"
+                                                                        [(ngModel)]="format.remove" name="rmBtn">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>All button</label>
+                                                                    <input class="form-control" [(ngModel)]="format.all"
+                                                                        name="allBtn">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>None button</label>
+                                                                    <input class="form-control"
+                                                                        [(ngModel)]="format.none" name="noneBtn">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="tab-pane" [class.active]="tab===3">
+                                                            <div class="row" style="margin-top:20px;">
+                                                                <div class="col-sm-6">
+                                                                    <label>Modify parent's source</label>
+                                                                    <form class="form-inline well">
+                                                                        <input class="form-control col-sm-1"
+                                                                            style="margin-right:4px;"
+                                                                            [(ngModel)]="userAdd" name="userAdd">
+                                                                        <button class="btn btn-success"
+                                                                            (click)="doCreate()"
+                                                                            [disabled]="!userAdd.length">Create</button>
+                                                                        <button class="btn btn-danger"
+                                                                            (click)="doDelete()">Delete</button>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <label>Modify parent's confirmed</label>
+                                                                    <form class="form-inline well">
+                                                                        <button class="btn btn-default"
+                                                                            (click)="doAdd()">Add</button>
+                                                                        <button class="btn btn-default"
+                                                                            (click)="doRemove()">Remove</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- manage modules (edit and sort) {TODO LIST}-->
+
+                                <!-- TO DO List -->
+                                <div class="card ">
+                                    <div class="card-header ui-sortable-handle ">
+                                        <h3 class="card-title ">
+                                            Page Content
+                                        </h3>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body ">
+                                        <ul class="todo-list ui-sortable" data-widget="todo-list" cdkDropList
+                                            (cdkDropListDropped)="drop($event)">
+                                            <li *ngFor="let module of selectedModules; let i = index" cdkDrag>
+                                                <span class="handle ui-sortable-handle">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </span>
+                                                {{ module.placeholder }}
+                                                <!-- drag handle -->
+
+                                                <!-- todo text -->
+                                                <!-- General tools such as edit or delete-->
+                                                <input type="hidden" [formControlName]="i.toString() + '.priority'"
+                                                    [ngModel]="module.priority" />
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+
+
+                                <!-- END MODULES -->
+
+                                <!-- INPUTS END -->
+                            </div>
+
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-block btn-success btn-lg">Save</button>
+                            </div>
+                        </form>
+                        <!-- END FORM -->
+                    </div>
+                    <!-- /.card-body -->
+
+                </div>
+
+            </section>
+            <!-- /.content -->
         </div>
-        </div>
-        </div>  
-</div>
+        <!-- /.content-wrapper -->
+    </div>
 
-                      <!-- END IMAGE UPLOAD -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="../plugins/jquery-ui/jquery-ui.min.js "></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
-                      <!-- ADD MODULES TO PAGE -->
+    <!-- Bootstrap 4 -->
+    <script src="../../../../assets/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../../../assets/js/adminlte.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../../../assets/js/demo.js"></script>
+    <!-- ToDoList -->
+    <script src="../../../../assets/js/dashboard.js"></script>
+    <script src="../../../../assets/js/TodoList.js"></script>
 
+    <!-- dropzonejs -->
+    <script src="../../../../assets/js/dropzone.min.js"></script>
+    <!-- Bootstrap4 Duallistbox -->
+    <script src="../../../../assets/js/jquery.bootstrap-duallistbox.min.js"></script>
+    <!-- Bootstrap Switch -->
+    <script src="../../../../assets/js/bootstrap-switch.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="../../../../assets/js/jquery.overlayScrollbars.min.js "></script>
 
-                      <!-- put modules to page -->
-                      <label>Modules</label>
-                      <div class="card-body">
-                          <div class="row">
-                              <div class="col-12">
-                                  <div class="form-group">
-                                      <div class="container-fluid">
-                                         
-
-                                              <dual-list
-                                               [source]="source"
-                                               [key]="key"
-                                                [display]="display" 
-                                              [(destination)]="confirmed" 
-                                              [(destination)]="selectedModules"
-                                              height="265px" 
-                                              [format]="format" 
-                                              [disabled]="disabled"
-                                              (destinationChange)="updateSelectedModules()">
-
-                                          </dual-list>
-                                
-                                              
-                                              <div class="tab-content">
-                                              <div class="tab-pane" [class.active]="tab===1">
-                                              </div>
-                                              <div class="tab-pane" [class.active]="tab===2">
-                                                  <form class="form">
-                                                      <div class="form-group">
-                                                          <label style="display:block;">Direction</label>
-                                                          <div class="btn-group">
-                                                              <button type="button" class="btn" [ngClass]="{ 'btn-primary' : sourceLeft, 'btn-default' : !sourceLeft }"
-                                                                  (click)="swapDirection()">left-to-right</button>
-                                                              <button type="button" class="btn" [ngClass]="{ 'btn-primary' : !sourceLeft, 'btn-default' : sourceLeft }"
-                                                                  (click)="swapDirection()">right-to-left</button>
-                                                          </div>
-                                                      </div>
-                                                      <div class="form-group">
-                                                          <label>Locale</label>
-                                                          <input class="form-control" [(ngModel)]="format.locale" name="locale">
-                                                      </div>
-                                                      <div class="form-group">
-                                                          <label>Add button</label>
-                                                          <input class="form-control" [(ngModel)]="format.add" name="addBtn">
-                                                      </div>
-                                                      <div class="form-group">
-                                                          <label>Remove button</label>
-                                                          <input class="form-control" [(ngModel)]="format.remove" name="rmBtn">
-                                                      </div>
-                                                      <div class="form-group">
-                                                          <label>All button</label>
-                                                          <input class="form-control" [(ngModel)]="format.all" name="allBtn">
-                                                      </div>
-                                                      <div class="form-group">
-                                                          <label>None button</label>
-                                                          <input class="form-control" [(ngModel)]="format.none" name="noneBtn">
-                                                      </div>
-                                                  </form>
-                                              </div>
-                                              <div class="tab-pane" [class.active]="tab===3">
-                                                  <div class="row" style="margin-top:20px;">
-                                                      <div class="col-sm-6">
-                                                          <label>Modify parent's source</label>
-                                                          <form class="form-inline well">
-                                                              <input
-                                                              class="form-control col-sm-1" style="margin-right:4px;" [(ngModel)]="userAdd" name="userAdd">
-                                                              <button class="btn btn-success" (click)="doCreate()" [disabled]="!userAdd.length">Create</button>
-                                                              <button class="btn btn-danger" (click)="doDelete()">Delete</button>
-                                                          </form>
-                                                      </div>
-                                                      <div class="col-sm-6">
-                                                          <label>Modify parent's confirmed</label>
-                                                          <form class="form-inline well">
-                                                          <button class="btn btn-default" (click)="doAdd()">Add</button>
-                                                          <button class="btn btn-default" (click)="doRemove()">Remove</button>
-                                                          </form>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-
-                      <!-- manage modules (edit and sort) {TODO LIST}-->
-
-                      <!-- TO DO List -->
-                      <div class="card ">
-                          <div class="card-header ui-sortable-handle ">
-                              <h3 class="card-title ">
-                                  Page Content
-                              </h3>
-                          </div>
-                          <!-- /.card-header -->
-                          <div class="card-body ">
-                              <ul class="todo-list ui-sortable" data-widget="todo-list" cdkDropList (cdkDropListDropped)="drop($event)">
-                                  <li *ngFor="let module of selectedModules; let i = index" cdkDrag>
-                                    <span class="handle ui-sortable-handle">
-                                      <i class="fas fa-ellipsis-v"></i>
-                                      <i class="fas fa-ellipsis-v"></i>
-                                    </span>
-                                    {{ module.placeholder }}
-                                    <!-- drag handle -->
-                                
-                                    <!-- todo text -->
-                                    <!-- General tools such as edit or delete-->
-                                    <input type="hidden" [formControlName]="i.toString() + '.priority'" [ngModel]="module.priority" />
-                                  </li>
-                                </ul>
-                                
-                          </div>
-                      </div>
-
-
-                      <!-- END MODULES -->
-
-                      <!-- INPUTS END -->
-                  </div>
-
-                  <!-- /.card-body -->
-
-                  <div class="card-footer">
-                      <button type="submit" class="btn btn-block btn-success btn-lg">Save</button>
-                  </div>
-              </form>
-              <!-- END FORM -->
-          </div>
-          <!-- /.card-body -->
-
-      </div>
-
-  </section>
-  <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-</div>
-
-<script src="../plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="../plugins/jquery-ui/jquery-ui.min.js "></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-
-<!-- Bootstrap 4 -->
-<script src="../../../../assets/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../../../assets/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../../../assets/js/demo.js"></script>
-<!-- ToDoList -->
-<script src="../../../../assets/js/dashboard.js"></script>
-<script src="../../../../assets/js/TodoList.js"></script>
-
-<!-- dropzonejs -->
-<script src="../../../../assets/js/dropzone.min.js"></script>
-<!-- Bootstrap4 Duallistbox -->
-<script src="../../../../assets/js/jquery.bootstrap-duallistbox.min.js"></script>
-<!-- Bootstrap Switch -->
-<script src="../../../../assets/js/bootstrap-switch.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="../../../../assets/js/jquery.overlayScrollbars.min.js "></script>
-
-<!-- custom scripts -->
-<script src="../../../../assets/js/custom_scripts.js"></script>
+    <!-- custom scripts -->
+    <script src="../../../../assets/js/custom_scripts.js"></script>
 </body>
 
 <app-footer></app-footer>

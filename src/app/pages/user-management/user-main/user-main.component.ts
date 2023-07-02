@@ -15,7 +15,8 @@ export class UserMainComponent implements OnInit {
 
   ngOnInit() {
     this.userServ.getAllUsers().subscribe(data  =>{
-      this.users=data
+      this.users=data.users
+    
      })
 
   }
