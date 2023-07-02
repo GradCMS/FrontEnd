@@ -17,7 +17,7 @@ export class PagesTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.pageServ.getPagesTree().subscribe(data  =>{
-      this.tree=data
+      this.tree=data.tree
     
     this.dataSource.data = this.tree; })
 

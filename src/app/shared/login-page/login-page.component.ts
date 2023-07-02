@@ -4,8 +4,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
 
-import {AuthServiceService} from "../sharedServices/Auth/auth-service.service";
-import { SnackbarComponent } from '../shared/snackbar/snackbar.component';
+import {AuthServiceService} from "../../sharedServices/Auth/auth-service.service";
+import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 
 @Component({

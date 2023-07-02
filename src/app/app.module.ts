@@ -34,8 +34,8 @@ import { EditNavbarMainComponent } from './pages/navbar-management/navbar-edit/e
 import { EditNavbarFormComponent } from './pages/navbar-management/navbar-edit/edit-navbar-form/edit-navbar-form.component';
 import { InsertNavbarFormComponent } from './pages/navbar-management/navbar-insert/insert-navbar-form/insert-navbar-form.component';
 import { InsertNavbarMainComponent } from './pages/navbar-management/navbar-insert/insert-navbar-main/insert-navbar-main.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { LoginPageComponent } from './login-page/login-page.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { LoginPageComponent } from './shared/login-page/login-page.component';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 import { ClassBuilderEditComponent } from './pages/class-builder/class-builder-edit/class-builder-edit.component';
 import { ClockComponent } from './pages/landing-page/clock/clock.component';
@@ -59,8 +59,7 @@ import { AngularDualListBoxModule } from 'angular-dual-listbox';
 import { MatTreeModule, MatTreeNodeToggle } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { ImageCropperModule } from 'ngx-image-cropper';
-// import { RoleServiceComponent } from './sharedServices/roleData/role.service/role.service.component';
-// import { PermissionServiceComponent } from './sharedServices/roleData/permission.service/permission.service.component';
+
 
 
 
@@ -112,9 +111,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     UserEditComponent,
     ModuleHeaderComponent,
     DisplayHeaderComponent,
-    ModuleDisplayComponent,
-    // RoleServiceComponent,
-    //PermissionServiceComponent
+    ModuleDisplayComponent
+
   ],
   imports: [
     NgxPaginationModule,

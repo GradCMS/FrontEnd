@@ -19,8 +19,8 @@ import { InsertNavbarMainComponent } from './pages/navbar-management/navbar-inse
 import { EditNavbarMainComponent } from './pages/navbar-management/navbar-edit/edit-navbar-main/edit-navbar-main.component';
 import {ClassBuilderMainComponent} from "./pages/class-builder/class-builder-main/class-builder-main.component";
 import {SiteIdentityComponent} from "./pages/site-identity/site-identity.component";
-import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
-import {LoginPageComponent} from "./login-page/login-page.component";
+import {PageNotFoundComponent} from "./shared/page-not-found/page-not-found.component";
+import {LoginPageComponent} from "./shared/login-page/login-page.component";
 import {ClassBuilderEditComponent} from "./pages/class-builder/class-builder-edit/class-builder-edit.component";
 import { PageCreateComponent } from './pages/page-management/page-create/page-create.component';
 import { UserCreateComponent } from './pages/user-management/user-create/user-create.component';

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class PageService {
   
-  private configUrl="http://localhost:3000/pages"
+  private configUrl="http://LocalHost:8000/api/pages"
   constructor(private http: HttpClient) { 
 
 
@@ -23,7 +23,8 @@ export class PageService {
 
   }
   getPagesTree(): Observable<any>{
-    return this.http.get<any>(this.configUrl);  
+    const treeUrl = `${this.configUrl}/tree`;
+    return this.http.get<any>(treeUrl);  
 
   }
 
