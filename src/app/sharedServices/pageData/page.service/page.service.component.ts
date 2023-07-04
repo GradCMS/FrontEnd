@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/internal/Observable';
 export class PageService {
   
   private configUrl="http://LocalHost:8000/api/pages"
+  private pageParentUrl="http://LocalHost:8000/api/pages/parents"
   constructor(private http: HttpClient) { 
 
 
@@ -26,6 +27,9 @@ export class PageService {
     const treeUrl = `${this.configUrl}/tree`;
     return this.http.get<any>(treeUrl);  
 
+  }
+  getParentPages():Observable<any>{
+    return this.http.get<any>(this.pageParentUrl)
   }
 
   getPageByID(id:number):Observable<any>{

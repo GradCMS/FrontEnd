@@ -56,14 +56,80 @@
           </ul>
         </li>
 
-
-        <li class="nav-header">Website Management</li>
-        <li class="nav-item" (click)="addClass($event)">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-header">Website Management</li>
+          <ng-container *ngIf="permissionUrls[0].authorized || permissionUrls[1].authorized || permissionUrls[2].authorized || permissionUrls[3].authorized || permissionUrls[4].authorized || permissionUrls[5].authorized">
+            <li class="nav-item" *ngIf="permissionUrls[0].authorized" (click)="addClass($event)">
+              <a routerLink="/PageManagement" class="nav-link" (click)="addClass($event)">
+                <i class="nav-icon fas fa-file"></i>
+                <p>Page Management </p>
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="permissionUrls[1].authorized" (click)="addClass($event)">
+              <a routerLink="/SiteIdentity" class="nav-link" (click)="addClass($event)">
+                <i class="nav-icon fas fa-dna"></i>
+                <p>
+                  Site Identity
+                </p>
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="permissionUrls[2].authorized" (click)="addClass($event)">
+              <a routerLink="/ModuleManagement" class="nav-link" (click)="addClass($event)">
+                <i class="nav-icon fas fa-sitemap"></i>
+                <p>
+                  Module Management
+                </p>
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="permissionUrls[3].authorized" (click)="addClass($event)">
+              <a routerLink="/ClassBuilder" class="nav-link" (click)="addClass($event)">
+                <i class="nav-icon fab fa-css3"></i>
+                <p>
+                  Class Management
+                </p>
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="permissionUrls[4].authorized" (click)="addClass($event)">
+              <a routerLink="/DisplayManagement" class="nav-link" (click)="addClass($event)">
+                <i class="nav-icon fas fa-desktop "></i>
+                <p>
+                  Display Management
+                </p>
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="permissionUrls[5].authorized" (click)="addClass($event)">
+              <a routerLink="/NavbarElements" class="nav-link" (click)="addClass($event)">
+                <i class=" nav-icon fas fa-bars"></i>
+                <p>
+                  Navbar Elements
+                </p>
+              </a>
+            </li>
+          </ng-container>
+          <ng-container *ngIf="permissionUrls[6].authorized || permissionUrls[7].authorized">
+            <li class="nav-header">User Settings</li>
+            <li class="nav-item" *ngIf="permissionUrls[6].authorized" (click)="addClass($event)">
+              <a routerLink="/UserManagement" class="nav-link" (click)="addClass($event)">
+                <i class="nav-icon fas fa-users "></i>
+                <p>User Management</p>
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="permissionUrls[7].authorized" (click)="addClass($event)">
+              <a routerLink="/RoleManagement" class="nav-link" (click)="addClass($event)">
+                <i class="nav-icon fas fa-user-tag"></i>
+                <p>Role Management</p>
+              </a>
+            </li>
+          </ng-container>
+        </ul>
+        <!-- <li class="nav-header">Website Management</li>
+        <li *ngIf="permissionUrls[0].authorized"class="nav-item" (click)="addClass($event)">
           <a routerLink="/PageManagement" class="nav-link" (click)="addClass($event)">
             <i class="nav-icon fas fa-file"></i>
             <p>Page Management </p>
           </a>
-        <li class="nav-item" (click)="addClass($event)">
+        </li>  
+        <li *ngIf="permissionUrls[1].authorized" class="nav-item" (click)="addClass($event)">
           <a routerLink="/SiteIdentity" class="nav-link" (click)="addClass($event)">
             <i class="nav-icon fas fa-dna"></i>
             <p>
@@ -71,7 +137,7 @@
             </p>
           </a>
         </li>
-        <li class="nav-item" (click)="addClass($event)">
+        <li *ngIf="permissionUrls[2].authorized" class="nav-item" (click)="addClass($event)">
           <a routerLink="/ModuleManagement" class="nav-link" (click)="addClass($event)">
             <i class="nav-icon fas fa-sitemap"></i>
             <p>
@@ -79,7 +145,7 @@
             </p>
           </a>
         </li>
-        <li class="nav-item" (click)="addClass($event)">
+        <li *ngIf="permissionUrls[3].authorized" class="nav-item" (click)="addClass($event)">
           <a routerLink="/ClassBuilder" class="nav-link" (click)="addClass($event)">
             <i class="nav-icon fab fa-css3"></i>
             <p>
@@ -88,7 +154,7 @@
           </a>
         </li>
 
-  <li class="nav-item">
+  <li *ngIf="permissionUrls[4].authorized" class="nav-item">
                         <a routerLink="/DisplayManagement" class="nav-link">
                             <i class="nav-icon fas fa-desktop "></i>
                             <p>
@@ -96,7 +162,7 @@
                             </p>
                         </a>
                     </li>
-    <li class="nav-item">
+    <li *ngIf="permissionUrls[5].authorized" class="nav-item">
                       <a routerLink="/NavbarElements" class="nav-link">
                         <i class=" nav-icon fas fa-bars"></i>
                           <p>
@@ -104,19 +170,19 @@
                           </p>
                       </a>
                   </li>
-        <li class="nav-header ">User Settings</li>
-        <li class="nav-item" >
+        <li *ngIf="permissionUrls[6].authorized&&permissionUrls[7].authorized" class="nav-header ">User Settings</li>
+        <li *ngIf="permissionUrls[6].authorized" class="nav-item" >
           <a routerLink="/UserManagement" class="nav-link" #navLink >
             <i class="nav-icon fas fa-users "></i>
             <p>User Management</p>
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="permissionUrls[7].authorized" class="nav-item">
           <a routerLink="/RoleManagement" class="nav-link" #navLink >
             <i class="nav-icon fas fa-user-tag"></i>
             <p>Role Management</p>
           </a>
-        </li>
+        </li> -->
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

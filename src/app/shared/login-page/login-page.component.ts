@@ -57,6 +57,8 @@ export class LoginPageComponent implements OnInit {
     // }
     // Handle authentication logic here
     // For example, make an API call to a backend server
+   // to fetch the data fast 
+     this.authService.setRoles()
     console.log('Login button clicked');
     console.log('Username:', this.form.value.user_name);
     console.log('Password:', this.form.value.password);

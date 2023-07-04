@@ -6,6 +6,7 @@ import { GridSetting } from 'src/app/models/GridSetting';
 import { SliderSetting } from 'src/app/models/SliderSetting';
 import { DisplayService } from 'src/app/sharedServices/DisplayData/display.service';
 import { ClassbuilderService } from 'src/app/sharedServices/classbuilder/classbuilder.service';
+import { PageService } from 'src/app/sharedServices/pageData/page.service/page.service.component';
 @Component({
   selector: 'app-insert-display-form',
   templateUrl: './insert-display-form.component.html',
@@ -13,6 +14,7 @@ import { ClassbuilderService } from 'src/app/sharedServices/classbuilder/classbu
 })
 export class InsertDisplayFormComponent implements OnInit {
   cssclasses: any;
+  parentPages:any;
   isSliderChecked: boolean = false
   isGridChecked: boolean = false
   newDisplay: Display = new Display
@@ -45,20 +47,22 @@ export class InsertDisplayFormComponent implements OnInit {
     horizontal_alignment: this.str,
     vertical_alignment: this.str
   };
-  constructor(private cssServ: ClassbuilderService, private displayserv: DisplayService,private route :Router,private formBuilder: FormBuilder) { }
+  constructor(private cssServ: ClassbuilderService, private pageServ:PageService,private displayserv: DisplayService,private route :Router,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.cssServ.getClasses().subscribe(data => {
       this.cssclasses=data
       this.cssclasses=this.cssclasses.cssClasses
     })
+    this.pageServ.getParentPages().subscribe(data=>{
+      this.parentPages=data.parentPages
+
+    })
 
 
     this.createForm()
   }
- print(){
 
- }
 
  displayBool:boolean=false
  sliderBool:boolean=false

@@ -5,6 +5,7 @@ import { GridSetting } from 'src/app/models/GridSetting';
 import { SliderSetting } from 'src/app/models/SliderSetting';
 import { DisplayService } from 'src/app/sharedServices/DisplayData/display.service';
 import { ClassbuilderService } from 'src/app/sharedServices/classbuilder/classbuilder.service';
+import { PageService } from 'src/app/sharedServices/pageData/page.service/page.service.component';
 @Component({
   selector: 'app-edit-display-form',
   templateUrl: './edit-display-form.component.html',
@@ -13,6 +14,7 @@ import { ClassbuilderService } from 'src/app/sharedServices/classbuilder/classbu
 export class EditDisplayFormComponent implements OnInit {
   displayID!: number
   cssclasses: any;
+  parentPages:any;
   isSliderChecked: boolean = false
   isGridChecked: boolean = false
   display: Display = new Display
@@ -51,7 +53,7 @@ export class EditDisplayFormComponent implements OnInit {
     updated_at:this.str,
     id:this.num
   };
-  constructor(private cssServ: ClassbuilderService, private displayserv: DisplayService, private route: Router, private routeactive: ActivatedRoute) { }
+  constructor(private cssServ: ClassbuilderService,private pageServ:PageService, private displayserv: DisplayService, private route: Router, private routeactive: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -62,6 +64,11 @@ export class EditDisplayFormComponent implements OnInit {
       this.cssclasses=data
       this.cssclasses=this.cssclasses.cssClasses
    
+    })
+    this.pageServ.getParentPages().subscribe(data=>{
+      this.parentPages=data.parentPages
+      console.log(this.parentPages)
+
     })
     this.displayserv.getDisplayByID(this.displayID).subscribe(data => {
       this.display=data.Display

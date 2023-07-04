@@ -36,10 +36,8 @@
                 <td colspan="4" class="text-center">
                     <select class="form-control select2bs4" style="width: 100%;"
                         [(ngModel)]="display.source_page_id">
-                        <option value="1">Parent page 1</option>
-                        <option value="1">Parent page 2</option>
-                        <option value="1">Parent page 3</option>
-                        <option value="1">Parent page 4</option>
+                        <option *ngFor="let page of parentPages" [value]="page.id">{{page.title}}</option>
+                
                     </select>
                 </td>
 

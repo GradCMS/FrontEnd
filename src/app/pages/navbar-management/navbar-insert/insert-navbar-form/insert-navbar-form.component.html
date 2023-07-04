@@ -26,10 +26,8 @@
                     <td colspan="1" class="text-center">Referenced Page:</td>
                     <td colspan="1" class="text-center">
                         <select class="form-control select2bs4" style="width: 100%;" [formControl]="pageControl" [(ngModel)]="newElement.referenced_page">
-                            <option value="1">Parent page 1</option>
-                            <option value="2">Parent page 2</option>
-                            <option value="3">Parent page 3</option>
-                            <option value="4">Parent page 4</option>
+                            <option *ngFor="let page of pages" [value]="page.id">{{page.title}}</option>
+                            
                         </select>
                         <div class="alert alert-danger alert-required" 
                         *ngIf="pageControl.invalid &&pageControl.errors?.['required']&& (pageControl.dirty || pageControl.touched)">

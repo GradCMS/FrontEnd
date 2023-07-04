@@ -22,5 +22,6 @@ export class LandingMainComponent implements OnInit {
       sessionStorage.setItem('role', decodedToken.role);
       console.log(decodedToken.role);
     }
+    console.log(sessionStorage)
   }
 }

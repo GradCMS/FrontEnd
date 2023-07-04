@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavElements } from 'src/app/models/NavElements';
 import { NavbarService } from 'src/app/sharedServices/NavbarData/navbar.service';
+import { PageService } from 'src/app/sharedServices/pageData/page.service/page.service.component';
 
 @Component({
   selector: 'app-edit-navbar-form',
@@ -10,12 +11,13 @@ import { NavbarService } from 'src/app/sharedServices/NavbarData/navbar.service'
   styleUrls: ['./edit-navbar-form.component.css']
 })
 export class EditNavbarFormComponent implements OnInit {
+  pages:any;
   id!: number
   editElement: NavElements = new NavElements()
   updatedElement: NavElements = new NavElements()
 
   
-  constructor(private routeActive: ActivatedRoute, private route: Router, private navServ: NavbarService,private formBuilder: FormBuilder) { }
+  constructor(private routeActive: ActivatedRoute,private pageServ:PageService , private route: Router, private navServ: NavbarService,private formBuilder: FormBuilder) { }
 
 
 
@@ -30,6 +32,11 @@ export class EditNavbarFormComponent implements OnInit {
       this.editElement = data.element
 
     })
+
+    this.pageServ.getAllPages().subscribe(data=>{
+      this.pages=data.pages
+      
+       })
   //>>    Validation  <<   
   this.createFormValidation()
 

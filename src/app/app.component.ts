@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { PermissionDisplay } from './models/Permission';
+import { AuthServiceService } from './sharedServices/Auth/auth-service.service';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +10,16 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Dashboard';
-  private token = sessionStorage.getItem('token');
-  constructor(private router: Router) { }
-  ngOnInit(): void {
-    if (!this.token) {
-      this.router.navigate(['/login']); // Redirect to the login page if token doesn't exist
-    }
+
+  constructor(private router: Router,private serviceAuth:AuthServiceService) { }
+  ngOnInit() {
+
+  
+  }
+
+
+  
+
 
   }
-}
+

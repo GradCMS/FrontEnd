@@ -25,31 +25,30 @@ import {ClassBuilderEditComponent} from "./pages/class-builder/class-builder-edi
 import { PageCreateComponent } from './pages/page-management/page-create/page-create.component';
 import { UserCreateComponent } from './pages/user-management/user-create/user-create.component';
 import { UserEditComponent } from './pages/user-management/user-edit/user-edit.component';
+import { AuthGuard } from './guard/authen/auth.guard';
+import { RoleGuard } from './guard/role/role.guard';
 const routes: Routes = [
-  {path: '', component: LandingMainComponent , title: 'Landing Page'},
-  {path: 'PageManagement', component: PageMainComponent , title: 'Page Management'},
-  {path: 'EditPage', component: PageEditComponent , title: 'Edit Page'},
-  {path: 'UserManagement', component: UserMainComponent, title: 'User Management'},
-  {path: 'RoleManagement', component: RoleMainComponent , title: 'Role Management'},
-  {path: 'ModuleManagement', component: ModuleMainComponent , title: 'Module Management'},
-  {path: 'DisplayManagement', component: DisplayShowMainComponent , title: 'Display Management'},
-  {path:'DisplayInsert',component:InsertDisplayMainComponent},
-  {path:'DisplayEdit/:id',component:EditDisplayMainComponent},
-  {path:'ModuleInsert',component:InsertModuleMainComponent},
-  {path:'ModuleIEdit/:id',component:EditModuleMainComponent},
-  {path: 'SiteIdentity', component:SiteIdentityComponent },
-  {path: 'ClassBuilder', component: ClassBuilderMainComponent},
-  {path:'NavbarElements',component:NavbarDisplayMainComponent},
-  {path:'NavElementInsert/:parentId/:newPriority',component:InsertNavbarMainComponent},
-  {path:'NavElementEdit/:id',component:EditNavbarMainComponent},
-  {path: 'SiteIdentity', component: SiteIdentityComponent , title: 'Site Identity' },
-  {path: 'ClassBuilder', component: ClassBuilderMainComponent , title: 'Class Builder'},
+  {path: '', component: LandingMainComponent , title: 'Landing Page',canActivate:[AuthGuard]},
   {path: 'login', component: LoginPageComponent , title: 'Login'},
-  {path: 'ClassBuilder-Edit/:id', component: ClassBuilderEditComponent , title: 'Edit Class'},
-  {path:'CreatePage',component:PageCreateComponent},
-  {path: 'CreateUser', component:UserCreateComponent},
-  {path: 'EditUser/:id', component:UserEditComponent},
-  {path: 'EditPage/:id', component:PageEditComponent},
+  {path: 'DisplayManagement', component: DisplayShowMainComponent , title: 'Display Management',canActivate:[RoleGuard]},
+  {path:'DisplayInsert',component:InsertDisplayMainComponent ,canActivate:[RoleGuard]},
+  {path:'DisplayEdit/:id',component:EditDisplayMainComponent,canActivate:[RoleGuard]},
+  {path: 'ModuleManagement', component: ModuleMainComponent , title: 'Module Management',canActivate:[RoleGuard]},
+  {path:'ModuleInsert',component:InsertModuleMainComponent,canActivate:[RoleGuard]},
+  {path:'ModuleIEdit/:id',component:EditModuleMainComponent,canActivate:[RoleGuard]},
+  {path:'NavbarElements',component:NavbarDisplayMainComponent,canActivate:[RoleGuard]},
+  {path:'NavElementInsert/:parentId/:newPriority',component:InsertNavbarMainComponent,canActivate:[RoleGuard]},
+  {path:'NavElementEdit/:id',component:EditNavbarMainComponent,canActivate:[RoleGuard]},
+  {path: 'SiteIdentity', component: SiteIdentityComponent , title: 'Site Identity' ,canActivate:[RoleGuard]},
+  {path: 'ClassBuilder', component: ClassBuilderMainComponent , title: 'Class Builder',canActivate:[RoleGuard]},
+  {path: 'ClassBuilder-Edit/:id', component: ClassBuilderEditComponent , title: 'Edit Class',canActivate:[RoleGuard]},
+  {path: 'PageManagement', component: PageMainComponent , title: 'Page Management',canActivate:[RoleGuard]},
+  {path:'CreatePage',component:PageCreateComponent,canActivate:[RoleGuard]},
+  {path: 'EditPage/:id', component:PageEditComponent,canActivate:[RoleGuard]},
+  {path: 'UserManagement', component: UserMainComponent, title: 'User Management',canActivate:[RoleGuard]},
+  {path: 'CreateUser', component:UserCreateComponent,canActivate:[RoleGuard]},
+  {path: 'EditUser/:id', component:UserEditComponent,canActivate:[RoleGuard]},
+  {path: 'RoleManagement', component: RoleMainComponent , title: 'Role Management',canActivate:[RoleGuard]},
 
   // make sure this is the last route for the not found pages
 

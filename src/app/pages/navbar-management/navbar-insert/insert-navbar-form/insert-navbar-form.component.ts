@@ -4,17 +4,18 @@ import { CommonModule } from '@angular/common';
 import { NavElements } from 'src/app/models/NavElements';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { PageService } from 'src/app/sharedServices/pageData/page.service/page.service.component';
 @Component({
   selector: 'app-insert-navbar-form',
   templateUrl: './insert-navbar-form.component.html',
   styleUrls: ['./insert-navbar-form.component.css']
 })
 export class InsertNavbarFormComponent implements OnInit {
-  
+  pages:any;
   newElement: NavElements=new NavElements();
   dropList: boolean = false
   
-  constructor(private navbarServ: NavbarService,private routeActive: ActivatedRoute,private route :Router,private formBuilder: FormBuilder) { }
+  constructor(private navbarServ: NavbarService,private pageServ:PageService,private routeActive: ActivatedRoute,private route :Router,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.routeActive.params.subscribe(params => {
@@ -25,6 +26,10 @@ export class InsertNavbarFormComponent implements OnInit {
       }
       this.newElement.priority=newPriority
     });
+    this.pageServ.getAllPages().subscribe(data=>{
+   this.pages=data.pages
+   
+    })
 
     //Validation 
     this.createFormValidation()
