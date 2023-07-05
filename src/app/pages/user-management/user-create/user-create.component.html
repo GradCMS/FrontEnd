@@ -85,19 +85,16 @@
             
             <!-- select -->
             <div class="form-group">
-              <label for="exampleInputFile" class="required-field">Role </label>
+              <label for="exampleInputFile" class="required-field">Role</label>
               <div class="input-group">
-                <select class="form-control" 
-                formControlName="role">
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
+                <select class="form-control" formControlName="roles">
+                  <option selected hidden>Select a role</option>
+                  <option *ngFor="let role of roles" [ngValue]="role">{{ role.name }}</option>
                 </select>
               </div>
               <!-- /.select -->
-            </div>            
+            </div>
+                   
           </div>
           <!-- /.card-body -->
 
@@ -105,9 +102,13 @@
             <button type="submit" class="btn 
             btn-success btn-lg"
             [disabled]="!createUser.valid">Add</button>
+
             <button type="reset" class="btn 
-            btn-danger btn-lg ">Reset</button>
-          </div>
+            btn-danger btn-lg">Reset</button>
+          </div>          
+            <div *ngIf="submited" class="col-12 text-green" style="text-align: center;">
+              user has been submited successfuly </div>
+
         </form>
         
       </div>

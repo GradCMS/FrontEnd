@@ -33458,7 +33458,11 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 }
 
 .projects td {
+<<<<<<< Updated upstream
   display: inline-flex;
+=======
+  vertical-align: middle;
+>>>>>>> Stashed changes
 }
 
 .projects .list-inline {

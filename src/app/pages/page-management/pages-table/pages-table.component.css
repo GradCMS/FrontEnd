@@ -10,20 +10,49 @@
 =======
 .example-tree-invisible {
   display: none;
+  width:max-content;
+
 }
 
 .example-tree ul,
 .example-tree li {
-  margin: 0;
-  padding: 0;
+
   list-style-type: none;
+  width:max-content;
+  display: inline-table;
+
 }
 
 .example-tree .mat-nested-tree-node div[role=group] {
-  padding-left: 40px;
+  padding-left: 10%;
+  width: 100%;
+
+
 }
 
 .example-tree div[role=group] > .mat-tree-node {
-  padding-left: 40px;
+  padding-left: 0px;
+  display: inline-table;
+  width: 100%;
+
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+.mat-tree-node {
+  display: inline-table;
+  align-items: center;
+  width: 100%;
+}
+
+
+.mat-tree-node td {
+  text-align: right;
+
+}
+.mat-tree-node-actions {
+  text-align: right;
+
+}
+
 >>>>>>> Stashed changes

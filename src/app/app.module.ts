@@ -57,8 +57,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularDualListBoxModule } from 'angular-dual-listbox';
 import { MatTreeModule, MatTreeNodeToggle } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
+<<<<<<< Updated upstream
 import { RoleServiceComponent } from './sharedServices/roleData/role.service/role.service.component';
 import { PermissionServiceComponent } from './sharedServices/roleData/permission.service/permission.service.component';
+>>>>>>> Stashed changes
+=======
+import { ImageCropperModule } from 'ngx-image-cropper';
+import {MatDialogModule} from '@angular/material/dialog'; 
+import {MatButtonModule} from '@angular/material/button';
+import { PopupAlertComponent } from './shared/popup/popup.alert/popup.alert.component';
 >>>>>>> Stashed changes
 
 
@@ -101,18 +108,42 @@ import { PermissionServiceComponent } from './sharedServices/roleData/permission
     PageCreateComponent,
     UserCreateComponent,
     UserEditComponent,
+<<<<<<< Updated upstream
     RoleServiceComponent,
     PermissionServiceComponent,
 >>>>>>> Stashed changes
   ],
   imports:[
+=======
+    ModuleHeaderComponent,
+    DisplayHeaderComponent,
+    ModuleDisplayComponent,
+
+  ],
+  
+  imports: [
+    NgxPaginationModule,
+    DragDropModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    CKEditorModule,
+    MatTreeModule,
+    MatIconModule,
+>>>>>>> Stashed changes
     BrowserModule, 
     AngularDualListBoxModule, 
     ImageCropperModule,
     AppRoutingModule,
     FormsModule,
+<<<<<<< Updated upstream
     DragDropModule,
 <<<<<<< Updated upstream
+=======
+    MatDialogModule,
+    MatButtonModule,
+    PopupAlertComponent,
+>>>>>>> Stashed changes
 
   ],
   providers: [],

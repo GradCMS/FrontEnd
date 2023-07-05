@@ -30,7 +30,7 @@
       <!-- Quick Example -->
       <div class="card card-primary">
         <div class="card-header">
-          <h3 class="card-title">Add User</h3>
+          <h3 class="card-title">Edit User {{user.id}}</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
@@ -88,31 +88,28 @@
             
             <!-- select -->
             <div class="form-group">
-              <label for="exampleInputFile" class="required-field">Role </label>
+              <label for="exampleInputFile" class="required-field">Role</label>
               <div class="input-group">
-                <select class="form-control" 
-                formControlName="role"
-                [value]="user.user_name"
-                >
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
+                <select class="form-control" formControlName="roles" >
+                  <option *ngFor="let role of roles" 
+                  [selected]="user.roles.id === role.id"[ngValue]="role">{{ role.name }}</option>
                 </select>
               </div>
               <!-- /.select -->
-            </div>            
+            </div>
+                            
           </div>
           <!-- /.card-body -->
 
           <div class="card-footer  text-center">
             <button type="submit" class="btn 
             btn-success btn-lg"
-            [disabled]="!editUser.valid">Add</button>
+            [disabled]="!editUser.valid">submit</button>
             <button type="reset" class="btn 
             btn-danger btn-lg ">Reset</button>
           </div>
+          <div *ngIf="submited" class="col-12 text-green" style="text-align: center;">
+            user has been submited successfuly </div>
         </form>
         
       </div>

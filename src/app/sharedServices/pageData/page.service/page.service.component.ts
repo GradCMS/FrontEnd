@@ -8,6 +8,11 @@ import { Observable } from 'rxjs/internal/Observable';
 export class PageService {
   
   private configUrl="http://localhost:3000/pages"
+  private configUrl2="http://localhost:3000/tree"
+  private configUrl3="http://localhost:4500/Displays"
+  private configUrl4="http://localhost:4500/modules"
+
+
   constructor(private http: HttpClient) { 
 
 
@@ -22,8 +27,16 @@ export class PageService {
     return this.http.get<any>(this.configUrl);  
 
   }
+  getAllModules(): Observable<any>{
+    return this.http.get<any>(this.configUrl4);  
+
+  }
+  getAllDisplays(): Observable<any>{
+    return this.http.get<any>(this.configUrl3);  
+
+  }
   getPagesTree(): Observable<any>{
-    return this.http.get<any>(this.configUrl);  
+    return this.http.get<any>(this.configUrl2);  
 
   }
 
@@ -42,8 +55,9 @@ export class PageService {
   deletePage(ID:number): Observable<any>{
    return this.http.delete<any>(this.configUrl+`/${ID}`)
 
-
-
+}
+updatePagesTree(tree: any[]): Observable<any> {
+  return this.http.put(this.configUrl2, tree); // Send the updated tree to your API endpoint using the HTTP PUT method
 }
 }
 

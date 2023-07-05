@@ -23,6 +23,7 @@ import { UserCreateComponent } from './pages/user-management/user-create/user-cr
 import { UserEditComponent } from './pages/user-management/user-edit/user-edit.component';
 >>>>>>> Stashed changes
 const routes: Routes = [
+<<<<<<< Updated upstream
   { path: '', component: LandingMainComponent},
   {path:'PageManagement',component:PageMainComponent},
   {path:'UserManagement',component:UserMainComponent},
@@ -32,6 +33,16 @@ const routes: Routes = [
 =======
   {path:'ModuleManagement',component:ModuleMainComponent},
   {path:'DisplayManagement',component:DisplayMainComponent},
+=======
+  {path: '', component: LandingMainComponent , title: 'Landing Page'},
+  {path: 'PageManagement', component: PageMainComponent , title: 'Page Management'},
+  {path: 'EditPage', component: PageEditComponent , title: 'Edit Page'},
+  {path: 'UserManagement', component: UserMainComponent, title: 'User Management'},
+  {path: 'ModuleManagement', component: ModuleMainComponent , title: 'Module Management'},
+  {path: 'DisplayManagement', component: DisplayShowMainComponent , title: 'Display Management'},
+  {path:'DisplayInsert',component:InsertDisplayMainComponent},
+  {path:'DisplayEdit/:id',component:EditDisplayMainComponent},
+>>>>>>> Stashed changes
   {path:'ModuleInsert',component:InsertModuleMainComponent},
   {path: 'SiteIdentity', component:SiteIdentityComponent },
   {path: 'ClassBuilder', component: ClassBuilderMainComponent},
@@ -40,9 +51,27 @@ const routes: Routes = [
   {path:'CreatePage',component:PageCreateComponent},
   {path: 'CreateUser', component:UserCreateComponent},
   {path: 'EditUser/:id', component:UserEditComponent},
+<<<<<<< Updated upstream
   {path: 'EditPage/:id', component:PageEditComponent}
 >>>>>>> Stashed changes
 ];
+=======
+  {path: 'EditPage/:id', component:PageEditComponent},
+  {path: 'RoleManagement', component: RoleMainComponent , title: 'Role Management'},
+
+  // make sure this is the last route for the not found pages
+
+  {path: '**', component: PageNotFoundComponent , title: 'Page Not Found'},
+  
+   
+
+
+
+
+
+
+]
+>>>>>>> Stashed changes
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

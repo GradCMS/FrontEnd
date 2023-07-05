@@ -154,24 +154,8 @@ export class PageEditComponent implements OnInit {
 	private sourceModules: Array<any>=[];
 	private confirmedModules: Array<any>=[];
 
-	private AllModules: Array<any> = [
-		{ id: 1, placeholder: 'Model1', priority:1},
-		{ id: 2, placeholder: 'Model2', priority:2},
-		{ id: 3, placeholder: 'Model3', priority:3},
-		{ id: 4, placeholder: 'Model4', priority:4},
-		{ id: 14, placeholder: 'Model5', priority:5},
-		{ id: 13, placeholder: 'Model6', priority:6}
-		
-	];
-	private AllDisplays: Array<any> = [
-		{ id: 7, placeholder: 'display1', priority:1},
-		{ id: 8, placeholder: 'display2', priority:2},
-		{ id: 9, placeholder: 'display3', priority:3},
-		{ id: 10, placeholder: 'display4', priority:4},
-		{ id: 11, placeholder: 'display5', priority:5},
-		{ id: 12, placeholder: 'display6', priority:6}
-		
-	];
+	 AllModules: Array<any> = [];
+	 AllDisplays: Array<any> = [];
 	
 	
 
@@ -200,10 +184,23 @@ export class PageEditComponent implements OnInit {
 	  this.parents= this.pages.map((item: { id: any; title: any; }) => ({key:item.id, pageName: item.title }))
 	    console.log(this.parents)
 	 })
+
 	this.pageServ.getPageByID(this.object.id).subscribe(data  =>{
 	  this.page=data
       console.log(this.page)
 	
+	this.pageServ.getAllModules().subscribe(data=>{
+		this.AllModules=data
+
+		this.AllModules=this.AllModules.map((item : {id:number; placeholder: any ;})=>({
+			id: item.id,placeholder:item.placeholder}))
+	
+	this.pageServ.getAllDisplays().subscribe(data=>{
+		this.AllDisplays=data
+
+		this.AllDisplays=this.AllDisplays.map((item : {id:number; placeholder: any ;})=>({
+			id: item.id,placeholder:item.placeholder}))
+
 
 		this.default=this.page.type
 		this.manualUpdate=this.page.hidden
@@ -238,7 +235,7 @@ export class PageEditComponent implements OnInit {
 					this.combinedModules.push(module);
 					}
 
-			  });
+			  });})})
 			  
 			  
 			this.source = this.combinedModules;

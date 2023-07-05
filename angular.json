@@ -42,10 +42,15 @@
 
 =======
               "src/styles.css",
+<<<<<<< Updated upstream
               "node_modules/angular-bootstrap-colorpicker/css/colorpicker.min.css",
               "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css"
 >>>>>>> Stashed changes
 
+=======
+              "node_modules/angular-bootstrap-colorpicker/css/colorpicker.min.css"
+              
+>>>>>>> Stashed changes
             ],
             "scripts": [
               "src/assets/js/jquery.min.js",

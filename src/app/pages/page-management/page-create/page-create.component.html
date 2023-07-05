@@ -105,6 +105,7 @@
                    >
         </div>
         <div class="form-group">
+<<<<<<< Updated upstream
             <label>Parent Page</label>
             <select class="form-control select2bs4"
              style="width: 100%;"
@@ -122,6 +123,17 @@
             </select>
         </div>
 
+=======
+          <label>Parent Page</label>
+          <select class="form-control select2bs4" style="width: 100%;" 
+          formControlName="parent_id">
+            <option *ngFor="let parent of parents" 
+            [value]="parent.key">
+              {{ parent.pageName }}
+            </option>
+          </select>
+      </div>
+>>>>>>> Stashed changes
         <div class="form-group">
             <label for="exampleInputEmail1">Tags</label>
             <input type="Text"

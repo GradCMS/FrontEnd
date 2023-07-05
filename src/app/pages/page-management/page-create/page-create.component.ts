@@ -25,11 +25,16 @@ export class PageCreateComponent implements OnInit {
 	type=['standard','content'];
 =======
 	@ViewChild('f', { static: false }) createPageForm!: FormGroup;
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 	parents=[
 	{key:1 ,pageName:'page1'},
 	{key:2 ,pageName:'page2'},
 	{key:3 ,pageName:'page3'}]
+=======
+	parents:any;
+
+>>>>>>> Stashed changes
 	enable= true;
 	manualUpdate = false;
 	imageChangedEvent1: any = '';
@@ -102,7 +107,11 @@ export class PageCreateComponent implements OnInit {
   
 	ngOnInit() {
 		this.pageServ.getAllPages().subscribe(data  =>{
-			this.pages=data}
+			this.pages=data
+		
+			this.parents= this.pages.map((item: { id: any; title: any; }) => ({key:item.id, pageName: item.title }))
+			console.log(this.parents)
+		}
 	)
 	this.createPage = this.formBuilder.group({
 		  type: ['', Validators.required],

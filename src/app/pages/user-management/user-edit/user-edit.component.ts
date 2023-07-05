@@ -1,6 +1,7 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validator, Validators,ValidationErrors, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+import { RoleService } from 'src/app/sharedServices/roleData/role.service/role.service.component';
 import { UserService } from 'src/app/sharedServices/userData/user.service/user.service.component';
 @Component({
   selector: 'app-user-edit',
@@ -12,7 +13,9 @@ export class UserEditComponent implements OnInit {
   editUser: FormGroup;
    user:any;
   users:any;
-  constructor(private route: ActivatedRoute, private userServ: UserService) { }
+  roles: Array <any>= [];
+  submited: boolean=false;
+  constructor(private route: ActivatedRoute, private userServ: UserService, private roleServ: RoleService) { }
 
  ngOnInit() {
 
@@ -24,15 +27,20 @@ this.userServ.getAllUsers().subscribe(data  =>{
  })
 this.userServ.getUserByID(this.object.id).subscribe(data  =>{
   this.user=data
-  console.log(this.user)
-
+console.log(this.user.roles.name)
+  this.roleServ.getAllRoles().subscribe(data  =>{
+    this.roles = data.map((item: any) => ({
+      id: item.id,
+      name: item.name
+    }));
+   })
   
 
   let userName = this.user.user_name;
   let Email= this.user.email;
   let pass='';
   let conf_pass='';
-  let role='';
+  let roles=this.user.roles;
 
   this.editUser = new FormGroup({
     "user_name": new FormControl(userName, Validators.required),
@@ -42,7 +50,7 @@ this.userServ.getUserByID(this.object.id).subscribe(data  =>{
       Validators.required,
       passwordMatchValidator
     ])),
-    "role": new FormControl(role,Validators.required)
+    "roles": new FormControl(roles,Validators.required)
   });
   
 console.log()
@@ -66,16 +74,22 @@ console.log()
  })
   
 }
-  onSubmit(){
-      console.log("Submited");
-      console.log(this.editUser.value)
-    this.userServ.updateUser(this.editUser.value,this.object.id).subscribe(user => this.users.patch(user));
-  
-      
-      }
-    
-    }
+onSubmit() {
+  this.submited = true;
 
+  if (this.editUser.valid) {
+    const user = this.editUser.value;
+
+    console.log('Submitted user:', user);
+
+    this.userServ.updateUser(user,this.object.id).subscribe(updatedUser => {
+      this.users.patch(updatedUser);
+    });
+  }}
+
+
+
+}
     function passwordMatchValidator(formGroup: FormGroup): ValidationErrors | null {
       const password = formGroup.get('password')?.value;
       const confirmPassword = formGroup.get('password_confirmation')?.value;
