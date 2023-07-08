@@ -1,4 +1,7 @@
+<app-snackbar #snackbar message={{message}} type={{typeMessage}}></app-snackbar>
+
 <body class="hold-transition sidebar-mini layout-fixed">
+
     <div class="wrapper">
         <app-navbar></app-navbar>
         <app-sidebar></app-sidebar>
@@ -9,7 +12,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Page1</h1>
+                            <h1>Page {{page.id}}</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -20,6 +23,7 @@
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
+
 
             <!-- Main content -->
             <section class="content">
@@ -36,25 +40,28 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
+
                         <form [formGroup]="editPage" (ngSubmit)="onSubmit()">
                             <!-- INPUTS START -->
                             <div class="card-body">
                                 <div class="row">
+
                                     <label>Page Type:</label>
                                     <div class="col-sm-6">
 
                                         <!-- radio -->
+
                                         <div class="form-group clearfix">
-                                            <div class="icheck-primary d-inline">
+                                            <div  *ngIf="editPage.get('type')?.value === 'standard'"class="icheck-primary d-inline">
                                                 <input type="radio" id="radioPrimary1" name="type"
-                                                    [(ngModel)]="page.type" [value]="'standard'"
-                                                    [checked]="default === 'standard'">
+                                                    formControlName="type" value="standard"
+                                                    [checked]="editPage.get('type')?.value === 'standard'">
                                                 <label for="radioPrimary1">Standard page</label>
                                             </div>
-                                            <div class="icheck-primary d-inline">
+                                            <div *ngIf="editPage.get('type')?.value === 'content'"class="icheck-primary d-inline">
                                                 <input type="radio" id="radioPrimary2" name="type"
-                                                    [(ngModel)]="page.type" [value]="'content'"
-                                                    [checked]="default === 'content'">
+                                                    formControlName="type" value="content"
+                                                    [checked]="editPage.get('type')?.value === 'content'">
                                                 <label for="radioPrimary2">Content page</label>
                                             </div>
                                         </div>
@@ -63,40 +70,49 @@
                                     </div>
                                 </div>
 
+                     
+                       
+                        
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Title*</label>
-                                    <input type="Text" class="form-control" id="pageTitle" required
-                                        formControlName="title" [value]="page.title">
-                                </div>
+                                    <label for="pageTitle">Title*</label>
+                                    <input type="text" class="form-control" id="pageTitle" (change)="onTagsChange('title')" formControlName="title" required>
+                                  </div>
+                                  
+                                  <div class="form-group">
+                                    <label for="pageSubtitle">Subtitle</label>
+                                    <input type="text" class="form-control" id="pageSubtitle" (change)="onTagsChange('subtitle')" formControlName="sub_title" required>
+                                  </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">URL*</label>
                                     <input type="Text" class="form-control" id="exampleInputPassword1"
-                                        placeholder="No special characters are allowed" formControlName="url" required
-                                        [value]="page.url">
+                                        placeholder="No special characters are allowed" formControlName="url" required>
                                 </div>
-                                <div class="form-group">
+                                <div *ngIf="editPage.controls['type'].value === 'content'" class="form-group">
                                     <label>Parent Page</label>
                                     <select class="form-control select2bs4" style="width: 100%;"
                                         formControlName="parent_id">
                                         <option *ngFor="let parent of parents"
-                                            [selected]="parent.key === page.parent_id" [value]="parent.key">
+                                            [selected]="parent.key === page.parent_id">
                                             {{ parent.pageName }}
                                         </option>
                                     </select>
                                 </div>
 
 
+
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tags</label>
-                                    <input type="Text" class="form-control" id="Tags" formControlName="tags"
-                                        [value]="page.tags">
+                                    <input type="Text" class="form-control" id="Tags" formControlName="tags">
+                                </div>
+                                <div *ngIf="editPage.get('tags')?.invalid&& invalidForm " style="color: red">
+                                    <span *ngIf="editPage.get('tags')?.errors?.['required']">Tags is required.</span>
                                 </div>
                                 <!-- textarea -->
                                 <div class="form-group">
                                     <label>Short Description</label>
-                                    <textarea class="form-control" rows="3" [value]="page.short_description"
-                                        formControlName="short_description">
-                          </textarea>
+                                    <textarea class="form-control" rows="3" formControlName="short_description">
+                              </textarea>
+
 
                                 </div>
 
@@ -109,6 +125,7 @@
                                     <div class="card-body">
                                         <label class="switch" [ngClass]="{'checked': manualUpdate}">
                                             <input type="checkbox" [(ngModel)]="manualUpdate" formControlName="hidden">
+
                                             <span class="slider round"></span>
                                         </label>
 
@@ -195,7 +212,7 @@
 
 
                                 <!-- put modules to page -->
-                                <label>Modules</label>
+                                <label>Modules And Displays</label>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12">
@@ -209,6 +226,7 @@
                                                         (destinationChange)="updateSelectedModules()">
 
                                                     </dual-list>
+
 
 
                                                     <div class="tab-content">
@@ -279,6 +297,8 @@
                                                                     </form>
                                                                 </div>
                                                             </div>
+
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -299,6 +319,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body ">
+
                                         <ul class="todo-list ui-sortable" data-widget="todo-list" cdkDropList
                                             (cdkDropListDropped)="drop($event)">
                                             <li *ngFor="let module of selectedModules; let i = index" cdkDrag>
@@ -315,6 +336,7 @@
                                                     [ngModel]="module.priority" />
                                             </li>
                                         </ul>
+
 
                                     </div>
                                 </div>

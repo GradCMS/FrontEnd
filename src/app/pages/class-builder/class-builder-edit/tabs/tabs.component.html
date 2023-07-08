@@ -17,11 +17,6 @@
                     </li>
                     <li (click)="onTabClick('Outline')" [class.active]="activeTab == 'Outline'" class="tab-link">Outline
                     </li>
-                    <li (click)="onTabClick('Display')" [class.active]="activeTab == 'Display'" class="tab-link">Display
-                    </li>
-                    <li (click)="onTabClick('Custom CSS')" [class.active]="activeTab == 'Custom CSS'" class="tab-link">
-                      Custom CSS
-                    </li>
                   </ul>
                   <form [formGroup]="tabsForm">
                   <div formGroupName="tabBackground" *ngIf="activeTab == 'Background'" class="w-100 m-3" [@tabContentTransition]>

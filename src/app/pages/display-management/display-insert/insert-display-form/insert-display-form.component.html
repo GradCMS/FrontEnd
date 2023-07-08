@@ -372,6 +372,11 @@
                                     <option>Effect 1</option>
                                     <option>Effect 2</option>
                                 </select>
+                                <div class="alert alert-danger alert-required" 
+                                *ngIf="horizontal_alignment.invalid &&horizontal_alignment.errors?.['required']&& (horizontal_alignment.dirty || horizontal_alignment.touched || gridBool)">
+                  
+                                Horizontal Alignment Required*.
+                              </div>
                             </td>
 
                             <td colspan="1">Vertical Alignment:</td>
@@ -381,6 +386,11 @@
                                     <option>Effect 1</option>
                                     <option>Effect 2</option>
                                 </select>
+                                <div class="alert alert-danger alert-required" 
+                                *ngIf="vertical_alignment.invalid &&vertical_alignment.errors?.['required']&& (vertical_alignment.dirty || vertical_alignment.touched || gridBool)">
+                  
+                                Vertical Alignment Required*.
+                              </div>
                             </td>
                         </tr>
                     </tbody>

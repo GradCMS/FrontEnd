@@ -1,28 +1,10 @@
    <!-- Content Wrapper. Contains page content -->
-   <div class="content-wrapper">
+   
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6 p-3">
-            <h1>
-
-              <h1><i class="nav-icon fas fa-user-tag"></i>
-                Role Management
-              </h1>
-              </h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
-              <li class="breadcrumb-item active">Role Management</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
+ 
     <!-- Main content -->
+    <app-snackbar #snackbar message={{message}} type = {{type}}></app-snackbar>
+
     <section class="content">
       <div class="card">
         <div class="card-header">
@@ -36,49 +18,57 @@
         </div>
         <div class="card-body" style="display: block;">
           <!-- Content -->   
-         <form>  <table class="table table-bordered ">
-   
- 
-          <thead>
-            <td class="text-center" colspan="4">
-              <input type="text" class="form-control" placeholder="Role name"control-id="ControlID-11"></td>
-            <td class="project-actions text-center">
-              <button class="btn btn-primary btn-sm" href="#" type="submit">
-                  <i class="fas fa-save"></i> Add </button>
-            </td> 
-           
-
-            
+        <!-- Content -->
+        <div class="form-group">
+          <table class="table table-bordered">
+            <thead>
               <tr>
-                <th colspan="4" class="text-center">Permissions </th>
+                <td class="text-center" colspan="4">
+                  <label for="name">Name:</label>
+                  <input class="form-control" type="text" id="name" name="name" placeholder="Role Name" [(ngModel)]="name" required>
+                  <div class="text-danger mt-1" *ngIf="formSubmitted && !name">Please enter a valid name.</div>
+                </td>   
+                <td class="project-actions text-center">
+                  <button class="btn btn-primary btn-sm" href="#" (click)="onSubmit()">
+                    <i class="fas fa-save"></i> Add
+                  </button>
+                </td>   
+              </tr>
+              <tr>
+                <th colspan="4" class="text-center">Permissions</th>
                 <th style="width: 20%" class="text-center">
                   <i class="fas fa-edit"></i>
                 </th>
               </tr>
             </thead>
             <tbody>
-                
-             
-             <tr class="expandable-body">
+              <tr class="expandable-body">
                 <td colspan="5">
                   <div class="ml-2">
-                    <div class="form-check text-left"><label><input type="checkbox"
-                          class="form-check-input position-static"><span> Permission 1</span></label></div>
-                    <div class="form-check text-left"><label><input type="checkbox"
-                          class="form-check-input position-static"><span> Permission 2</span></label></div>
-                    <div class="form-check text-left"><label><input type="checkbox"
-                          class="form-check-input position-static"><span> Permission 3</span></label></div>
-                    <div class="form-check text-left"><label><input type="checkbox"
-                          class="form-check-input position-static"><span> Permission 4</span></label></div>
+                    <label>Permissions:</label>
+                    <div class="form-check text-left" *ngFor="let permission of permissions; let i = index">
+                      <div class="form-check">
+                        <input class="form-check-input position-static" type="checkbox" id="permission{{ i }}" name="permissions"
+                               [(ngModel)]="selectedPermissions[i]" [value]="permission" [checked]="false"
+                               (change)="onPermissionChange()">
+                        <label class="form-check-label" for="permission{{ i }}">{{ permission.name }}</label>
+                      </div>
+                    </div>
+                    <div class="text-danger mt-1" *ngIf="formSubmitted && selectedPermissions.length === 0">Please select at least one permission.</div>
                   </div>
                 </td>
               </tr>
-
-
-
-            </tbody>
          
-          </table>  </form>
+            </tbody>
+          </table>
+        </div>
+   
+        
+        
+        
+      
+
+          
 
           <!-- ./Content -->
         </div>
@@ -89,7 +79,10 @@
       <!-- Default box -->
      
     </section>
+
+
+    
     <!-- /.content -->
-  </div>
+
   <!-- /.content-wrapper -->
   

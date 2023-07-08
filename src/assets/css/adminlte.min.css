@@ -47,6 +47,7 @@
   box-sizing: border-box
 }
 
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -33458,7 +33459,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 
 .projects td {
   vertical-align: middle;
-  display: inline-flex;
+ 
 }
 
 .projects .list-inline {

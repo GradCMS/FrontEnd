@@ -19,8 +19,8 @@ export class ModuleService {
    
    }
   //Read
-  getModules(): Observable<Module>{
-    return this.http.get<Module>(this.configUrl);  
+  getModules(): Observable<any>{
+    return this.http.get<any>(this.configUrl);  
 
   }
   getModuleByID(id:number):Observable<any>{

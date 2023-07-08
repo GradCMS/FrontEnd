@@ -299,18 +299,7 @@
                         </td>
                       </tr>
                       <tr data-widget="expandable-body d-none" aria-expanded="false">
-                        <td>
-                          University other links
-                          <div class="input-group mb-3 mt-3">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text"><i class="fas fa-link"></i></span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Link"  formControlName="otherLink">
-                            <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div></div>
-                          <div *ngIf="socialMediaForm.get('otherLink')?.invalid && socialMediaForm.get('twitterLink')?.touched" style="color: red">
-                            <span *ngIf="socialMediaForm.get('twitterLink')?.errors?.['invalidUrl']">Please enter a valid link starting with 'https://www.*****.com/xxxxxxx'</span>
-                          </div>
-                        </td>
+                     
                       </tbody>
                     </table>
                   </div>
@@ -325,6 +314,8 @@
       </div>
     </div>
     </form>
+
+  
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

@@ -1,230 +1,261 @@
+<app-snackbar #snackbar message={{message}} type = {{type}}></app-snackbar>
+
 <body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
-    <app-navbar></app-navbar>
-   <app-sidebar></app-sidebar>
- <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Main content -->
-    <section class="content">
+  <div class="wrapper">
+  <app-navbar></app-navbar>
+ <app-sidebar></app-sidebar>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Main content -->
+  <section class="content">
 
-        <!-- Default box -->
+      <!-- Default box -->
 
 
-        <div class="card-body">
-            <!-- HERE -->
-            <!-- general form elements -->
-            <div class="card card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Create Page</h3>
-                </div>
-                <!-- /.card-header -->
-  <!-- form start -->
-  <form [formGroup]="createPage" (ngSubmit)="onSubmit()">
-    <!-- INPUTS START -->
-    <div class="card-body" >
-        <div class="row">
-            <label>Page Type:</label>
-            <div class="col-sm-6">
-              <!-- radio -->
-              <div class="form-group clearfix">
-                <div class="icheck-primary d-inline">
-                  <input type="radio" id="radioPrimary1" formControlName="type" value="standard">
-                  <label for="radioPrimary1">Standard page</label>
-                </div>
-                <div class="icheck-primary d-inline">
-                  <input type="radio" id="radioPrimary2" formControlName="type" value="content">
-                  <label for="radioPrimary2">Content page</label>
-                </div>
+      <div class="card-body">
+          <!-- HERE -->
+          <!-- general form elements -->
+          <div class="card card-primary">
+              <div class="card-header">
+                  <h3 class="card-title">Create Page</h3>
+              </div>
+              <!-- /.card-header -->
+<!-- form start -->
+<form [formGroup]="createPage" (ngSubmit)="onSubmit()">
+  <!-- INPUTS START -->
+  <div class="card-body" >
+      <div class="row">
+          <label>Page Type:</label>
+          <div class="col-sm-6">
+
+            <!-- radio -->
+            <div class="form-group clearfix">
+              <div class="icheck-primary d-inline">
+                <input type="radio" id="radioPrimary1" formControlName="type" value="standard">
+                <label for="radioPrimary1">Standard page</label>
+              </div>
+              <div class="icheck-primary d-inline">
+                <input type="radio" id="radioPrimary2" formControlName="type" value="content">
+                <label for="radioPrimary2">Content page</label>
               </div>
             </div>
+            <div *ngIf="createPage.get('type')?.invalid&& invalidForm " style="color: red">
+              <span *ngIf="createPage.get('type')?.errors?.['required']">Page Type is required.</span>
+            </div>
           </div>
+        </div>
+      <div class="form-group">
+          <label for="exampleInputEmail1">Title*</label>
+          <input type="Text"
+           class="form-control"
+           id="pageTitle"
+           formControlName="title"
+           required
+           >
           
-          
-        <div class="form-group">
-            <label for="exampleInputEmail1">Title*</label>
-            <input type="Text"
-             class="form-control"
-             id="pageTitle"
-             formControlName="title"
-             required
-             >
+           <div *ngIf="createPage.get('title')?.invalid&& invalidForm " style="color: red">
+            <span *ngIf="createPage.get('title')?.errors?.['required']">Title is required.</span>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">SubTitle*</label>
+        <input type="Text"
+         class="form-control"
+         id="pagesubTitle"
+         formControlName="sub_title"
+         required
+         >
+         <div *ngIf="createPage.get('sub_title')?.invalid&& invalidForm" style="color: red">
+          <span *ngIf="createPage.get('sub_title')?.errors?.['required']">SubTitle is required.</span>
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">URL*</label>
-            <input type="Text"
-             class="form-control" 
-             id="exampleInputPassword1"
-                   placeholder="No special characters are allowed" 
-                   formControlName="url"
-                   required
-                   >
-        </div>
-        <div class="form-group">
-            <label>Parent Page</label>
-            <select class="form-control select2bs4"
-             style="width: 100%;"
-             formControlName="parent_id"
-             
-             >
-                <option *ngFor="let parent of parents">
-                    {{parent.pageName}}</option>
+    </div>
+      <div class="form-group">
+          <label for="exampleInputPassword1">URL*</label>
+          <input type="Text"
+           class="form-control" 
+           id="exampleInputPassword1"
+                 placeholder="No special characters are allowed" 
+                 formControlName="url"
+                 required
+                 >
+                 <div *ngIf="createPage.get('url')?.invalid&& invalidForm " style="color: red">
+                  <span *ngIf="createPage.get('url')?.errors?.['required']">URL is required.</span>
+                </div>
+      </div>
+      <div *ngIf="createPage.controls['type'].value === 'content'"class="form-group">
+        <label>Parent Page</label>
+        <select class="form-control select2bs4" style="width: 100%;" 
+        formControlName="parent_id">
+          <option *ngFor="let parent of parents" 
+          [value]="parent.key">
+            {{ parent.pageName }}
+          </option>
+        </select>
+    </div>
+      <div class="form-group">
+          <label for="exampleInputEmail1">Tags</label>
+          <input type="Text"
+           class="form-control" 
+           id="Tags"
+           formControlName="tags"
+           >
+           <div *ngIf="createPage.get('tags')?.invalid&& invalidForm " style="color: red">
+            <span *ngIf="createPage.get('tags')?.errors?.['required']">Tags is required.</span>
+          </div>
+      </div>
 
-            </select>
-        </div>
+      <!-- textarea -->
+      <div class="form-group">
+          <label>Short Description</label>
+          <textarea class="form-control"
+           rows="3"
+           formControlName="short_description"></textarea>
+           <div *ngIf="createPage.get('short_description')?.invalid&& invalidForm " style="color: red">
+            <span *ngIf="createPage.get('short_description')?.errors?.['required']">Short Description is required.</span>
+          </div>
+      </div>
 
-        <div class="form-group">
-            <label for="exampleInputEmail1">Tags</label>
-            <input type="Text"
-             class="form-control" 
-             id="Tags"
-             formControlName="tags"
-             >
-        </div>
-        <!-- textarea -->
-        <div class="form-group">
-            <label>Short Description</label>
-            <textarea class="form-control"
-             rows="3"
-             formControlName="short_description"></textarea>
-        </div>
+      <div class="form-group">
 
-        <div class="form-group">
+          <!-- Rounded switch -->
+          <div class="card-body">
+              <label> Hidden</label>
+          </div>
+          <div class="card-body">
+              <label class="switch"  [ngClass]="{'checked': manualUpdate}">
+                  <input type="checkbox"
+                   [(ngModel)]="manualUpdate" 
+                   formControlName="hidden">
+                  <span class="slider round"></span>
+                  <div *ngIf="createPage.get('Hidden')?.invalid&& invalidForm" style="color: red">
+                    <span *ngIf="createPage.get('Hidden')?.errors?.['required']">URL is required.</span>
+                  </div>
+              </label>
+              
+          </div>
+      </div>
 
-            <!-- Rounded switch -->
-            <div class="card-body">
-                <label> Hidden</label>
-            </div>
-            <div class="card-body">
-                <label class="switch"  [ngClass]="{'checked': manualUpdate}">
-                    <input type="checkbox"
-                     [(ngModel)]="manualUpdate" 
-                     formControlName="hidden">
-                    <span class="slider round"></span>
-                </label>
-                
-            </div>
-        </div>
-
-       <!-- IMAGE UPLOAD -->
+     <!-- IMAGE UPLOAD -->
 <div class="form-group">
+  <div class="column w-100">
+      <label>Header Image</label>
+      <div class="card-body">
+        <div id="actions" class="row">
+          <div *ngIf="showImageCropper1">
+            <div class="image-upload-container">
+              <label class="image-upload-label" for="header-image-upload-input">Select an image to upload</label>
+              <input FormControlName="header_image_url" id="header-image-upload-input" type="file" (change)="onFileSelected($event,'header_image_url')" accept="image/*">
+              <div class="image-preview-container">
+                <image-cropper
+                
+                  *ngIf="imageChangedEvent1"
+                  [imageChangedEvent]="imageChangedEvent1"
+                  [maintainAspectRatio]="true"
+                  [aspectRatio]="4 / 3"
+                  [resizeToWidth]="300"
+                  format="png"
+                  (imageCropped)="onImageCropped($event,'header')"
+                  (imageLoaded)="onImageLoaded()"
+                  (loadImageFailed)="onLoadImageFailed()"
+                ></image-cropper>
+                <img class="image-preview" [src]="croppedImage1" *ngIf="croppedImage1">
+                <button class="save-button" *ngIf="croppedImage1" (click)="saveCroppedImage('header')">Save</button>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!showImageCropper1">
+            <p>Image saved</p>
+            <img [src]="croppedImage1">
+            <button (click)="showImageCropper1 = true">Edit</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="column w-100">
-        <label>Header Image</label>
-        <div class="card-body">
-          <div id="actions" class="row">
-            <div *ngIf="showImageCropper1">
-              <div class="image-upload-container">
-                <label class="image-upload-label" for="header-image-upload-input">Select an image to upload</label>
-                <input id="header-image-upload-input" type="file" (change)="onFileSelected($event)" accept="image/*">
-                <div class="image-preview-container">
-                  <image-cropper
-                    *ngIf="imageChangedEvent1"
-                    [imageChangedEvent]="imageChangedEvent1"
-                    [maintainAspectRatio]="true"
-                    [aspectRatio]="4 / 3"
-                    [resizeToWidth]="300"
-                    format="png"
-                    (imageCropped)="onImageCropped($event,'header')"
-                    (imageLoaded)="onImageLoaded()"
-                    (loadImageFailed)="onLoadImageFailed()"
-                  ></image-cropper>
-                  <img class="image-preview" [src]="croppedImage1" *ngIf="croppedImage1">
-                  <button class="save-button" *ngIf="croppedImage1" (click)="saveCroppedImage('header')">Save</button>
-                </div>
+      <label>Cover Image</label>
+      <div class="card-body">
+        <div id="actions" class="row">
+          <div *ngIf="showImageCropper2">
+            <div class="image-upload-container">
+              <label class="image-upload-label" for="cover-image-upload-input">Select an image to upload</label>
+              <input  FormControlName="cover_image_url" id="cover-image-upload-input" type="file" (change)="onFileSelected($event,'cover_image_url')" accept="image/*">
+              <div class="image-preview-container">
+                <image-cropper
+                  *ngIf="imageChangedEvent2"
+                  [imageChangedEvent]="imageChangedEvent2"
+                  [maintainAspectRatio]="true"
+                  [aspectRatio]="4 / 3"
+                  [resizeToWidth]="300"
+                  format="png"
+                  (imageCropped)="onImageCropped($event,'cover')"
+                  (imageLoaded)="onImageLoaded()"
+                  (loadImageFailed)="onLoadImageFailed()"
+                ></image-cropper>
+                <img class="image-preview" [src]="croppedImage2" *ngIf="croppedImage2">
+                <button class="save-button" *ngIf="croppedImage2" (click)="saveCroppedImage('cover')">Save</button>
               </div>
             </div>
-            <div *ngIf="!showImageCropper1">
-              <p>Image saved</p>
-              <img [src]="croppedImage1">
-              <button (click)="showImageCropper1 = true">Edit</button>
-            </div>
+          </div>
+          <div *ngIf="!showImageCropper2">
+            <p>Image saved</p>
+            <img [src]="croppedImage2">
+            <button (click)="showImageCropper2 = true">Edit</button>
           </div>
         </div>
       </div>
-      <div class="column w-100">
-        <label>Cover Image</label>
-        <div class="card-body">
-          <div id="actions" class="row">
-            <div *ngIf="showImageCropper2">
-              <div class="image-upload-container">
-                <label class="image-upload-label" for="cover-image-upload-input">Select an image to upload</label>
-                <input id="cover-image-upload-input" type="file" (change)="onFileSelected($event)" accept="image/*">
-                <div class="image-preview-container">
-                  <image-cropper
-                    *ngIf="imageChangedEvent2"
-                    [imageChangedEvent]="imageChangedEvent2"
-                    [maintainAspectRatio]="true"
-                    [aspectRatio]="4 / 3"
-                    [resizeToWidth]="300"
-                    format="png"
-                    (imageCropped)="onImageCropped($event,'cover')"
-                    (imageLoaded)="onImageLoaded()"
-                    (loadImageFailed)="onLoadImageFailed()"
-                  ></image-cropper>
-                  <img class="image-preview" [src]="croppedImage2" *ngIf="croppedImage2">
-                  <button class="save-button" *ngIf="croppedImage2" (click)="saveCroppedImage('cover')">Save</button>
-                </div>
-              </div>
-            </div>
-            <div *ngIf="!showImageCropper2">
-              <p>Image saved</p>
-              <img [src]="croppedImage2">
-              <button (click)="showImageCropper2 = true">Edit</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+    </div>
+    
 </div>
 
-        <!-- END IMAGE UPLOAD -->
+      <!-- END IMAGE UPLOAD -->
 
-                        <!-- INPUTS END -->
-                    </div>
+                      <!-- INPUTS END -->
+                  </div>
 
-                    <!-- /.card-body -->
+                  <!-- /.card-body -->
 
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-block btn-success btn-lg">Save</button>
-                    </div>
-                </form>
-                <!-- END FORM -->
-            </div>
-            <!-- /.card-body -->
+                  <div class="card-footer">
+                      <button type="submit" class="btn btn-block btn-success btn-lg">Save</button>
+                  </div>
+              </form>
+              <!-- END FORM -->
+          </div>
+          <!-- /.card-body -->
 
-        </div>
+      </div>
 
-    </section>
-    <!-- /.content -->
+  </section>
+  <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
- </div>
+</div>
 
- <script src="../plugins/jquery/jquery.min.js"></script>
- <!-- jQuery UI 1.11.4 -->
- <script src="../plugins/jquery-ui/jquery-ui.min.js "></script>
- <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
- 
- <!-- Bootstrap 4 -->
- <script src="../../../../assets/js/bootstrap.bundle.min.js"></script>
- <!-- AdminLTE App -->
- <script src="../../../../assets/js/adminlte.js"></script>
- <!-- AdminLTE for demo purposes -->
- <script src="../../../../assets/js/demo.js"></script>
- <!-- ToDoList -->
- <script src="../../../../assets/js/dashboard.js"></script>
- <script src="../../../../assets/js/TodoList.js"></script>
- 
- <!-- dropzonejs -->
- <script src="../../../../assets/js/dropzone.min.js"></script>
- <!-- Bootstrap4 Duallistbox -->
- <script src="../../../../assets/js/jquery.bootstrap-duallistbox.min.js"></script>
- <!-- Bootstrap Switch -->
- <script src="../../../../assets/js/bootstrap-switch.min.js"></script>
- <!-- overlayScrollbars -->
- <script src="../../../../assets/js/jquery.overlayScrollbars.min.js "></script>
- 
-  <!-- custom scripts -->
+<script src="../plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="../plugins/jquery-ui/jquery-ui.min.js "></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+<!-- Bootstrap 4 -->
+<script src="../../../../assets/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../../../assets/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../../../assets/js/demo.js"></script>
+<!-- ToDoList -->
+<script src="../../../../assets/js/dashboard.js"></script>
+<script src="../../../../assets/js/TodoList.js"></script>
+
+<!-- dropzonejs -->
+<script src="../../../../assets/js/dropzone.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="../../../../assets/js/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="../../../../assets/js/bootstrap-switch.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="../../../../assets/js/jquery.overlayScrollbars.min.js "></script>
+
+<!-- custom scripts -->
 <script src="../../../../assets/js/custom_scripts.js"></script>
-  </body>
+</body>
 
 <app-footer></app-footer>

@@ -59,6 +59,7 @@ import { AngularDualListBoxModule } from 'angular-dual-listbox';
 import { MatTreeModule, MatTreeNodeToggle } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { PopupAlertComponent } from './shared/popup/popup.alert/popup.alert.component';
 
 
 
@@ -111,7 +112,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     UserEditComponent,
     ModuleHeaderComponent,
     DisplayHeaderComponent,
-    ModuleDisplayComponent
+    ModuleDisplayComponent,
+    
 
   ],
   imports: [
@@ -128,6 +130,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     ImageCropperModule,
     AppRoutingModule,
     FormsModule,
+    PopupAlertComponent
 
   ],
   

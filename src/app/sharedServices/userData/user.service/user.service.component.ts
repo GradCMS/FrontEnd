@@ -36,12 +36,17 @@ export class UserService {
   }
   //susbend
   susbendUser(object:any ,ID:number): Observable<any>{
-   return this.http.patch<any>(this.configUrl+`/${ID}`,object)
+   return this.http.patch<any>(`${this.configUrl}/${ID}/suspend`,object)
 }
 
   //unsusbend
   unsusbendUser(object:any ,ID:number): Observable<any>{
-    return this.http.patch<any>(this.configUrl+`/${ID}`,object)
+    return this.http.patch<any>(`${this.configUrl}/${ID}/unsuspend`,object)
+ }
+
+  //Delete
+  deleteUser(ID:number): Observable<any>{
+    return this.http.delete<any>(this.configUrl+`/${ID}`)
  }
 }
 

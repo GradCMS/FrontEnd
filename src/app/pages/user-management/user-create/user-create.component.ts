@@ -1,6 +1,8 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validator, Validators,ValidationErrors, AbstractControl } from '@angular/forms';
 import { UserService } from 'src/app/sharedServices/userData/user.service/user.service.component';
+import { RoleService } from 'src/app/sharedServices/roleData/role.service/role.service.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-create',
   templateUrl: './user-create.component.html',
@@ -9,41 +11,61 @@ import { UserService } from 'src/app/sharedServices/userData/user.service/user.s
 export class UserCreateComponent implements OnInit {
   
   createUser!: FormGroup;
-  constructor(private userServ: UserService) { }
+  roles: Array <any>= [];
+  submited: boolean=false;
+  selectedRole: any;
+  constructor(private userServ: UserService, private roleServ: RoleService,private route :Router) { }
   users:any;
- ngOnInit(): void {
-  this.userServ.getAllUsers().subscribe(data  =>{
-    this.users=data
-   })
-
+  ngOnInit(): void {
+    this.userServ.getAllUsers().subscribe(data => {
+      this.users = data;
+    });
+  
+    this.roleServ.getAllRoles().subscribe(data => {
+      this.roles = data.roles.map((item: any) => ({
+        name: item.name
+      }));
+    });
+  
     this.initForm();
-  } 
-  onSubmit(){
-      console.log("Submited");
-      console.log(this.createUser)
-      this.userServ.creatUser(this.createUser.value).subscribe(user => this.users.push(user));
-      }
-    
+  }
+  
+  onSubmit() {
+    this.submited = true;
+  
+    if (this.createUser.valid) {
+      const user = this.createUser.value;
+  
+      // console.log('Submitted user:', user);
+      console.log(user)
+      this.userServ.creatUser(user).subscribe(()=> {
+        this.route.navigateByUrl('UserManagement')
+     
+      });
+    }
+  }
+  
+  
+  
   
       private initForm() {
         let userName = '';
         let email='';
         let pass='';
         let conf_pass='';
-        let role='';
+        let roles='';
 
         this.createUser = new FormGroup({
-          "user_name": new FormControl(userName, Validators.required),
+          "user_name": new FormControl(userName,[Validators.required,Validators.minLength(3)]),
           "email": new FormControl(email, [Validators.required, Validators.email]),
-          "password": new FormControl(pass, Validators.compose ([Validators.required,Validators.minLength(8)])),
+          "password": new FormControl(pass, Validators.compose ([Validators.required,Validators.minLength(6)])),
           "password_confirmation": new FormControl(conf_pass, Validators.compose([
             Validators.required,
             passwordMatchValidator
           ])),
-          "role": new FormControl(role,Validators.required)
+          "role": new FormControl(roles,Validators.required)
         });
-        
-      console.log()
+     
         // Set up validator for password confirmation
         this.createUser.get('password_confirmation')?.setValidators([
           Validators.required,

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {TabComponent} from "@syncfusion/ej2-angular-navigations";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ClassbuilderService} from "../../../sharedServices/classbuilder/classbuilder.service";
+import {SnackbarComponent} from "../../../shared/snackbar/snackbar.component";
 
 @Component({
   selector: 'app-class-builder-edit',
@@ -11,6 +12,9 @@ import {ClassbuilderService} from "../../../sharedServices/classbuilder/classbui
 })
 export class ClassBuilderEditComponent implements OnInit {
 
+  @ViewChild('snackbar') private snackbar!: SnackbarComponent;
+  message!: string;
+  type!: string;
   active = 1;
   public classPlaceholder: string = '';
   public secondaryName: string = '';
@@ -77,9 +81,18 @@ export class ClassBuilderEditComponent implements OnInit {
       this.previewStyle = css;
       this.classBuilderService.updateClass(this.itemId, requestBody).subscribe((data: any) => {
         console.log(data);
-        this.form.reset()
+        localStorage.setItem('message', data.message);
         //make router navigate back to the previous page
-        this.router.navigate(['ClassBuilder']);
+        this.message = data.message;
+        this.type = 'success';
+        this.snackbar.show();
+        setTimeout(() => {
+          this.router.navigate(['ClassBuilder']);
+        },3000);
+        // this.router.navigate(['ClassBuilder']);
+        // this.message = data.message;
+        // this.type = 'success';
+        // this.snackbar.show();
       }, error => {
         console.log(error);
       });
@@ -89,6 +102,7 @@ export class ClassBuilderEditComponent implements OnInit {
   editItem(index: number, id: number) {
     this.classBuilderService.editClass(id).subscribe((data: any) => {
       console.log(data)
+
       this.form.setValue({
         placeholder: data.CssClass.placeholder,
         reference_name: data.CssClass.reference_name

@@ -1,3 +1,4 @@
+<app-snackbar #snackbar message={{message}} type = {{type}}></app-snackbar>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
   <app-navbar></app-navbar>
@@ -30,12 +31,16 @@
             <input  type="text" class="form-control" placeholder="Class Name" required
                     formControlName="placeholder" name = "placeholder">
           </div>
+          <div *ngIf="form.get('placeholder')?.invalid && form.get('placeholder')?.touched" style="color: red">
+            <span *ngIf="form.get('placeholder')?.errors?.['required']">Class name is required.</span>
+          </div>
           <label class="required-field">Reference name</label>
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="secondary name" required
                    formControlName = "reference_name" name="reference_name"></div>
-          <label class="required-field">Pseudo-Class</label>
-
+          <div *ngIf="form.get('reference_name')?.invalid && form.get('reference_name')?.touched" style="color: red">
+            <span *ngIf="form.get('reference_name')?.errors?.['required']">Reference name is required.</span>
+          </div>
           <div class="container container-fluid">
             <div class="col-12">
               <!--angular tabs-->

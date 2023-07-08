@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from "@angular/router";
 import { map } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Permission } from 'src/app/models/Permission';
 
@@ -21,6 +21,17 @@ export class AuthServiceService {
     return this.http.post(this.url, body);
     
   }
+  isValid(){
+    const token = sessionStorage.getItem('token');
+    const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + token });
+    return this.http.get('http://localhost:8000/api/auth/me', { headers: headers });
+  }
+  refreshToken() {
+    const token = sessionStorage.getItem('token');
+    const headers = { 'Authorization': 'Bearer ' + token };
+    return this.http.post('http://localhost:8000/api/auth/refresh', {}, { headers: headers });
+  }
+  
   logout() {
     console.log('Logout button clicked');
     sessionStorage.clear();

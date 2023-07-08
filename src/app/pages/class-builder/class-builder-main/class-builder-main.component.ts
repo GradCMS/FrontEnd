@@ -3,6 +3,7 @@ import {TabComponent} from '@syncfusion/ej2-angular-navigations';
 import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
 import {Router} from '@angular/router';
 import {ClassbuilderService} from "../../../sharedServices/classbuilder/classbuilder.service";
+import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 
 
 @Component({
@@ -11,6 +12,9 @@ import {ClassbuilderService} from "../../../sharedServices/classbuilder/classbui
   styleUrls: ['./class-builder-main.component.css']
 })
 export class ClassBuilderMainComponent implements OnInit {
+  @ViewChild('snackbar') private snackbar!: SnackbarComponent;
+  message!: string;
+  type!: string;
   active = 1;
   public classPlaceholder: string = '';
   public secondaryName: string = '';
@@ -42,8 +46,9 @@ export class ClassBuilderMainComponent implements OnInit {
       placeholder: ['', Validators.required],
       reference_name: ['', Validators.required],
     });
-    //print all the data from the database into the table
     this.getItems();
+
+
   }
 
   // preview Variable
@@ -74,6 +79,9 @@ export class ClassBuilderMainComponent implements OnInit {
       this.previewStyle = css;
       this.classBuilderService.createClass(requestBody).subscribe((data: any) => {
         console.log(data);
+        this.message = `Class ${requestBody.placeholder} has been created successfully`;
+        this.type = 'success';
+        this.snackbar.show();
         this.form.reset()
         this.ngOnInit();
       }, error => {
@@ -93,7 +101,10 @@ export class ClassBuilderMainComponent implements OnInit {
 
   deleteItem(index: number, id: number) {
     this.classes.splice(index, 1); // Remove the item at the given index from the array
-    this.classBuilderService.deleteClass(id)
+    this.classBuilderService.deleteClass(id);
+    this.message = `Class has been deleted successfully`;
+    this.type = 'success';
+    this.snackbar.show();
   }
 
   getItems() {
@@ -101,7 +112,7 @@ export class ClassBuilderMainComponent implements OnInit {
       this.myData = data.cssClasses;
       //console.log(this.myData)  // print all the data from the database into the console
       for (let i = 0; i < this.myData.length; i++) {
-        console.log(this.myData[i].valueOf())
+        // console.log(this.myData[i].valueOf())
         this.classes.push({
           className: this.myData[i].placeholder,
           secondaryName: this.myData[i].reference_name,

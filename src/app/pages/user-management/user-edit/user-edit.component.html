@@ -30,7 +30,7 @@
       <!-- Quick Example -->
       <div class="card card-primary">
         <div class="card-header">
-          <h3 class="card-title">Add User</h3>
+          <h3 class="card-title">Edit User {{user.id}}</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
@@ -46,10 +46,21 @@
               <input type="text" class="form-control" placeholder= "User Name"
               required
               formControlName="user_name"
-              [value]="user.user_name"
+              [(ngModel)]="this.editUser.value.user_name"
               >
+           
             
             </div>
+            <div class="text-danger"
+            *ngIf="editUser.get('user_name')?.invalid &&editUser.get('user_name')?.errors?.['required']&& (editUser.get('user_name')?.dirty || editUser.get('user_name')?.touched)">
+
+            UserName is required.
+          </div>
+          <div class="text-danger"
+          *ngIf="editUser.get('user_name')?.invalid &&editUser.get('user_name')?.errors?.['minlength']&& (editUser.get('user_name')?.dirty || editUser.get('user_name')?.touched)">
+
+          *Minimum length is 3 characters
+        </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
@@ -64,6 +75,16 @@
            
             
             </div>
+            <div class="text-danger"
+            *ngIf="editUser.get('email')?.invalid &&editUser.get('email')?.errors?.['required']&& (editUser.get('email')?.dirty || editUser.get('email')?.touched)">
+
+            Email is required.
+          </div>
+          <div class="text-danger"
+          *ngIf="editUser.get('email')?.invalid&& !(editUser.get('email')?.errors?.['required'])&& (editUser.get('email')?.dirty || editUser.get('email')?.touched)">
+
+          Email is invalid.
+        </div>
             
             <div class="form-group">
               <label for="exampleInputPassword1" class="required-field">Password</label>
@@ -72,7 +93,7 @@
               </div>
                 <div *ngIf="editUser.get('password')?.invalid && (editUser.get('password')?.dirty || editUser.get('password')?.touched)" class="text-danger">
                   <div *ngIf="editUser.get('password')?.errors?.['required']">Please enter a password.</div>
-                  <div *ngIf="(editUser.get('password')?.hasError('minlength') && editUser.get('password')?.dirty) || editUser.get('password')?.touched">Password must be at least 8 characters long.</div>
+                  <div *ngIf="(editUser.get('password')?.hasError('minlength') && editUser.get('password')?.dirty) || editUser.get('password')?.touched">Password must be at least 6 characters long.</div>
                 </div>
                 
               <div class="input-group mb-3">
@@ -88,31 +109,27 @@
             
             <!-- select -->
             <div class="form-group">
-              <label for="exampleInputFile" class="required-field">Role </label>
-              <div class="input-group">
-                <select class="form-control" 
-                formControlName="role"
-                [value]="user.user_name"
-                >
-                  <option>option 1</option>
-                  <option>option 2</option>
-                  <option>option 3</option>
-                  <option>option 4</option>
-                  <option>option 5</option>
+              <label for="exampleInputFile" class="required-field">Role</label>
+              <div class="input-group" *ngIf="user && roles">
+                <select class="form-control" formControlName="role" [ngModel]="selectedRole">
+                  <option *ngFor="let role of roles" [ngValue]="role.name">{{ role.name }}</option>
                 </select>
               </div>
               <!-- /.select -->
-            </div>            
+            </div>
+                            
           </div>
           <!-- /.card-body -->
 
           <div class="card-footer  text-center">
             <button type="submit" class="btn 
             btn-success btn-lg"
-            [disabled]="!editUser.valid">Add</button>
+            [disabled]="!editUser.valid">submit</button>
             <button type="reset" class="btn 
             btn-danger btn-lg ">Reset</button>
           </div>
+          <div *ngIf="submited" class="col-12 text-green" style="text-align: center;">
+            user has been submited successfuly </div>
         </form>
         
       </div>
