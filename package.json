@@ -25,6 +25,7 @@
     "@syncfusion/ej2-angular-navigations": "^21.1.39",
     "angular-bootstrap-colorpicker": "^3.0.32",
     "angular-dual-listbox": "^7.0.0",
+    "ckeditor": "^4.12.1",
     "ckeditor4-angular": "^3.3.0",
     "jwt-decode": "^3.1.2",
     "ng-drag-drop": "^5.0.0",

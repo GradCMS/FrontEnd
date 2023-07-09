@@ -60,6 +60,8 @@ import { MatTreeModule, MatTreeNodeToggle } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { PopupAlertComponent } from './shared/popup/popup.alert/popup.alert.component';
+import { UserTablesComponent } from './pages/user-management/user-tables/user-tables.component';
+import { UserSusbendComponent } from './pages/user-management/user-susbend/user-susbend.component';
 
 
 
@@ -113,6 +115,8 @@ import { PopupAlertComponent } from './shared/popup/popup.alert/popup.alert.comp
     ModuleHeaderComponent,
     DisplayHeaderComponent,
     ModuleDisplayComponent,
+    UserTablesComponent,
+    UserSusbendComponent,
     
 
   ],
