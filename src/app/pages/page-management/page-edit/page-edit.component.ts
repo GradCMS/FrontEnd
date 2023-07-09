@@ -85,8 +85,8 @@ export class PageEditComponent implements OnInit {
 			this.object = params
 			console.log(this.object)
 		});
-		this.pageServ.getStanderedPages().subscribe(data => {
-			this.pages = data.standardPages
+		this.pageServ.getAllPages().subscribe(data => {
+			this.pages = data.pages
 
 			this.parents = this.pages.map((item: { id: any; title: any; }) => ({ key: item.id, pageName: item.title }))
 			console.log(this.parents)

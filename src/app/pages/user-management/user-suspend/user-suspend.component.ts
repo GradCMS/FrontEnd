@@ -34,8 +34,8 @@ export class UserSuspendComponent implements OnInit {
   }
   onUnSuspend(user: any):void{
     this.userServ.unsusbendUser(user,user.id).subscribe(()=>{
-      this.suspendedUsers = this.suspendedUsers.filter((r: any) => r.id !== user.id);
-   
+    
+      location.reload()
     },(error)=>
     {
     

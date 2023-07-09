@@ -32,7 +32,7 @@ export class UserMainComponent implements OnInit {
   }
   onSuspend(user: any):void{
     this.userServ.susbendUser(user,user.id).subscribe(()=>{
-      this.users = this.users.filter((r: any) => r.id !== user.id);     console.log("ff")
+    location.reload()
     },(error)=>
     {
       console.log("errror")
