@@ -157,13 +157,12 @@
             <td>
               <select class="form-control select2bs4" style="width: 100%;" [(ngModel)]="module.animation_style"
                 [formControl]="animationControl" required>
-                <option value="">Select an animation style</option>
-                <option>style1</option>
-                <option>style2</option>
-                <option>style3</option>
-                <option>style4</option>
-                <option>style5</option>
-                <option>style6</option>
+                <option>fade-in</option>
+                <option>fade-out</option>
+                <option>slide-in </option>
+                <option>slide-out</option>
+                <option>slide-left</option>
+                <option>slide-right</option>
               </select>
               <div class="alert alert-danger alert-required" 
               *ngIf="animationControl.invalid &&animationControl.errors?.['required']&& (animationControl.dirty || animationControl.touched)">

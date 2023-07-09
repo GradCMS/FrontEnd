@@ -89,7 +89,7 @@
               </div>
                 <div *ngIf="createUser.get('password')?.invalid && (createUser.get('password')?.dirty || createUser.get('password')?.touched)" class="text-danger">
                   <div *ngIf="createUser.get('password')?.errors?.['required']">Please enter a password.</div>
-                  <div *ngIf="(createUser.get('password')?.hasError('minlength') && createUser.get('password')?.dirty) || createUser.get('password')?.touched">Password must be at least 8 characters long.</div>
+                  <div *ngIf="(createUser.get('password')?.hasError('minlength') && createUser.get('password')?.dirty) || createUser.get('password')?.touched">Password must be at least 6 characters long.</div>
                 </div>
                 
               <div class="input-group mb-3">

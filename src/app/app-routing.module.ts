@@ -27,6 +27,7 @@ import { UserCreateComponent } from './pages/user-management/user-create/user-cr
 import { UserEditComponent } from './pages/user-management/user-edit/user-edit.component';
 import { AuthGuard } from './guard/authen/auth.guard';
 import { RoleGuard } from './guard/role/role.guard';
+import { UserTablesComponent } from './pages/user-management/user-tables/user-tables.component';
 const routes: Routes = [
   {path: '', component: LandingMainComponent , title: 'Landing Page',canActivate:[AuthGuard]},
   {path: 'login', component: LoginPageComponent , title: 'Login'},
@@ -45,7 +46,7 @@ const routes: Routes = [
   {path: 'PageManagement', component: PageMainComponent , title: 'Page Management',canActivate:[RoleGuard]},
   {path:'CreatePage',component:PageCreateComponent,canActivate:[RoleGuard]},
   {path: 'EditPage/:id', component:PageEditComponent,canActivate:[RoleGuard]},
-  {path: 'UserManagement', component: UserMainComponent, title: 'User Management',canActivate:[RoleGuard]},
+  {path: 'UserManagement', component: UserTablesComponent, title: 'User Management',canActivate:[RoleGuard]},
   {path: 'CreateUser', component:UserCreateComponent,canActivate:[RoleGuard]},
   {path: 'EditUser/:id', component:UserEditComponent,canActivate:[RoleGuard]},
   {path: 'RoleManagement', component: RoleMainComponent , title: 'Role Management',canActivate:[RoleGuard]},

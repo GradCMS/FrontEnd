@@ -11,6 +11,8 @@ export class PageService {
   private treePages="http://LocalHost:8000/api/pages/tree"
   private pageParentUrl="http://LocalHost:8000/api/pages/parents"
   private standerdPagesUrl="http://LocalHost:8000/api/pages/standard"
+  private displayUrl="http://LocalHost:8000/api/pages/displays"
+  private moduleUrl="http://LocalHost:8000/api/pages/modules"
   constructor(private http: HttpClient) { 
 
 
@@ -58,6 +60,14 @@ export class PageService {
    return this.http.delete<any>(this.deafultUrl+`/${ID}`)
 
 }
+setDisplays(object:any):Observable<any>{
+ return this.http.post<any>(this.displayUrl,object)
+}
+setModules(object:any):Observable<any>{
+  return this.http.post<any>(this.moduleUrl,object)
+
+}
+
 
 }
 

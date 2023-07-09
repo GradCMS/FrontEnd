@@ -144,7 +144,7 @@
                                                             for="header-image-upload-input">Select an image to
                                                             upload</label>
                                                         <input id="header-image-upload-input" type="file"
-                                                            (change)="onFileSelected($event)" accept="image/*">
+                                                            (change)="onFileSelected($event,'cover_image_url')" accept="image/*">
                                                         <div class="image-preview-container">
                                                             <image-cropper *ngIf="imageChangedEvent1"
                                                                 [imageChangedEvent]="imageChangedEvent1"
@@ -179,7 +179,7 @@
                                                             for="cover-image-upload-input">Select an image to
                                                             upload</label>
                                                         <input id="cover-image-upload-input" type="file"
-                                                            (change)="onFileSelected($event)" accept="image/*">
+                                                            (change)="onFileSelected($event,'cover_image_url')" accept="image/*">
                                                         <div class="image-preview-container">
                                                             <image-cropper *ngIf="imageChangedEvent2"
                                                                 [imageChangedEvent]="imageChangedEvent2"

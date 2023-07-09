@@ -42,8 +42,9 @@ this.userServ.getUserByID(this.object.id).subscribe(data  =>{
   let Email= this.user.email;
   let pass='';
   let conf_pass='';
-  let roles=this.user.roles;
-  
+  let roles=this.roles;  
+    
+console.log(roles)  
   this.editUser = new FormGroup({
     "user_name": new FormControl(userName, [Validators.required,Validators.minLength(3)]),
     "email": new FormControl(Email, [Validators.required, Validators.email]),
@@ -54,8 +55,7 @@ this.userServ.getUserByID(this.object.id).subscribe(data  =>{
     ])),
     "role": new FormControl(roles,Validators.required)
   });
-  
-console.log()
+
   // Set up validator for password confirmation
   this.editUser.get('password_confirmation')?.setValidators([
     Validators.required,

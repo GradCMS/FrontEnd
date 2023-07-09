@@ -1,9 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
-import {SnackbarComponent} from "../../shared/snackbar/snackbar.component";
-import {SiteIdentityService} from "../../sharedServices/siteIdentity/site-identity.service";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { SnackbarComponent } from "../../shared/snackbar/snackbar.component";
+import { SiteIdentityService } from "../../sharedServices/siteIdentity/site-identity.service";
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 interface modifiedFormValues {
@@ -38,21 +38,21 @@ export class SiteIdentityComponent implements OnInit {
   about: any;
 
   getrequest: any;
-  imageName: any[]=[];
+  imageName: any[] = [];
   imageServerBaseUrl: any;
-  imageUrl: any[]=[];
+  imageUrl: any[] = [];
   row1Expanded: boolean = false;
   rowAccounts: boolean = false;
   rowContact: boolean = false;
   rowAbout: boolean = false;
   rowImages: boolean = false;
-  filename!:string;
-  fileLoad:any
+  filename!: string;
+  fileLoad: any
   // phone number validator
   phoneNumberValidator(control: FormControl): { [key: string]: any } | null {
     const phoneNumberPattern = /^\+\d{12}$/;
     if (!phoneNumberPattern.test(control.value)) {
-      return {invalidPhoneNumber: true};
+      return { invalidPhoneNumber: true };
     }
     return null;
   }
@@ -60,7 +60,7 @@ export class SiteIdentityComponent implements OnInit {
   landLineValidator(control: FormControl): { [key: string]: any } | null {
     const numberPattern = /^\d{10}$/;
     if (!numberPattern.test(control.value)) {
-      return {invalidNumber: true};
+      return { invalidNumber: true };
     }
     return null;
   }
@@ -70,12 +70,12 @@ export class SiteIdentityComponent implements OnInit {
   urlValidator(control: FormControl): { [key: string]: any } | null {
     const urlPattern = /^(http|https):\/\/[^ "]+$/;
     if (!urlPattern.test(control.value)) {
-      return {invalidUrl: true};
+      return { invalidUrl: true };
     }
     return null;
   }
 
-  constructor(private sanitizer: DomSanitizer,private fb: FormBuilder, private http: HttpClient, private router: Router, private siteIdentityService: SiteIdentityService) {
+  constructor(private sanitizer: DomSanitizer, private fb: FormBuilder, private http: HttpClient, private router: Router, private siteIdentityService: SiteIdentityService) {
 
   }
 
@@ -139,7 +139,7 @@ export class SiteIdentityComponent implements OnInit {
       },
       images: {
         defaultCoverLogo: '',
-        defaultCoverLogoVertical:'',
+        defaultCoverLogoVertical: '',
         defaultHeaderImage: '',
         defaultBrowserIcon: '',
         secondaryLogo: '',
@@ -157,7 +157,7 @@ export class SiteIdentityComponent implements OnInit {
         console.log(response);
         // console.log((JSON.parse(response)));
 
-        this.imageServerBaseUrl = "E:/Grad_CMS/assets";
+        this.imageServerBaseUrl = "E:\AngularWorkSpace\DashBoardAngular\TESTINGvERSION\FrontEnd\src\assets\images";
 
         this.getrequest = response;
         siteIdentity.about.universityName = this.getrequest.Site_identity.about.universityName;
@@ -172,26 +172,26 @@ export class SiteIdentityComponent implements OnInit {
         this.imageUrl.push(`${this.imageServerBaseUrl}/${this.imageName[0]}`);
         siteIdentity.images.defaultCoverLogo = this.imageUrl[0]
         this.imageName.push(this.getrequest.Site_identity.images.defaultCoverLogoVertical);
-        this.imageUrl.push( `${this.imageServerBaseUrl}/${this.imageName[1]}`);
+        this.imageUrl.push(`${this.imageServerBaseUrl}/${this.imageName[1]}`);
         siteIdentity.images.defaultCoverLogoVertical = this.imageUrl[1];
 
-        this.imageName.push( this.getrequest.Site_identity.images.defaultHeaderImage);
+        this.imageName.push(this.getrequest.Site_identity.images.defaultHeaderImage);
         this.imageUrl.push(`${this.imageServerBaseUrl}/${this.imageName[2]}`);
         siteIdentity.images.defaultHeaderImage = this.imageUrl[2];
 
-        this.imageName.push( this.getrequest.Site_identity.images.defaultBrowserIcon);
+        this.imageName.push(this.getrequest.Site_identity.images.defaultBrowserIcon);
         this.imageUrl.push(`${this.imageServerBaseUrl}/${this.imageName[3]}`);
         siteIdentity.images.defaultBrowserIcon = this.imageUrl[3];
 
-        this.imageName.push( this.getrequest.Site_identity.images.secondaryLogo);
+        this.imageName.push(this.getrequest.Site_identity.images.secondaryLogo);
         this.imageUrl.push(`${this.imageServerBaseUrl}/${this.imageName[4]}`);
         siteIdentity.images.secondaryLogo = this.imageUrl[4];
 
-        this.imageName.push( this.getrequest.Site_identity.images.backgroundImage);
-        this.imageUrl.push( `${this.imageServerBaseUrl}/${this.imageName[5]}`);
+        this.imageName.push(this.getrequest.Site_identity.images.backgroundImage);
+        this.imageUrl.push(`${this.imageServerBaseUrl}/${this.imageName[5]}`);
         siteIdentity.images.backgroundImage = this.imageUrl[5];
-      //  console.log(this.imageName)
-      //  console.log(this.imageUrl)
+        //  console.log(this.imageName)
+        //  console.log(this.imageUrl)
 
         siteIdentity.social_media.facebookLink = this.getrequest.Site_identity.social_media.facebookLink;
         siteIdentity.social_media.instagramLink = this.getrequest.Site_identity.social_media.instagramLink;
@@ -317,22 +317,22 @@ export class SiteIdentityComponent implements OnInit {
       };
     }
   }
-  getFile(index:number){
+  getFile(index: number) {
     console.log(this.imageUrl[index])
     console.log(this.imageName[index])
-    const file = new File([this.imageUrl[index]],this.imageName[index]);
+    const file = new File([this.imageUrl[index]], this.imageName[index]);
     console.log('fffffffffffffffffff')
     console.log(file)
     return file
     const reader = new FileReader();
     reader.onload = () => {
-     this.fileLoad=file
-     this.filename=this.imageUrl[index]
-     console.log(this.fileLoad)
+      this.fileLoad = file
+      this.filename = this.imageUrl[index]
+      console.log(this.fileLoad)
       console.log(this.filename)
-      };
-     reader.readAsDataURL(file);
-   
+    };
+    reader.readAsDataURL(file);
+
 
   }
   onSubmit(event: any) {
@@ -427,54 +427,53 @@ export class SiteIdentityComponent implements OnInit {
     } else {
       formData.append('social_media[instagramLink]', this.getrequest.Site_identity.social_media.instagramLink);
     }
+    console.log(this.images)
     if (this.images[0]) {
       formData.append('images[defaultCoverLogo]', this.images[0]);
-    }else{
-      
-     
+    } else {
       formData.append('images[defaultCoverLogo]', this.getFile(0));
       console.log(this.getFile(0))
-    } 
+    }
     if (this.images[1]) {
       formData.append('images[defaultCoverLogoVertical]', this.images[1]);
-     
-    }else{
-      
-      formData.append('images[defaultCoverLogo]', this.getFile(1));
+
+    } else {
+
+      formData.append('images[defaultCoverLogoVertical]', this.getFile(1));
       console.log(this.getFile(1))
-    }  
+    }
     if (this.images[2]) {
       formData.append('images[defaultHeaderImage]', this.images[2]);
-     
-    }else{
-      
-      formData.append('images[defaultCoverLogo]', this.getFile(2));
+
+    } else {
+
+      formData.append('images[defaultHeaderImage]', this.getFile(2));
       console.log(this.getFile(2))
-    }  
+    }
     if (this.images[3]) {
       formData.append('images[defaultBrowserIcon]', this.images[3]);
-     
-    }else{
+
+    } else {
       this.getFile(3)
-      formData.append('images[defaultCoverLogo]', this.getFile(3));
+      formData.append('images[defaultBrowserIcon]', this.getFile(3));
       console.log(this.getFile(3))
-    }  
+    }
     if (this.images[4]) {
       formData.append('images[secondaryLogo]', this.images[4]);
-     
-    }else{
+
+    } else {
       this.getFile(4)
-      formData.append('images[defaultCoverLogo]', this.getFile(4));
+      formData.append('images[secondaryLogo]', this.getFile(4));
       console.log(this.getFile(4))
-    }  
+    }
     if (this.images[5]) {
       formData.append('images[backgroundImage]', this.images[5]);
-     
-    } else{
+
+    } else {
       this.getFile(5)
-      formData.append('images[defaultCoverLogo]', this.getFile(5));
+      formData.append('images[backgroundImage]', this.getFile(5));
       console.log(this.getFile(5))
-    } 
+    }
     console.log(this.images)
     console.log('The sent is:', formData);
     this.siteIdentityService.createSiteIdentity(formData).subscribe(

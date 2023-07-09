@@ -19,7 +19,11 @@ export class UserService {
    }
   //Read
   getAllUsers(): Observable<any>{
-    return this.http.get<any>(this.configUrl);  
+    return this.http.get<any>(this.configUrl+`/unsuspended`);  
+
+  }
+  getSuspendedUsers(): Observable<any>{
+    return this.http.get<any>(this.configUrl+`/suspended`);  
 
   }
 

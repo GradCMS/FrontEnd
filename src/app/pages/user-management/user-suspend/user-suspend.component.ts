@@ -1,41 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-
-import { HttpClient } from '@angular/common/http';   
-import { UserService } from 'src/app/sharedServices/userData/user.service/user.service.component';   
 import { MatDialog } from '@angular/material/dialog';
 import { PopupAlertComponent } from 'src/app/shared/popup/popup.alert/popup.alert.component';
+import { UserService } from 'src/app/sharedServices/userData/user.service/user.service.component';
+
 @Component({
-  selector: 'app-user-main',
-  templateUrl: './user-main.component.html',
-  styleUrls: ['./user-main.component.css']
+  selector: 'app-user-suspend',
+  templateUrl: './user-suspend.component.html',
+  styleUrls: ['./user-suspend.component.css']
 })
-export class UserMainComponent implements OnInit {
+
+export class UserSuspendComponent implements OnInit {
 
   users: any;
+  suspendedUsers: any;
   constructor(private userServ: UserService, public dialog: MatDialog) { 
 
   }
 
   ngOnInit() {
-    this.userServ.getAllUsers().subscribe(data  =>{
-      this.users=data["unsuspended users"]
-    
+
+    this.userServ.getSuspendedUsers().subscribe(data  =>{
+      this.suspendedUsers=data["suspended users"]
+      console.log(this.suspendedUsers)
      })
 
   }
 
   onDelete(user: any): void {
     this.userServ.deleteUser(user.id).subscribe(() => {
-      this.users = this.users.filter((r: any) => r.id !== user.id);
+      this.suspendedUsers = this.suspendedUsers.filter((r: any) => r.id !== user.id);
     });
     
   }
-  onSuspend(user: any):void{
-    this.userServ.susbendUser(user,user.id).subscribe(()=>{
-      this.users = this.users.filter((r: any) => r.id !== user.id);     console.log("ff")
+  onUnSuspend(user: any):void{
+    this.userServ.unsusbendUser(user,user.id).subscribe(()=>{
+      this.suspendedUsers = this.suspendedUsers.filter((r: any) => r.id !== user.id);
+   
     },(error)=>
     {
-      console.log("errror")
+    
     })
 
   }

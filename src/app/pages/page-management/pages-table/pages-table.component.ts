@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PageService } from 'src/app/sharedServices/pageData/page.service/page.service.component';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { PopupAlertComponent } from 'src/app/shared/popup/popup.alert/popup.alert.component';
 import { MatDialog } from '@angular/material/dialog';
+import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-pages-table',
@@ -11,6 +12,9 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./pages-table.component.css']
 })
 export class PagesTableComponent implements OnInit {
+  @ViewChild('snackbar') private snackbar!: SnackbarComponent;
+	message!:string
+	type!:string
   tree!: any[];
   treeControl = new NestedTreeControl<any>(node => node.children);
   dataSource = new MatTreeNestedDataSource<any>();
@@ -29,6 +33,18 @@ export class PagesTableComponent implements OnInit {
  onDelete(page: any): void {
     this.pageServ.deletePage(page.id).subscribe(() => {
       this.tree = this.tree.filter((r: any) => r.id !== page.id);
+      this.message = "Page Deleted SuccessFully!"
+      this.type = "success"
+      this.snackbar.show()
+      setTimeout(() => {
+        location.reload();
+      }, 400);
+    
+    }, error => {
+
+      this.message = "Something Went wrong !"
+      this.type = "error"
+      this.snackbar.show()
     });
     
   }
